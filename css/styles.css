@@ -838,7 +838,7 @@ body.has-lockscreen { overflow: hidden; }
   fill: none;
   stroke: var(--accent);
   stroke-width: 0.75;
-  stroke-dasharray: 2 3;
+  stroke-dasharray: 4 6;
   opacity: 0;
   animation: fade-in 1s var(--ease-out) 2.4s forwards;
 }
