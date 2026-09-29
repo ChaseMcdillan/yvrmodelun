@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Test Your Instincts — YVRMUN Session II / 2027</title>
-  <meta name="description" content="Three scenarios. No correct answers. Just consequences. See what kind of room you create at YVRMUN Session II." />
+  <title>Experience — YVRMUN Session II / 2027</title>
+  <meta name="description" content="Three scenarios. No correct answers. Just consequences. See what kind of room you'd create at YVRMUN." />
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/animations.css" />
@@ -14,19 +14,19 @@
   <header class="site-header" data-feature="header">
     <div class="site-header__inner">
       <a class="site-header__brand" href="/index.html" aria-label="YVRMUN home">
-        <span class="site-header__org">Youth Visionary Reformers Model United Nations</span>
-        <span class="site-header__session">Session II / 2027</span>
+        <span class="site-header__mark" aria-hidden="true"><span>Y</span></span>
+        <span>YVRMUN / 27</span>
       </a>
       <nav class="site-header__nav" aria-label="Primary">
-        <a href="/about.html">About</a>
+        <span class="site-header__nav-pill" aria-hidden="true"></span>
+        <a href="/index.html">Home</a>
         <a href="/committees.html">Committees</a>
-        <a href="/scenario.html" class="is-active">Scenario</a>
+        <a href="/scenario.html" class="is-active">Experience</a>
         <a href="/schedule.html">Schedule</a>
         <a href="/staff.html">Staff</a>
         <a href="/faq.html">FAQ</a>
-        <a href="/contact.html">Contact</a>
       </nav>
-      <a class="site-header__cta" href="/staff.html">ENTER THE ROOM.</a>
+      <a class="site-header__cta" href="/staff.html">Apply for Staff</a>
       <button class="site-header__toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -66,10 +66,11 @@
               Room energy
               <span class="scenario__energy-value" data-scenario-energy>00</span>
             </span>
-            <span class="scenario__energy-bar" aria-hidden="true">
-              <span class="scenario__energy-fill" data-scenario-fill></span>
-            </span>
           </div>
+
+          <span class="scenario__energy-bar" aria-hidden="true">
+            <span class="scenario__energy-fill" data-scenario-fill></span>
+          </span>
 
           <!-- SCENARIO 01 -->
           <div class="scenario__card is-active" data-scenario="1">
@@ -108,42 +109,65 @@
             </div>
           </div>
 
-          <!-- TODO: replace scenario 02 with real content -->
+          <!-- SCENARIO 02 -->
           <div class="scenario__card" data-scenario="2" hidden>
             <p class="scenario__eyebrow">Scenario 02</p>
-            <h3 class="scenario__prompt">[Scenario 02 prompt goes here.]</h3>
-            <p class="scenario__context">[Scenario 02 context goes here.]</p>
+            <h3 class="scenario__prompt">
+              The crisis update just landed and your strongest ally was
+              named in it.
+            </h3>
+            <p class="scenario__context">
+              The room is watching you. Whatever you say next sets the tone
+              for the rest of the session.
+            </p>
             <div class="scenario__choices">
               <button type="button" class="scenario__choice" data-choice="a" data-energy="20">
-                [Choice A]
+                Defend them publicly — loyalty first.
               </button>
-              <button type="button" class="scenario__choice" data-choice="b" data-energy="30">
-                [Choice B]
+              <button type="button" class="scenario__choice" data-energy="30" data-choice="b">
+                Stay silent and let the room decide.
+              </button>
+              <button type="button" class="scenario__choice" data-choice="c" data-energy="40">
+                Pivot the conversation to your own directive.
               </button>
             </div>
             <div class="scenario__outcome" hidden>
-              <p class="scenario__outcome-title">[Outcome title]</p>
-              <p class="scenario__outcome-body">[Outcome body]</p>
+              <p class="scenario__outcome-title">The room noticed.</p>
+              <p class="scenario__outcome-body">
+                How you handle pressure becomes part of the room's memory.
+                That's the part of MUN that sticks.
+              </p>
               <button type="button" class="scenario__next" data-scenario-next>Next scenario →</button>
             </div>
           </div>
 
-          <!-- TODO: replace scenario 03 with real content -->
+          <!-- SCENARIO 03 -->
           <div class="scenario__card" data-scenario="3" hidden>
             <p class="scenario__eyebrow">Scenario 03</p>
-            <h3 class="scenario__prompt">[Scenario 03 prompt goes here.]</h3>
-            <p class="scenario__context">[Scenario 03 context goes here.]</p>
+            <h3 class="scenario__prompt">
+              You have the votes. You don't have the room.
+            </h3>
+            <p class="scenario__context">
+              Your draft resolution would pass. But half the committee
+              would leave feeling like they weren't heard.
+            </p>
             <div class="scenario__choices">
-              <button type="button" class="scenario__choice" data-choice="a" data-energy="25">
-                [Choice A]
+              <button type="button" class="scenario__choice" data-choice="a" data-energy="15">
+                Push it through — win the vote.
               </button>
               <button type="button" class="scenario__choice" data-choice="b" data-energy="35">
-                [Choice B]
+                Open it up — invite amendments from the floor.
+              </button>
+              <button type="button" class="scenario__choice" data-choice="c" data-energy="45">
+                Withdraw it — start over with everyone at the table.
               </button>
             </div>
             <div class="scenario__outcome" hidden>
-              <p class="scenario__outcome-title">[Outcome title]</p>
-              <p class="scenario__outcome-body">[Outcome body]</p>
+              <p class="scenario__outcome-title">You built the room.</p>
+              <p class="scenario__outcome-body">
+                Winning the vote isn't the same as winning the room. The
+                best delegates know the difference.
+              </p>
               <button type="button" class="scenario__next" data-scenario-next>See result →</button>
             </div>
           </div>
@@ -173,7 +197,7 @@
     <blockquote class="pull-quote" data-reveal>
       <p>
         The point isn't to sound like a diplomat. The point is to make
-        the room move.
+        the <span class="pull-quote__accent">room</span> move.
       </p>
       <cite>YVRMUN / Session II / 2027</cite>
     </blockquote>
@@ -181,6 +205,8 @@
   </main>
 
   <footer class="site-footer">
+    <div class="site-footer__watermark" aria-hidden="true">YVRMUN</div>
+
     <div class="site-footer__inner">
       <div class="site-footer__brand-block">
         <p class="site-footer__brand">YVRMUN / Session II / 2027</p>
@@ -189,6 +215,7 @@
       <div class="site-footer__links-block">
         <p class="site-footer__heading">Explore</p>
         <ul class="site-footer__links">
+          <li><a href="/index.html">Home</a></li>
           <li><a href="/about.html">About</a></li>
           <li><a href="/committees.html">Committees</a></li>
           <li><a href="/scenario.html">Scenario</a></li>
@@ -203,18 +230,17 @@
         <p class="site-footer__heading">Contact</p>
         <p><a href="mailto:yvrmun26@gmail.com">yvrmun26@gmail.com</a></p>
         <p class="site-footer__location">Richmond, British Columbia</p>
+        <p class="site-footer__clock" data-clock>--:-- PT</p>
       </div>
     </div>
+
     <div class="site-footer__legal-block">
       <p class="site-footer__legal">
         © 2027 Youth Visionary Reformers Model United Nations. All rights reserved
         except where otherwise noted.
       </p>
       <p class="site-footer__legal site-footer__legal--assets">
-        Certain visual assets, including but not limited to graphics,
-        illustrations, and design elements, are the copyrighted property
-        of Chase McDillan and are used with permission. Unauthorized
-        reproduction or distribution is prohibited.
+        Visual assets © <strong>Chase McDillan</strong>. Used with permission.
       </p>
     </div>
   </footer>
@@ -223,14 +249,14 @@
     <span aria-hidden="true">↑</span>
   </button>
 
-  <script src="/js/config.js"></script>
-  <script src="/js/main.js"></script>
-  <script src="/js/animations.js"></script>
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
   <div class="cursor-corners" aria-hidden="true">
     <span></span><span></span><span></span><span></span>
   </div>
 
+  <script src="/js/config.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/animations.js"></script>
 </body>
 </html>
