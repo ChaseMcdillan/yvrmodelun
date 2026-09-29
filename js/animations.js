@@ -1,7 +1,7 @@
 /* ============================================================
    YVRMUN — Motion
-   Scroll reveals, word splits, stat counters, custom cursor
-   (dot + delayed ring), hero sway, scenario game, timeline.
+   Reveals, splits, counters, cursor, sway, room selector,
+   quotes ticker, live clock, countdown, scroll header.
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- STAT COUNTERS ---------- */
-  const counters = document.querySelectorAll('.stat');
+  /* ---------- STAT COUNTERS (any [data-count]) ---------- */
+  const counters = document.querySelectorAll('[data-count]');
   if (counters.length && !prefersReduced) {
     const countIO = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -54,12 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const el = entry.target;
         const target = parseInt(el.dataset.count || '0', 10);
         const suffix = el.dataset.suffix || '';
-        const valueEl = el.querySelector('.stat__value');
-        if (!valueEl) return;
+
+        // find the element that displays the number
+        const valueEl = el.querySelector('.stat__value')
+                     || el.querySelector('.dash-tile__value')
+                     || el.querySelector('.staff-cta__number')
+                     || el;
+        const parent = valueEl.closest('.stat, .dash-tile, .staff-cta__big') || valueEl;
 
         const duration = 1400;
         const start = performance.now();
-        el.classList.add('is-counting');
+        parent.classList.add('is-counting');
 
         const tick = (now) => {
           const t = Math.min((now - start) / duration, 1);
@@ -67,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const current = Math.floor(eased * target);
           valueEl.textContent = current + (t === 1 ? suffix : '');
           if (t < 1) requestAnimationFrame(tick);
-          else el.classList.remove('is-counting');
+          else parent.classList.remove('is-counting');
         };
         requestAnimationFrame(tick);
         countIO.unobserve(el);
@@ -91,6 +96,49 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateProgress);
   }
 
+  /* ---------- HEADER HIDE-ON-SCROLL-DOWN ---------- */
+  const header = document.querySelector('.site-header');
+  if (header) {
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (Math.abs(y - lastY) > 8) {
+        if (y > lastY && y > 200) header.classList.add('is-hidden');
+        else header.classList.remove('is-hidden');
+        lastY = y;
+      }
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* ---------- NAV SLIDING PILL ---------- */
+  const nav = document.querySelector('.site-header__nav');
+  const pill = document.querySelector('.site-header__nav-pill');
+  const navLinks = nav ? Array.from(nav.querySelectorAll('a')) : [];
+
+  if (nav && pill && navLinks.length && !prefersReduced) {
+    navLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        const navRect = nav.getBoundingClientRect();
+        const linkRect = link.getBoundingClientRect();
+        pill.style.width = linkRect.width + 'px';
+        pill.style.transform = `translateX(${linkRect.left - navRect.left - 4}px)`;
+        nav.classList.add('is-hover');
+      });
+    });
+    nav.addEventListener('mouseleave', () => {
+      nav.classList.remove('is-hover');
+    });
+  }
+
   /* ---------- BACK TO TOP ---------- */
   const backBtn = document.querySelector('[data-back-to-top]');
   if (backBtn) {
@@ -105,12 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- CUSTOM CURSOR (dot + delayed ring) ---------- */
+  /* ---------- CUSTOM CURSOR ---------- */
   if (!prefersReduced
       && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
 
     const dot = document.querySelector('.cursor-dot');
     const ring = document.querySelector('.cursor-ring');
+    const corners = document.querySelector('.cursor-corners');
 
     if (dot && ring) {
       let mx = window.innerWidth / 2;
@@ -124,43 +173,43 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       const loop = () => {
-        // Dot follows instantly (slight easing for smoothness)
         dotX += (mx - dotX) * 0.35;
         dotY += (my - dotY) * 0.35;
-
-        // Ring follows with softer, bouncier easing
         rx += (mx - rx) * 0.12;
         ry += (my - ry) * 0.12;
 
         dot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
         ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
 
+        if (corners) {
+          corners.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+        }
         requestAnimationFrame(loop);
       };
       loop();
 
-      // Hover states
       const hoverTargets = document.querySelectorAll(
-        'a, button, [data-tilt], .committee-card, .role-card, .preview-card, .contact-card, .mini-card, .scenario__choice'
+        'a, button, [data-tilt], .room-list__item, .staff-role, .quote, .dash-tile'
       );
       hoverTargets.forEach(el => {
         el.addEventListener('mouseenter', () => {
           dot.classList.add('is-hover');
           ring.classList.add('is-hover');
+          corners?.classList.add('is-hover');
         });
         el.addEventListener('mouseleave', () => {
           dot.classList.remove('is-hover');
           ring.classList.remove('is-hover');
+          corners?.classList.remove('is-hover');
         });
       });
     }
   } else {
-    // Hide cursor elements on touch devices
-    document.querySelectorAll('.cursor-dot, .cursor-ring')
+    document.querySelectorAll('.cursor-dot, .cursor-ring, .cursor-corners')
       .forEach(el => el.style.display = 'none');
   }
 
-  /* ---------- HERO SWAY (artwork follows cursor) ---------- */
+  /* ---------- HERO SWAY ---------- */
   const swayEl = document.querySelector('[data-sway]');
   if (swayEl && !prefersReduced
       && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
@@ -171,120 +220,128 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', (e) => {
       const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
-      targetX = (e.clientX - cx) / cx;   // -1 … 1
+      targetX = (e.clientX - cx) / cx;
       targetY = (e.clientY - cy) / cy;
     });
 
     const animate = () => {
-      // Eased follow — creates the "delayed, bouncy" feel
       currentX += (targetX - currentX) * 0.06;
       currentY += (targetY - currentY) * 0.06;
 
-      const rotY = currentX * 12;   // degrees
+      const rotY = currentX * 12;
       const rotX = -currentY * 12;
 
       swayEl.style.transform =
-        `perspective(1200px) rotateY(${rotY}deg) rotateX(${rotX}deg) translateZ(0)`;
+        `translateY(-50%) perspective(1200px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
 
       requestAnimationFrame(animate);
     };
     animate();
   }
 
-  /* ---------- TIMELINE PROGRESS ---------- */
-  const tlProgress = document.querySelector('[data-timeline-progress]');
-  const tlWrap = document.querySelector('.timeline-wrap');
-  if (tlProgress && tlWrap) {
-    const updateTimeline = () => {
-      const rect = tlWrap.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const total = rect.height + vh * 0.5;
-      const passed = Math.max(0, vh * 0.6 - rect.top);
-      const pct = Math.min(100, (passed / total) * 100);
-      tlProgress.style.height = pct + '%';
+  /* ---------- ROOM SELECTOR ---------- */
+  const roomSelector = document.querySelector('[data-feature="room-selector"]');
+  if (roomSelector) {
+    const items = roomSelector.querySelectorAll('.room-list__item');
+    const codeEl = roomSelector.querySelector('[data-room-code]');
+    const titleEl = roomSelector.querySelector('[data-room-title]');
+    const descEl = roomSelector.querySelector('[data-room-desc]');
+
+    const rooms = {
+      '01': {
+        code: 'A/YVRMUN/2027/01',
+        title: 'Security Council',
+        desc: 'Fast-moving crisis committee with directives, veto politics, closed sessions, and consequences that arrive before you have finished arguing about the last one.'
+      },
+      '02': {
+        code: 'A/YVRMUN/2027/02',
+        title: 'Committee 02',
+        desc: 'Replace this placeholder with the real committee description before launch.'
+      },
+      '03': {
+        code: 'A/YVRMUN/2027/03',
+        title: 'Committee 03',
+        desc: 'Replace this placeholder with the real committee description before launch.'
+      },
+      '04': {
+        code: 'A/YVRMUN/2027/04',
+        title: 'Committee 04',
+        desc: 'Replace this placeholder with the real committee description before launch.'
+      },
+      '05': {
+        code: 'A/YVRMUN/2027/05',
+        title: 'Committee 05',
+        desc: 'Replace this placeholder with the real committee description before launch.'
+      },
+      '06': {
+        code: 'A/YVRMUN/2027/06',
+        title: 'Committee 06',
+        desc: 'Replace this placeholder with the real committee description before launch.'
+      }
     };
-    updateTimeline();
-    window.addEventListener('scroll', updateTimeline, { passive: true });
-    window.addEventListener('resize', updateTimeline);
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        items.forEach(i => i.classList.remove('is-active'));
+        item.classList.add('is-active');
+        const data = rooms[item.dataset.room];
+        if (!data) return;
+        if (codeEl) codeEl.textContent = data.code;
+        if (titleEl) titleEl.textContent = data.title;
+        if (descEl) descEl.textContent = data.desc;
+      });
+    });
   }
 
-  /* ---------- SCENARIO GAME ---------- */
-  const scenario = document.querySelector('[data-feature="scenario"]');
-  if (scenario) {
-    const cards = Array.from(scenario.querySelectorAll('.scenario__card'));
-    const result = scenario.querySelector('[data-scenario-result]');
-    const idxLabel = scenario.querySelector('[data-scenario-index]');
-    const energyLabel = scenario.querySelector('[data-scenario-energy]');
-    const fillBar = scenario.querySelector('[data-scenario-fill]');
-    const verdict = scenario.querySelector('[data-scenario-verdict]');
-
-    let current = 0;
-    let energy = 0;
-
-    const showCard = (i) => {
-      cards.forEach((c, idx) => {
-        c.hidden = idx !== i;
-        c.classList.toggle('is-active', idx === i);
-      });
-      if (result) result.hidden = true;
-      if (idxLabel) idxLabel.textContent = String(i + 1).padStart(2, '0');
+  /* ---------- LIVE CLOCK (footer) ---------- */
+  const clockEl = document.querySelector('[data-clock]');
+  if (clockEl) {
+    const updateClock = () => {
+      try {
+        const now = new Date();
+        const opts = {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false,
+          timeZone: 'America/Vancouver'
+        };
+        const time = new Intl.DateTimeFormat('en-CA', opts).format(now);
+        clockEl.textContent = `${time} PT`;
+      } catch {
+        clockEl.textContent = 'Richmond time';
+      }
     };
+    updateClock();
+    setInterval(updateClock, 30000);
+  }
 
-    const setEnergy = (val) => {
-      energy = Math.min(100, Math.max(0, val));
-      if (energyLabel) energyLabel.textContent = String(energy).padStart(2, '0');
-      if (fillBar) fillBar.style.width = energy + '%';
+  /* ---------- COUNTDOWN (lock screen) ---------- */
+  const countdown = document.querySelector('[data-countdown]');
+  if (countdown) {
+    const daysEl = document.querySelector('[data-countdown-days]');
+    const hoursEl = document.querySelector('[data-countdown-hours]');
+    const minsEl = document.querySelector('[data-countdown-minutes]');
+    const secsEl = document.querySelector('[data-countdown-seconds]');
+
+    // Conference date: April 1, 2027 (placeholder — update when confirmed)
+    const target = new Date('2027-04-01T08:30:00-08:00').getTime();
+
+    const tick = () => {
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      if (daysEl) daysEl.textContent = String(days).padStart(3, '0');
+      if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+      if (minsEl) minsEl.textContent = String(mins).padStart(2, '0');
+      if (secsEl) secsEl.textContent = String(secs).padStart(2, '0');
     };
-
-    scenario.querySelectorAll('.scenario__choice').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.classList.add('is-selected');
-        const delta = parseInt(btn.dataset.energy || '0', 10);
-        setEnergy(energy + delta);
-
-        const card = btn.closest('.scenario__card');
-        const outcome = card.querySelector('.scenario__outcome');
-        const choices = card.querySelector('.scenario__choices');
-        if (outcome) outcome.hidden = false;
-        if (choices) choices.style.pointerEvents = 'none';
-      });
-    });
-
-    scenario.querySelectorAll('[data-scenario-next]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        current++;
-        if (current < cards.length) showCard(current);
-        else if (result) {
-          cards.forEach(c => c.hidden = true);
-          result.hidden = false;
-          if (verdict) {
-            verdict.textContent =
-              energy > 70 ? 'moves fast.' :
-              energy > 40 ? 'moves.' :
-                            'holds steady.';
-          }
-        }
-      });
-    });
-
-    const resetBtn = scenario.querySelector('[data-scenario-reset]');
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        current = 0;
-        setEnergy(0);
-        cards.forEach(c => {
-          const oc = c.querySelector('.scenario__outcome');
-          const ch = c.querySelector('.scenario__choices');
-          if (oc) oc.hidden = true;
-          if (ch) ch.style.pointerEvents = '';
-          ch?.querySelectorAll('.is-selected').forEach(b => b.classList.remove('is-selected'));
-        });
-        showCard(0);
-      });
-    }
-
-    setEnergy(0);
-    showCard(0);
+    tick();
+    setInterval(tick, 1000);
   }
 
 });

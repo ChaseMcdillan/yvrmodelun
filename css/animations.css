@@ -1,7 +1,6 @@
 /* ============================================================
    YVRMUN — Motion
-   Reveals, splits, marquee, cursor physics, timeline.
-   All animations respect prefers-reduced-motion.
+   Reveals, splits, marquee, cursor physics, timeline, parallax.
    ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
@@ -59,17 +58,17 @@
 }
 
 [data-lock-reveal]:nth-child(1) { animation-delay: 0.1s; }
-[data-lock-reveal]:nth-child(2) { animation-delay: 0.25s; }
-[data-lock-reveal]:nth-child(3) { animation-delay: 0.45s; }
-[data-lock-reveal]:nth-child(4) { animation-delay: 0.6s; }
-[data-lock-reveal]:nth-child(5) { animation-delay: 0.75s; }
+[data-lock-reveal]:nth-child(2) { animation-delay: 0.3s; }
+[data-lock-reveal]:nth-child(3) { animation-delay: 0.5s; }
+[data-lock-reveal]:nth-child(4) { animation-delay: 0.7s; }
+[data-lock-reveal]:nth-child(5) { animation-delay: 0.9s; }
 
 @keyframes lock-fade {
   to { opacity: 1; transform: translateY(0); }
 }
 
 .lockscreen.is-exiting {
-  animation: lock-exit 0.7s var(--ease-in-out) forwards;
+  animation: lock-exit 0.75s var(--ease-in-out) forwards;
   pointer-events: none;
 }
 
@@ -84,18 +83,10 @@
   to   { transform: translateX(-50%); }
 }
 
-/* ---------- SCENARIO RIPPLE ---------- */
-.scenario__choice { position: relative; }
-
-.scenario__choice.is-selected {
-  background: var(--accent);
-  color: var(--ink);
-  border-color: var(--accent);
-  padding-left: var(--space-8);
-}
-
 /* ---------- STAT COUNT PULSE ---------- */
-.stat.is-counting .stat__value {
+.stat.is-counting .stat__value,
+.dash-tile.is-counting .dash-tile__value,
+.staff-cta.is-counting .staff-cta__number {
   animation: stat-pulse 0.4s var(--ease-out);
 }
 
@@ -105,10 +96,7 @@
   100% { transform: scale(1); }
 }
 
-/* ---------- TIMELINE PROGRESS ---------- */
-.timeline__progress-line { will-change: height; }
-
-/* ---------- REDUCED MOTION SAFETY ---------- */
+/* ---------- REDUCED MOTION ---------- */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal], [data-lock-reveal] {
     opacity: 1; transform: none; animation: none;
@@ -116,6 +104,8 @@
   .split-word__inner {
     transform: none; opacity: 1; animation: none;
   }
-  .cursor-dot, .cursor-ring { display: none; }
+  .cursor-dot, .cursor-ring, .cursor-corners { display: none; }
   body, a, button { cursor: auto; }
+  .lockscreen__grid { animation: none; }
+  .art-orbit { animation: none; }
 }

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YVRMUN — Session II / 2027</title>
   <meta name="description" content="YVRMUN is a youth Model United Nations conference in Metro Vancouver. Session II takes over Richmond, BC in April 2027." />
-  <meta name="theme-color" content="#0f0f0f" />
+  <meta name="theme-color" content="#0a0a0a" />
   <meta property="og:title" content="YVRMUN — MAKE THE room." />
   <meta property="og:description" content="Session II / Spring 2027. Richmond, BC. Six committees. Three hundred delegates." />
   <meta property="og:type" content="website" />
@@ -18,18 +18,22 @@
        LOCK SCREEN
        ============================================================ -->
   <div class="lockscreen" id="lockscreen" data-feature="lockscreen">
+    <div class="lockscreen__grid" aria-hidden="true"></div>
+
     <div class="lockscreen__inner">
 
-      <div class="lockscreen__top" data-lock-reveal>
-        <span>Vancouver Youth Model United Nations</span>
-        <span>Session II / 2027</span>
-      </div>
+      <div class="lockscreen__left">
+        <div class="lockscreen__top" data-lock-reveal>
+          <span>Vancouver Youth Model United Nations</span>
+          <span>Session II / 2027</span>
+        </div>
 
-      <h1 class="lockscreen__title" data-lock-split>
-        Enter the room.
-      </h1>
+        <h1 class="lockscreen__title" data-lock-split>
+          <span class="lockscreen__title-line">Enter</span>
+          <span class="lockscreen__title-line">the</span>
+          <span class="lockscreen__title-line">room.</span>
+        </h1>
 
-      <div class="lockscreen__bottom">
         <p class="lockscreen__lede" data-lock-reveal>
           This is not a brochure. It is the room before the delegates
           arrive. Explore the conference, test a decision, find your
@@ -44,6 +48,32 @@
           <span class="lockscreen__arrow" aria-hidden="true">↗</span>
         </button>
       </div>
+
+      <aside class="lockscreen__right" data-lock-reveal>
+        <p class="lockscreen__countdown-label">Doors open in</p>
+        <div class="lockscreen__countdown" data-countdown>
+          <div class="lockscreen__countdown-cell">
+            <span class="lockscreen__countdown-value" data-countdown-days>000</span>
+            <span class="lockscreen__countdown-key">Days</span>
+          </div>
+          <div class="lockscreen__countdown-cell">
+            <span class="lockscreen__countdown-value" data-countdown-hours>00</span>
+            <span class="lockscreen__countdown-key">Hours</span>
+          </div>
+          <div class="lockscreen__countdown-cell">
+            <span class="lockscreen__countdown-value" data-countdown-minutes>00</span>
+            <span class="lockscreen__countdown-key">Min</span>
+          </div>
+          <div class="lockscreen__countdown-cell">
+            <span class="lockscreen__countdown-value" data-countdown-seconds>00</span>
+            <span class="lockscreen__countdown-key">Sec</span>
+          </div>
+        </div>
+        <p class="lockscreen__stamp">
+          Richmond · British Columbia<br>
+          April 2027
+        </p>
+      </aside>
 
     </div>
   </div>
@@ -60,6 +90,8 @@
       </a>
 
       <nav class="site-header__nav" aria-label="Primary">
+        <span class="site-header__nav-pill" aria-hidden="true"></span>
+        <a href="/index.html" class="is-active">Home</a>
         <a href="/committees.html">Committees</a>
         <a href="/scenario.html">Experience</a>
         <a href="/schedule.html">Schedule</a>
@@ -85,57 +117,77 @@
          HERO
          ============================================================ -->
     <section class="hero" aria-labelledby="hero-title">
+
+      <div class="hero__art-bg" data-sway aria-hidden="true">
+        <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <circle class="art-circle" cx="300" cy="300" r="290" />
+          <circle class="art-circle" cx="300" cy="300" r="220" />
+          <circle class="art-circle art-circle--inner" cx="300" cy="300" r="150" />
+
+          <circle class="art-orbit" cx="300" cy="300" r="255" />
+
+          <rect class="art-diamond-dashed"
+                x="300" y="140"
+                width="226" height="226"
+                transform="rotate(45 300 300)" />
+
+          <polygon class="art-diamond"
+                   points="300,150 450,300 300,450 150,300" />
+
+          <text class="art-label" x="300" y="305" text-anchor="middle">
+            YVR / 27
+          </text>
+
+          <circle class="art-dot" cx="300" cy="80" r="4" />
+          <circle class="art-dot" cx="300" cy="300" r="4" />
+        </svg>
+      </div>
+
       <div class="hero__inner">
+        <p class="hero__kicker" data-reveal>Session II / Spring 2027</p>
 
-        <div class="hero__content">
-          <h1 class="hero__title" id="hero-title">
-            <span class="hero__title-line" data-split>MAKE</span>
-            <span class="hero__title-line" data-split>THE</span>
-            <span class="hero__title-line">
-              <span class="hero__title-accent" data-split>room.</span>
-            </span>
-          </h1>
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__title-line" data-split>MAKE</span>
+          <span class="hero__title-line" data-split>THE</span>
+          <span class="hero__title-line">
+            <span class="hero__title-accent" data-split>room.</span>
+          </span>
+        </h1>
 
-          <p class="hero__lede" data-reveal>
-            YVRMUN is a youth Model United Nations conference in Metro
-            Vancouver built around the part of MUN that matters most:
-            what happens after someone says something nobody expected.
-          </p>
-
-          <div class="hero__cta" data-reveal>
-            <a class="btn btn--primary" href="/committees.html">
-              Enter the committees <span aria-hidden="true">›</span>
-            </a>
-            <a class="btn btn--ghost" href="/staff.html">
-              Join the staff <span aria-hidden="true">↗</span>
-            </a>
+        <div class="hero__grid">
+          <div class="hero__col" data-reveal>
+            <h3>The point</h3>
+            <p>
+              YVRMUN is a youth Model United Nations conference in Metro
+              Vancouver built around the part of MUN that matters most:
+              what happens after someone says something nobody expected.
+            </p>
+          </div>
+          <div class="hero__col" data-reveal>
+            <h3>The plan</h3>
+            <p>
+              Two days. Six committees. Three hundred delegates. Crisis
+              is encouraged. Draft, debate, decide. Richmond, April 2027.
+            </p>
           </div>
         </div>
 
-        <div class="hero__art" data-sway aria-hidden="true">
-          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-            <circle class="art-circle" cx="300" cy="300" r="290" />
-            <circle class="art-circle" cx="300" cy="300" r="220" />
-            <circle class="art-circle art-circle--inner" cx="300" cy="300" r="150" />
-
-            <rect class="art-diamond-dashed"
-                  x="300" y="140"
-                  width="226" height="226"
-                  transform="rotate(45 300 300)" />
-
-            <polygon class="art-diamond"
-                     points="300,150 450,300 300,450 150,300" />
-
-            <text class="art-label" x="300" y="305" text-anchor="middle">
-              YVR / 27
-            </text>
-
-            <circle class="art-dot" cx="300" cy="80" r="4" />
-            <circle class="art-dot" cx="300" cy="300" r="4" />
-          </svg>
+        <div class="hero__cta" data-reveal>
+          <a class="btn btn--primary" href="/committees.html">
+            Enter the committees <span aria-hidden="true">›</span>
+          </a>
+          <a class="btn btn--ghost" href="/staff.html">
+            Join the staff <span aria-hidden="true">↗</span>
+          </a>
         </div>
-
       </div>
+
+      <div class="hero__progress" data-reveal>
+        <span>Committee rosters</span>
+        <span class="hero__progress-bar"><span class="hero__progress-fill"></span></span>
+        <span>4 / 6 assigned</span>
+      </div>
+
     </section>
 
     <!-- ============================================================
@@ -159,116 +211,264 @@
     </div>
 
     <!-- ============================================================
-         STATS
+         THE ROOM IN NUMBERS — Dashboard
          ============================================================ -->
-    <section class="stat-strip" aria-label="Conference numbers">
-      <div class="stat-strip__inner">
-        <div class="stat" data-count="2">
-          <span class="stat__value">0</span>
-          <span class="stat__label">Session</span>
-        </div>
-        <div class="stat" data-count="6">
-          <span class="stat__value">0</span>
-          <span class="stat__label">Committees</span>
-        </div>
-        <div class="stat" data-count="300" data-suffix="+">
-          <span class="stat__value">0</span>
-          <span class="stat__label">Delegates</span>
-        </div>
-        <div class="stat" data-count="40">
-          <span class="stat__value">0</span>
-          <span class="stat__label">Staff positions</span>
+    <section class="section" id="numbers" aria-labelledby="numbers-title">
+      <div class="section__inner">
+
+        <p class="section__label" data-reveal>01 / THE ROOM IN NUMBERS</p>
+        <h2 class="section__title" id="numbers-title" data-reveal>
+          A conference is a <span class="section__title-accent">machine.</span>
+        </h2>
+
+        <div class="dashboard">
+
+          <div class="dash-tile" data-reveal>
+            <p class="dash-tile__label">Session</p>
+            <p class="dash-tile__value" data-count="2">0</p>
+            <p class="dash-tile__note">YVRMUN II / April 2027</p>
+            <span class="dash-tile__tick"></span>
+          </div>
+
+          <div class="dash-tile" data-reveal>
+            <p class="dash-tile__label">Committees</p>
+            <p class="dash-tile__value" data-count="6">0</p>
+            <p class="dash-tile__note">Six rooms, six games</p>
+            <div class="dash-tile__dots" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <span class="is-empty"></span><span class="is-empty"></span>
+            </div>
+          </div>
+
+          <div class="dash-tile dash-tile--wide" data-reveal>
+            <p class="dash-tile__label">Delegates</p>
+            <p class="dash-tile__value" data-count="300" data-suffix="+">0</p>
+            <p class="dash-tile__note">Applications trending up</p>
+            <svg class="dash-tile__sparkline" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true">
+              <polyline points="0,34 20,30 40,32 60,25 80,26 100,18 120,20 140,12 160,14 180,6 200,4"
+                        fill="none" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </div>
+
+          <div class="dash-tile" data-reveal>
+            <p class="dash-tile__label">Staff positions</p>
+            <p class="dash-tile__value" data-count="40">0</p>
+            <p class="dash-tile__note">Chairs, crisis, press, logistics</p>
+            <span class="dash-tile__tick"></span>
+          </div>
+
+          <div class="dash-tile" data-reveal>
+            <p class="dash-tile__label">Days</p>
+            <p class="dash-tile__value" data-count="2">0</p>
+            <p class="dash-tile__note">Two days, one room</p>
+            <span class="dash-tile__tick"></span>
+          </div>
+
+          <div class="dash-tile" data-reveal>
+            <p class="dash-tile__label">Founded</p>
+            <p class="dash-tile__value" data-count="2005">0</p>
+            <p class="dash-tile__note">20+ years of YVRMUN</p>
+            <span class="dash-tile__tick"></span>
+          </div>
+
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         PREVIEW CARDS
+         WHAT DELEGATES SAY — Quotes ticker
          ============================================================ -->
-    <section class="section" aria-labelledby="preview-title">
+    <section class="section section--dark" aria-labelledby="voices-title">
       <div class="section__inner">
 
-        <p class="section__label" data-reveal>00 / START HERE</p>
-        <h2 class="section__title" id="preview-title" data-reveal>
-          Three places to <span class="section__title-accent">begin.</span>
+        <p class="section__label" data-reveal>02 / VOICES</p>
+        <h2 class="section__title" id="voices-title" data-reveal>
+          What delegates <span class="section__title-accent">remember.</span>
         </h2>
+      </div>
 
-        <div class="preview-grid">
-
-          <a class="preview-card" href="/about.html">
-            <span class="preview-card__num">01</span>
-            <h3 class="preview-card__title">Why This Exists</h3>
-            <p class="preview-card__desc">
-              MUN should feel alive. The mission, the setting, and what
-              makes YVRMUN different from any other conference.
-            </p>
-            <span class="preview-card__arrow" aria-hidden="true">→</span>
-          </a>
-
-          <a class="preview-card" href="/committees.html">
-            <span class="preview-card__num">02</span>
-            <h3 class="preview-card__title">Choose Your Room</h3>
-            <p class="preview-card__desc">
-              Six committees. Six different games. Read the premise,
-              imagine yourself in the room.
-            </p>
-            <span class="preview-card__arrow" aria-hidden="true">→</span>
-          </a>
-
-          <a class="preview-card" href="/staff.html">
-            <span class="preview-card__num">03</span>
-            <h3 class="preview-card__title">Build The Conference</h3>
-            <p class="preview-card__desc">
-              Chair. Crisis. Logistics. Press. Staff shape what delegates
-              remember. Apply now.
-            </p>
-            <span class="preview-card__arrow" aria-hidden="true">→</span>
-          </a>
-
+      <div class="quotes">
+        <div class="quotes__track">
+          <article class="quote">
+            <p class="quote__body">I didn't expect to enjoy a two-hour argument. I left with three new friends and a position paper I'm still proud of.</p>
+            <p class="quote__cite">Delegate · DISEC · 2024</p>
+          </article>
+          <article class="quote">
+            <p class="quote__body">The crisis updates felt like something was actually at stake. That changed how I debated for the rest of the weekend.</p>
+            <p class="quote__cite">Delegate · Security Council · 2025</p>
+          </article>
+          <article class="quote">
+            <p class="quote__body">First conference ever. The staff walked me through procedure on day one. By day two I was running a working paper.</p>
+            <p class="quote__cite">Delegate · WHO · 2023</p>
+          </article>
+          <article class="quote">
+            <p class="quote__body">I came for the debate. I stayed for the people. That's the part nobody puts in the brochure.</p>
+            <p class="quote__cite">Delegate · UNHRC · 2024</p>
+          </article>
+          <article class="quote">
+            <p class="quote__body">The social on Saturday was genuinely fun. Live music, photo booth, and nobody wanted to go home.</p>
+            <p class="quote__cite">Delegate · FIFA · 2025</p>
+          </article>
+          <article class="quote">
+            <p class="quote__body">I didn't expect to enjoy a two-hour argument. I left with three new friends and a position paper I'm still proud of.</p>
+            <p class="quote__cite">Delegate · DISEC · 2024</p>
+          </article>
+          <article class="quote">
+            <p class="quote__body">The crisis updates felt like something was actually at stake. That changed how I debated for the rest of the weekend.</p>
+            <p class="quote__cite">Delegate · Security Council · 2025</p>
+          </article>
+          <article class="quote">
+            <p class="quote__body">First conference ever. The staff walked me through procedure on day one. By day two I was running a working paper.</p>
+            <p class="quote__cite">Delegate · WHO · 2023</p>
+          </article>
         </div>
-
       </div>
     </section>
 
     <!-- ============================================================
-         MINI GRID
+         CHOOSE YOUR ROOM — Rotating selector
          ============================================================ -->
-    <section class="section" aria-labelledby="more-title">
+    <section class="section" id="committees" aria-labelledby="committees-title">
       <div class="section__inner">
 
-        <p class="section__label" data-reveal>EXPLORE</p>
-        <h2 class="section__title" id="more-title" data-reveal>
-          More to <span class="section__title-accent">see.</span>
+        <p class="section__label" data-reveal>03 / CHOOSE YOUR ROOM</p>
+        <h2 class="section__title" id="committees-title" data-reveal>
+          Six rooms. <span class="section__title-accent">Six games.</span>
         </h2>
 
-        <div class="mini-grid">
-          <a class="mini-card" href="/scenario.html">
-            <span class="mini-card__num">04</span>
-            <span class="mini-card__title">Test Your Instincts</span>
-            <span class="mini-card__arrow">→</span>
-          </a>
-          <a class="mini-card" href="/schedule.html">
-            <span class="mini-card__num">05</span>
-            <span class="mini-card__title">The Weekend</span>
-            <span class="mini-card__arrow">→</span>
-          </a>
-          <a class="mini-card" href="/faq.html">
-            <span class="mini-card__num">06</span>
-            <span class="mini-card__title">Questions</span>
-            <span class="mini-card__arrow">→</span>
-          </a>
-          <a class="mini-card" href="/contact.html">
-            <span class="mini-card__num">07</span>
-            <span class="mini-card__title">Get in Touch</span>
-            <span class="mini-card__arrow">→</span>
-          </a>
-          <a class="mini-card" href="/credits.html">
-            <span class="mini-card__num">08</span>
-            <span class="mini-card__title">Credits</span>
-            <span class="mini-card__arrow">→</span>
-          </a>
-        </div>
+        <div class="room-selector" data-feature="room-selector">
 
+          <ul class="room-list" role="tablist">
+            <li>
+              <button type="button" class="room-list__item is-active" data-room="01">
+                <span class="room-list__num">01</span>
+                <span class="room-list__name">Security Council</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="room-list__item" data-room="02">
+                <span class="room-list__num">02</span>
+                <span class="room-list__name">Committee 02</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="room-list__item" data-room="03">
+                <span class="room-list__num">03</span>
+                <span class="room-list__name">Committee 03</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="room-list__item" data-room="04">
+                <span class="room-list__num">04</span>
+                <span class="room-list__name">Committee 04</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="room-list__item" data-room="05">
+                <span class="room-list__num">05</span>
+                <span class="room-list__name">Committee 05</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="room-list__item" data-room="06">
+                <span class="room-list__num">06</span>
+                <span class="room-list__name">Committee 06</span>
+              </button>
+            </li>
+          </ul>
+
+          <div class="room-preview">
+            <p class="room-preview__code" data-room-code>A/YVRMUN/2027/01</p>
+            <h3 class="room-preview__title" data-room-title>Security Council</h3>
+            <p class="room-preview__desc" data-room-desc>
+              Fast-moving crisis committee with directives, veto politics,
+              closed sessions, and consequences that arrive before you have
+              finished arguing about the last one.
+            </p>
+            <a class="room-preview__cta" href="/committees.html">
+              Read full brief <span aria-hidden="true">→</span>
+            </a>
+
+            <div class="room-preview__diagram" aria-hidden="true">
+              <svg viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="70" fill="none"
+                        stroke="rgba(242,239,232,0.18)" stroke-width="0.5"/>
+                <circle cx="100" cy="100" r="45" fill="none"
+                        stroke="rgba(242,239,232,0.25)" stroke-width="0.5"/>
+                <polygon points="100,30 170,100 100,170 30,100"
+                         fill="none" stroke="currentColor" stroke-width="1"/>
+                <text x="100" y="105" text-anchor="middle"
+                      font-family="ui-monospace, monospace" font-size="9"
+                      fill="currentColor" letter-spacing="2">A/01</text>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BUILD THE CONFERENCE — Staff CTA
+         ============================================================ -->
+    <section class="section section--dark" id="staff-cta" aria-labelledby="staff-cta-title">
+      <div class="section__inner">
+
+        <p class="section__label" data-reveal>04 / BUILD THE CONFERENCE</p>
+        <h2 class="section__title" id="staff-cta-title" data-reveal>
+          Don't just <span class="section__title-accent">attend.</span>
+        </h2>
+
+        <div class="staff-cta">
+
+          <div class="staff-cta__big" data-reveal>
+            <p class="staff-cta__number" data-count="40">0</p>
+            <p class="staff-cta__number-label">Open positions</p>
+            <p class="staff-cta__sub">Chairs. Crisis staff. Logistics. Press. Every role shapes what delegates remember.</p>
+            <a class="btn btn--primary staff-cta__btn" href="/staff.html">
+              Apply for staff <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <ul class="staff-roles" data-feature="staff-roles">
+            <li>
+              <button type="button" class="staff-role" data-role="chair">
+                <span class="staff-role__num">R / 01</span>
+                <span class="staff-role__name">Chair</span>
+                <span class="staff-role__desc">Procedure, debate, room energy.</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="staff-role" data-role="crisis">
+                <span class="staff-role__num">R / 02</span>
+                <span class="staff-role__name">Crisis Staff</span>
+                <span class="staff-role__desc">Updates, directives, consequences.</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="staff-role" data-role="logistics">
+                <span class="staff-role__num">R / 03</span>
+                <span class="staff-role__name">Logistics</span>
+                <span class="staff-role__desc">People, rooms, timing, movement.</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="staff-role" data-role="press-lead">
+                <span class="staff-role__num">R / 04</span>
+                <span class="staff-role__name">Press Lead</span>
+                <span class="staff-role__desc">Coverage, assignments, publication.</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="staff-role" data-role="press-writer">
+                <span class="staff-role__num">R / 05</span>
+                <span class="staff-role__name">Press Writer</span>
+                <span class="staff-role__desc">Stories, interviews, perspective.</span>
+              </button>
+            </li>
+          </ul>
+
+        </div>
       </div>
     </section>
 
@@ -279,7 +479,7 @@
       <blockquote class="pull-quote" data-reveal>
         <p>
           The point isn't to sound like a diplomat. The point is to make
-          the room move.
+          the <span class="pull-quote__accent">room</span> move.
         </p>
         <cite>YVRMUN / Session II / 2027</cite>
       </blockquote>
@@ -291,6 +491,8 @@
        FOOTER
        ============================================================ -->
   <footer class="site-footer">
+    <div class="site-footer__watermark" aria-hidden="true">YVRMUN</div>
+
     <div class="site-footer__inner">
 
       <div class="site-footer__brand-block">
@@ -301,6 +503,7 @@
       <div class="site-footer__links-block">
         <p class="site-footer__heading">Explore</p>
         <ul class="site-footer__links">
+          <li><a href="/index.html">Home</a></li>
           <li><a href="/about.html">About</a></li>
           <li><a href="/committees.html">Committees</a></li>
           <li><a href="/scenario.html">Scenario</a></li>
@@ -316,6 +519,7 @@
         <p class="site-footer__heading">Contact</p>
         <p><a href="mailto:yvrmun26@gmail.com">yvrmun26@gmail.com</a></p>
         <p class="site-footer__location">Richmond, British Columbia</p>
+        <p class="site-footer__clock" data-clock>--:-- PT</p>
       </div>
 
     </div>
@@ -325,7 +529,7 @@
         © 2027 Vancouver Youth Model United Nations. All rights reserved
         except where otherwise noted.
       </p>
-      <p class="site-footer__legal site-footer__legal--affiliate">
+      <p class="site-footer__legal site-footer__legal--assets">
         Certain visual assets © Chase McDillan, used with permission.
         Unauthorized reproduction or distribution is prohibited.
       </p>
@@ -336,9 +540,11 @@
     <span aria-hidden="true">↑</span>
   </button>
 
-  <!-- Custom cursor -->
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-corners" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
 
   <script src="/js/config.js"></script>
   <script src="/js/main.js"></script>
