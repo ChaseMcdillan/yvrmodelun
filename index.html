@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="YVR Model United Nations brings students together to debate global issues, negotiate across perspectives, and shape practical solutions."
+    />
+    <meta name="theme-color" content="#f4f2ec" />
+    <title>YVR Model United Nations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f4f2ec;
+        --ink: #17211d;
+        --muted: #67716b;
+        --green: #1c4538;
+        --green-deep: #15352d;
+        --lime: #d3e96a;
+        --orange: #d75c3c;
+        --line: #d9d8cf;
+        --serif: Georgia, "Times New Roman", serif;
+        --sans: "DM Sans", sans-serif;
+        --display: "Manrope", sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 86px;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .hero {
+        position: relative;
+        display: flex;
+        min-height: 680px;
+        min-height: min(840px, 100svh);
+        flex-direction: column;
+        overflow: hidden;
+        background: #24332d;
+        color: #fff;
+      }
+
+      .hero::before,
+      .hero::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+      }
+
+      .hero::before {
+        background-image: url("https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=2400&q=85");
+        background-position: center 44%;
+        background-size: cover;
+        animation: reveal-image 1s ease-out both;
+      }
+
+      .hero::after {
+        background: linear-gradient(90deg, rgb(11 26 22 / 82%) 0%, rgb(11 26 22 / 45%) 52%, rgb(11 26 22 / 10%) 100%),
+          linear-gradient(0deg, rgb(11 26 22 / 35%), transparent 45%);
+      }
+
+      .site-header,
+      .hero-content,
+      .hero-bottom {
+        position: relative;
+        z-index: 1;
+      }
+
+      .site-header {
+        display: flex;
+        width: min(100% - 64px, 1440px);
+        align-items: center;
+        justify-content: space-between;
+        margin-inline: auto;
+        padding-block: 27px;
+        border-bottom: 1px solid rgb(255 255 255 / 28%);
+      }
+
+      .wordmark {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .wordmark-symbol {
+        display: grid;
+        width: 39px;
+        height: 39px;
+        place-items: center;
+        border: 1px solid rgb(255 255 255 / 70%);
+        border-radius: 50%;
+        color: var(--lime);
+        font-family: var(--display);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .wordmark-copy {
+        display: grid;
+        gap: 2px;
+      }
+
+      .wordmark-copy strong {
+        font-family: var(--display);
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .wordmark-copy span {
+        font-size: 9px;
+        letter-spacing: 1.4px;
+      }
+
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 3.2vw, 48px);
+      }
+
+      .main-nav a {
+        color: rgb(255 255 255 / 88%);
+        font-size: 13px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 160ms ease;
+      }
+
+      .main-nav a:hover,
+      .main-nav a:focus-visible {
+        color: var(--lime);
+      }
+
+      .main-nav .nav-cta {
+        padding: 11px 16px;
+        border: 1px solid rgb(255 255 255 / 70%);
+        border-radius: 2px;
+        color: #fff;
+      }
+
+      .hero-content {
+        width: min(100% - 64px, 1440px);
+        margin: auto;
+        padding-block: 90px 120px;
+        animation: rise-in 700ms 120ms both;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 26px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 30px;
+        height: 2px;
+        background: var(--lime);
+        content: "";
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      .hero h1 {
+        max-width: 850px;
+        margin-bottom: 24px;
+        font-family: var(--display);
+        font-size: clamp(48px, 7.4vw, 102px);
+        font-weight: 600;
+        line-height: 0.99;
+      }
+
+      .hero h1 span {
+        color: var(--lime);
+        font-family: var(--serif);
+        font-weight: 400;
+        font-style: italic;
+      }
+
+      .hero-intro {
+        max-width: 480px;
+        margin-bottom: 34px;
+        color: rgb(255 255 255 / 83%);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 19px;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button-primary {
+        background: var(--lime);
+        color: var(--ink);
+      }
+
+      .button-primary:hover {
+        background: #e0f486;
+      }
+
+      .button-secondary {
+        border-color: rgb(255 255 255 / 58%);
+        color: #fff;
+      }
+
+      .button-secondary:hover {
+        background: rgb(255 255 255 / 12%);
+      }
+
+      .hero-bottom {
+        display: flex;
+        width: min(100% - 64px, 1440px);
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding: 0 0 28px;
+        color: rgb(255 255 255 / 74%);
+        font-size: 11px;
+      }
+
+      .hero-bottom span:last-child {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .hero-bottom span:last-child::before {
+        width: 34px;
+        height: 1px;
+        background: var(--lime);
+        content: "";
+      }
+
+      .intro-section {
+        display: grid;
+        grid-template-columns: 0.78fr 1.22fr;
+        gap: clamp(44px, 11vw, 180px);
+        width: min(100% - 64px, 1200px);
+        margin: 0 auto;
+        padding-block: 128px 118px;
+      }
+
+      .section-label {
+        margin: 8px 0 0;
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .intro-copy h2,
+      .details-copy h2 {
+        margin-bottom: 25px;
+        font-family: var(--display);
+        font-size: clamp(34px, 4.7vw, 58px);
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.08;
+      }
+
+      .intro-copy h2 em,
+      .details-copy h2 em {
+        color: var(--green);
+        font-family: var(--serif);
+        font-weight: 400;
+      }
+
+      .intro-copy > p:last-child {
+        max-width: 530px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.85;
+      }
+
+      .process-section {
+        padding-block: 83px 92px;
+        background-color: #eae9e1;
+        background-image: radial-gradient(#c9cbc0 0.65px, transparent 0.65px);
+        background-size: 14px 14px;
+      }
+
+      .section-inner {
+        width: min(100% - 64px, 1200px);
+        margin-inline: auto;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+
+      .section-heading .section-label {
+        margin-bottom: 13px;
+      }
+
+      .section-heading h2 {
+        max-width: 600px;
+        margin: 0;
+        font-family: var(--display);
+        font-size: clamp(32px, 4vw, 50px);
+        font-weight: 600;
+        line-height: 1.1;
+      }
+
+      .section-heading > p {
+        max-width: 330px;
+        margin: 0 0 3px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid #bfc2b6;
+      }
+
+      .step {
+        padding: 24px 28px 8px 0;
+      }
+
+      .step + .step {
+        padding-left: 28px;
+        border-left: 1px solid #bfc2b6;
+      }
+
+      .step-number {
+        color: var(--orange);
+        font-family: var(--display);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .step h3 {
+        margin: 35px 0 12px;
+        font-family: var(--display);
+        font-size: 23px;
+        font-weight: 700;
+      }
+
+      .step p {
+        max-width: 310px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .details-section {
+        position: relative;
+        overflow: hidden;
+        padding-block: 102px 108px;
+        background: var(--green-deep);
+        color: #fff;
+      }
+
+      .details-section::after {
+        position: absolute;
+        right: -140px;
+        bottom: -210px;
+        width: 530px;
+        height: 530px;
+        border: 1px solid rgb(255 255 255 / 11%);
+        border-radius: 50%;
+        box-shadow: 0 0 0 42px rgb(255 255 255 / 3%), 0 0 0 86px rgb(255 255 255 / 3%);
+        content: "";
+        pointer-events: none;
+      }
+
+      .details-inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr 0.8fr;
+        align-items: center;
+        gap: 80px;
+        width: min(100% - 64px, 1200px);
+        margin-inline: auto;
+      }
+
+      .details-copy .section-label {
+        margin-bottom: 22px;
+        color: var(--lime);
+      }
+
+      .details-copy h2 {
+        max-width: 570px;
+        margin-bottom: 20px;
+      }
+
+      .details-copy h2 em {
+        color: var(--lime);
+      }
+
+      .details-copy > p:last-child {
+        max-width: 470px;
+        margin: 0;
+        color: rgb(255 255 255 / 74%);
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .announcement {
+        padding: 29px 0 0 27px;
+        border-top: 1px solid rgb(255 255 255 / 33%);
+        border-left: 1px solid rgb(255 255 255 / 33%);
+      }
+
+      .announcement-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 22px;
+        color: var(--lime);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .announcement-label::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--lime);
+        content: "";
+      }
+
+      .announcement h3 {
+        margin: 0 0 12px;
+        font-family: var(--display);
+        font-size: 23px;
+        font-weight: 600;
+      }
+
+      .announcement p {
+        max-width: 340px;
+        margin: 0;
+        color: rgb(255 255 255 / 73%);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .faq-section {
+        width: min(100% - 64px, 900px);
+        margin-inline: auto;
+        padding-block: 108px 122px;
+      }
+
+      .faq-section .section-heading {
+        display: block;
+        margin-bottom: 35px;
+      }
+
+      .faq-section .section-heading h2 {
+        font-size: clamp(35px, 4.6vw, 54px);
+      }
+
+      .faq-list {
+        border-top: 1px solid var(--line);
+      }
+
+      .faq-list details {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .faq-list summary {
+        position: relative;
+        padding: 22px 42px 22px 0;
+        font-family: var(--display);
+        font-size: 16px;
+        font-weight: 700;
+        list-style: none;
+        cursor: pointer;
+      }
+
+      .faq-list summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-list summary::after {
+        position: absolute;
+        top: 19px;
+        right: 5px;
+        color: var(--orange);
+        content: "+";
+        font-family: var(--sans);
+        font-size: 22px;
+        font-weight: 400;
+      }
+
+      .faq-list details[open] summary::after {
+        content: "−";
+      }
+
+      .faq-list details p {
+        max-width: 700px;
+        margin: -5px 0 22px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .site-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 26px max(32px, calc((100% - 1200px) / 2));
+        background: #eae9e1;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .footer-brand {
+        color: var(--ink);
+        font-family: var(--display);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .site-footer p {
+        margin: 0;
+      }
+
+      .site-footer a {
+        color: var(--green);
+        font-weight: 700;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--orange);
+        outline-offset: 4px;
+      }
+
+      @keyframes rise-in {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes reveal-image {
+        from {
+          transform: scale(1.035);
+        }
+
+        to {
+          transform: scale(1);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          min-height: 720px;
+          min-height: min(800px, 100svh);
+        }
+
+        .hero::before {
+          background-position: 58% center;
+        }
+
+        .hero::after {
+          background: linear-gradient(90deg, rgb(11 26 22 / 78%), rgb(11 26 22 / 35%)),
+            linear-gradient(0deg, rgb(11 26 22 / 38%), transparent 50%);
+        }
+
+        .site-header,
+        .hero-content,
+        .hero-bottom,
+        .section-inner,
+        .details-inner,
+        .faq-section {
+          width: min(100% - 40px, 1200px);
+        }
+
+        .site-header {
+          align-items: flex-start;
+          gap: 20px;
+          padding-block: 20px;
+        }
+
+        .main-nav {
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          gap: 10px 18px;
+          padding-top: 3px;
+        }
+
+        .main-nav a {
+          font-size: 12px;
+        }
+
+        .main-nav .nav-cta {
+          padding: 8px 10px;
+        }
+
+        .hero-content {
+          padding-block: 90px 100px;
+        }
+
+        .hero h1 {
+          max-width: 620px;
+          font-size: clamp(47px, 11vw, 76px);
+        }
+
+        .intro-section {
+          grid-template-columns: 1fr;
+          gap: 28px;
+          width: min(100% - 40px, 700px);
+          padding-block: 78px;
+        }
+
+        .intro-section .section-label {
+          margin: 0;
+        }
+
+        .section-heading {
+          display: block;
+          margin-bottom: 34px;
+        }
+
+        .section-heading > p {
+          margin-top: 18px;
+        }
+
+        .steps {
+          grid-template-columns: 1fr;
+        }
+
+        .step,
+        .step + .step {
+          padding: 22px 0 25px;
+          border-bottom: 1px solid #bfc2b6;
+          border-left: 0;
+        }
+
+        .step h3 {
+          margin-top: 19px;
+        }
+
+        .details-inner {
+          grid-template-columns: 1fr;
+          gap: 42px;
+        }
+
+        .details-section {
+          padding-block: 76px 82px;
+        }
+
+        .announcement {
+          max-width: 520px;
+        }
+
+        .faq-section {
+          padding-block: 78px 88px;
+        }
+
+        .site-footer {
+          flex-wrap: wrap;
+          padding-inline: 20px;
+        }
+      }
+
+      @media (max-width: 460px) {
+        .wordmark {
+          gap: 8px;
+        }
+
+        .wordmark-symbol {
+          width: 34px;
+          height: 34px;
+        }
+
+        .wordmark-copy strong {
+          font-size: 12px;
+        }
+
+        .wordmark-copy span {
+          font-size: 8px;
+        }
+
+        .main-nav {
+          max-width: 180px;
+          gap: 8px 13px;
+        }
+
+        .main-nav a {
+          font-size: 11px;
+        }
+
+        .main-nav .nav-cta {
+          border: 0;
+          padding: 0;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+
+        .hero-content {
+          padding-block: 72px 90px;
+        }
+
+        .hero-bottom {
+          align-items: flex-end;
+          font-size: 10px;
+        }
+
+        .hero-bottom span:last-child::before {
+          width: 18px;
+        }
+
+        .hero-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .hero-actions .button {
+          width: fit-content;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <header class="site-header">
+          <a class="wordmark" href="#top" aria-label="YVR Model United Nations home">
+            <span class="wordmark-symbol" aria-hidden="true">YVR</span>
+            <span class="wordmark-copy">
+              <strong>YVRMUN</strong>
+              <span>MODEL UNITED NATIONS</span>
+            </span>
+          </a>
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#experience">The experience</a>
+            <a href="#faq">FAQ</a>
+            <a class="nav-cta" href="#conference">Conference info</a>
+          </nav>
+        </header>
+
+        <div class="hero-content">
+          <p class="eyebrow">Vancouver · Model United Nations</p>
+          <h1 id="hero-title">YVR Model<br />United <span>Nations</span></h1>
+          <p class="hero-intro">
+            Big questions deserve more than one point of view. Step into the conversation, find common ground, and make your case.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#about">Discover YVRMUN</a>
+            <a class="button button-secondary" href="#conference">Conference details</a>
+          </div>
+        </div>
+
+        <div class="hero-bottom" aria-hidden="true">
+          <span>Listen closely. Think globally.</span>
+          <span>Scroll to explore</span>
+        </div>
+      </section>
+
+      <section class="intro-section" id="about" aria-labelledby="about-title">
+        <p class="section-label">01 / A different kind of classroom</p>
+        <div class="intro-copy">
+          <h2 id="about-title">Take a seat at the table. <em>Bring your whole perspective.</em></h2>
+          <p>
+            Model United Nations turns global issues into a shared challenge. Research a position, speak for it, listen to people who see things differently, and work toward a resolution together.
+          </p>
+        </div>
+      </section>
+
+      <section class="process-section" id="experience" aria-labelledby="experience-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">02 / How it comes together</p>
+              <h2 id="experience-title">Ideas move when people do.</h2>
+            </div>
+            <p>From the first speech to the final draft, diplomacy is a practice in curiosity, clarity, and collaboration.</p>
+          </div>
+          <div class="steps">
+            <article class="step">
+              <span class="step-number">01</span>
+              <h3>Research</h3>
+              <p>Understand the issue and the perspective you have been asked to represent.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">02</span>
+              <h3>Debate</h3>
+              <p>Make your case, ask sharper questions, and hear what others bring to the room.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">03</span>
+              <h3>Collaborate</h3>
+              <p>Turn points of agreement into proposals the room can move forward together.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="details-section" id="conference" aria-labelledby="conference-title">
+        <div class="details-inner">
+          <div class="details-copy">
+            <p class="section-label">03 / The next gathering</p>
+            <h2 id="conference-title">The next chapter starts <em>here.</em></h2>
+            <p>
+              YVRMUN conference dates, location, committees, and registration information will be shared here as soon as they are confirmed.
+            </p>
+          </div>
+          <div class="announcement">
+            <span class="announcement-label">Updates forthcoming</span>
+            <h3>Stay in the conversation.</h3>
+            <p>Check back for conference announcements and the details you need to take part.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="section-heading">
+          <p class="section-label">04 / Good to know</p>
+          <h2 id="faq-title">A few first questions.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>What is Model United Nations?</summary>
+            <p>
+              Model UN is an educational simulation of international diplomacy. Participants represent countries or other stakeholders, discuss real-world issues, and work together on proposed solutions.
+            </p>
+          </details>
+          <details>
+            <summary>Do I need Model UN experience?</summary>
+            <p>
+              No prior experience is needed to learn the basics of Model UN. YVRMUN participation requirements and any preparation resources will be included with the conference announcement.
+            </p>
+          </details>
+          <details>
+            <summary>When and where is the next conference?</summary>
+            <p>
+              Dates and venue have not been announced yet. Confirmed conference details will be published on this page.
+            </p>
+          </details>
+          <details>
+            <summary>How can I register?</summary>
+            <p>
+              Registration information is forthcoming. Check this page for the official registration link once it is available.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="footer-brand" href="#top">YVRMUN</a>
+      <p>YVR Model United Nations</p>
+      <a href="#conference">Conference updates</a>
+    </footer>
+  </body>
+</html>
