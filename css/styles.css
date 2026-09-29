@@ -1804,3 +1804,27 @@ body.has-lockscreen { overflow: hidden; }
   }
   .timeline__time { font-size: var(--fs-xs); }
 }
+/* Cursor on lock screen — swap to ink for contrast on chartreuse */
+body.has-lockscreen .cursor-dot {
+  background: var(--ink);
+}
+
+body.has-lockscreen .cursor-ring {
+  border-color: var(--ink);
+}
+
+body.has-lockscreen .cursor-corners span {
+  border-color: var(--ink);
+}
+/* Cursor on lock screen — swap to ink for contrast on chartreuse */
+body.has-lockscreen .cursor-dot {
+  background: var(--ink);
+}
+
+body.has-lockscreen .cursor-ring {
+  border-color: var(--ink);
+}
+
+body.has-lockscreen .cursor-corners span {
+  border-color: var(--ink);
+}
