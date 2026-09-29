@@ -2910,3 +2910,54 @@ body.has-lockscreen .cursor-corners span {
     padding: 0.4rem 0.5rem;
   }
 }
+
+/* ============================================================
+   NAV SLIDING PILL — pure CSS, no JS
+   The pill is positioned under whichever link is hovered,
+   using data-pill-x and data-pill-w attributes set at build time.
+   We compute per-link widths with CSS `:has()`.
+   ============================================================ */
+
+.site-header__nav {
+  position: relative;
+  isolation: isolate;
+}
+
+.site-header__nav-pill {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  width: var(--pill-w, 0);
+  transform: translateX(var(--pill-x, 0));
+  background: var(--accent);
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 0;
+  transition: transform 0.35s var(--ease-spring),
+              width 0.35s var(--ease-spring),
+              opacity 0.2s var(--ease-out);
+}
+
+/* Show the pill when the nav is hovered */
+.site-header__nav:hover .site-header__nav-pill { opacity: 1; }
+
+/* Each link's hover drives the pill position via CSS variable overrides */
+.site-header__nav:has(a:nth-child(2):hover) .site-header__nav-pill { --pill-x: 0; --pill-w: var(--pill-1-w, 60px); }
+.site-header__nav:has(a:nth-child(3):hover) .site-header__nav-pill { --pill-x: var(--pill-2-x, 80px); --pill-w: var(--pill-2-w, 100px); }
+.site-header__nav:has(a:nth-child(4):hover) .site-header__nav-pill { --pill-x: var(--pill-3-x, 200px); --pill-w: var(--pill-3-w, 100px); }
+.site-header__nav:has(a:nth-child(5):hover) .site-header__nav-pill { --pill-x: var(--pill-4-x, 320px); --pill-w: var(--pill-4-w, 100px); }
+.site-header__nav:has(a:nth-child(6):hover) .site-header__nav-pill { --pill-x: var(--pill-5-x, 440px); --pill-w: var(--pill-5-w, 100px); }
+.site-header__nav:has(a:nth-child(7):hover) .site-header__nav-pill { --pill-x: var(--pill-6-x, 540px); --pill-w: var(--pill-6-w, 100px); }
+
+/* Text sits above the pill */
+.site-header__nav a {
+  position: relative;
+  z-index: 1;
+}
+
+/* When the nav is hovered, links over the pill turn ink */
+.site-header__nav a:hover {
+  color: var(--ink);
+}
