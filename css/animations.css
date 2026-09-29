@@ -1,10 +1,9 @@
 /* ============================================================
    YVRMUN — Motion
-   Keyframes, reveal utilities, micro-interactions, cursor.
+   Reveals, splits, marquee, cursor physics, timeline.
    All animations respect prefers-reduced-motion.
    ============================================================ */
 
-/* ---------- REDUCED MOTION KILL SWITCH ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -17,9 +16,9 @@
 /* ---------- SCROLL REVEAL ---------- */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s var(--ease-out),
-              transform 0.8s var(--ease-out);
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease-out),
+              transform 0.7s var(--ease-out);
   will-change: opacity, transform;
 }
 
@@ -33,18 +32,19 @@
 [data-reveal][data-delay="3"] { transition-delay: 0.3s; }
 [data-reveal][data-delay="4"] { transition-delay: 0.4s; }
 
-/* ---------- WORD SPLIT (hero / page titles) ---------- */
+/* ---------- WORD SPLIT ---------- */
 .split-word {
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
+  line-height: 1;
 }
 
 .split-word__inner {
   display: inline-block;
-  transform: translateY(100%);
+  transform: translateY(105%);
   opacity: 0;
-  animation: split-rise 0.9s var(--ease-out) forwards;
+  animation: split-rise 1s var(--ease-out) forwards;
 }
 
 @keyframes split-rise {
@@ -54,28 +54,28 @@
 /* ---------- LOCKSCREEN ENTRANCE ---------- */
 [data-lock-reveal] {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(12px);
   animation: lock-fade 0.9s var(--ease-out) forwards;
 }
 
 [data-lock-reveal]:nth-child(1) { animation-delay: 0.1s; }
 [data-lock-reveal]:nth-child(2) { animation-delay: 0.25s; }
 [data-lock-reveal]:nth-child(3) { animation-delay: 0.45s; }
-[data-lock-reveal]:nth-child(4) { animation-delay: 0.65s; }
-[data-lock-reveal]:nth-child(5) { animation-delay: 0.85s; }
+[data-lock-reveal]:nth-child(4) { animation-delay: 0.6s; }
+[data-lock-reveal]:nth-child(5) { animation-delay: 0.75s; }
 
 @keyframes lock-fade {
   to { opacity: 1; transform: translateY(0); }
 }
 
 .lockscreen.is-exiting {
-  animation: lock-exit 0.9s var(--ease-in-out) forwards;
+  animation: lock-exit 0.7s var(--ease-in-out) forwards;
   pointer-events: none;
 }
 
 @keyframes lock-exit {
-  0%   { opacity: 1; transform: scale(1); filter: blur(0); }
-  100% { opacity: 0; transform: scale(1.08); filter: blur(12px); }
+  0%   { opacity: 1; filter: blur(0); transform: scale(1); }
+  100% { opacity: 0; filter: blur(16px); transform: scale(1.06); }
 }
 
 /* ---------- MARQUEE ---------- */
@@ -84,126 +84,38 @@
   to   { transform: translateX(-50%); }
 }
 
-/* ---------- ORB PULSE ---------- */
-.orb { animation: orb-float 12s ease-in-out infinite; }
-
-.orb--2 { animation-delay: -6s; }
-
-@keyframes orb-float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50%      { transform: translate(30px, -20px) scale(1.1); }
-}
-
-/* ---------- FOCUS / INTERACTION STATES ---------- */
-[data-tilt] {
-  transform-style: preserve-3d;
-  transition: transform 0.4s var(--ease-out),
-              box-shadow 0.4s var(--ease-out),
-              border-color 0.4s var(--ease-out);
-}
-
-/* ---------- BUTTON RIPPLE ---------- */
-.scenario__choice {
-  position: relative;
-}
-
-.scenario__choice::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: radial-gradient(circle at var(--rx, 50%) var(--ry, 50%),
-              rgba(255, 77, 46, 0.35), transparent 50%);
-  opacity: 0;
-  transition: opacity 0.5s var(--ease-out);
-}
-
-.scenario__choice.is-rippling::after {
-  opacity: 1;
-  transition: opacity 0.05s var(--ease-out);
-}
+/* ---------- SCENARIO RIPPLE ---------- */
+.scenario__choice { position: relative; }
 
 .scenario__choice.is-selected {
+  background: var(--accent);
+  color: var(--ink);
   border-color: var(--accent);
-  background: var(--ink-elevated);
+  padding-left: var(--space-8);
 }
 
-/* ---------- STAT COUNTER PULSE ---------- */
+/* ---------- STAT COUNT PULSE ---------- */
 .stat.is-counting .stat__value {
   animation: stat-pulse 0.4s var(--ease-out);
 }
 
 @keyframes stat-pulse {
   0%   { transform: scale(1); }
-  50%  { transform: scale(1.08); color: var(--accent); }
+  50%  { transform: scale(1.06); }
   100% { transform: scale(1); }
 }
 
-/* ---------- GRAIN OVERLAY ---------- */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.04;
-  background-image:
-    repeating-radial-gradient(circle at 0 0, transparent 0, rgba(0,0,0,0.5) 1px, transparent 2px);
-  background-size: 4px 4px;
-  mix-blend-mode: multiply;
-  animation: grain-shift 0.6s steps(4) infinite;
-}
-
-@keyframes grain-shift {
-  0%, 100% { transform: translate(0, 0); }
-  25%      { transform: translate(-1px, 1px); }
-  50%      { transform: translate(1px, -1px); }
-  75%      { transform: translate(-1px, -1px); }
-}
-
-/* ---------- CUSTOM CURSOR (desktop only) ---------- */
-@media (hover: hover) and (pointer: fine) {
-  .cursor-ring {
-    position: fixed;
-    top: 0; left: 0;
-    width: 28px;
-    height: 28px;
-    border: 1.5px solid var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: width 0.25s var(--ease-out),
-                height 0.25s var(--ease-out),
-                background 0.25s var(--ease-out),
-                border-color 0.25s var(--ease-out);
-    mix-blend-mode: difference;
-    will-change: transform;
-  }
-
-  .cursor-ring.is-hover {
-    width: 56px;
-    height: 56px;
-    background: var(--accent);
-    border-color: transparent;
-  }
-}
-
 /* ---------- TIMELINE PROGRESS ---------- */
-.timeline__progress-line {
-  will-change: height;
-}
+.timeline__progress-line { will-change: height; }
 
-/* ---------- PREFERS REDUCED MOTION SAFETY ---------- */
+/* ---------- REDUCED MOTION SAFETY ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .orb { animation: none; }
-  body::before { animation: none; }
-  .cursor-ring { display: none; }
   [data-reveal], [data-lock-reveal] {
     opacity: 1; transform: none; animation: none;
   }
   .split-word__inner {
     transform: none; opacity: 1; animation: none;
   }
+  .cursor-dot, .cursor-ring { display: none; }
+  body, a, button { cursor: auto; }
 }

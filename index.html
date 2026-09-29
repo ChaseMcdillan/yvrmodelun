@@ -4,149 +4,170 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YVRMUN — Session II / 2027</title>
-  <meta name="description" content="YVRMUN is a youth Model United Nations conference in Metro Vancouver. Session II takes over Richmond, BC in April 2027. Six committees. Three hundred delegates. Crisis is encouraged." />
-  <meta name="theme-color" content="#0a0a0a" />
-
+  <meta name="description" content="YVRMUN is a youth Model United Nations conference in Metro Vancouver. Session II takes over Richmond, BC in April 2027." />
+  <meta name="theme-color" content="#0f0f0f" />
   <meta property="og:title" content="YVRMUN — MAKE THE room." />
-  <meta property="og:description" content="Session II / Spring 2027. Richmond, BC. Six committees. Three hundred delegates. Crisis is encouraged." />
+  <meta property="og:description" content="Session II / Spring 2027. Richmond, BC. Six committees. Three hundred delegates." />
   <meta property="og:type" content="website" />
-
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/animations.css" />
 </head>
 <body class="has-lockscreen">
 
   <!-- ============================================================
-       LOCK SCREEN — shown once per session
+       LOCK SCREEN
        ============================================================ -->
   <div class="lockscreen" id="lockscreen" data-feature="lockscreen">
-    <div class="lockscreen__grain" aria-hidden="true"></div>
-
     <div class="lockscreen__inner">
 
-      <p class="lockscreen__kicker" data-lock-reveal>
-        YVRMUN / SESSION II / 2027
-      </p>
+      <div class="lockscreen__top" data-lock-reveal>
+        <span>Vancouver Youth Model United Nations</span>
+        <span>Session II / 2027</span>
+      </div>
 
       <h1 class="lockscreen__title" data-lock-split>
-        ENTER THE ROOM.
+        Enter the room.
       </h1>
 
-      <p class="lockscreen__lede" data-lock-reveal>
-        Three hundred delegates. Six committees. Two days of arguments
-        you didn't see coming. This is where you step in — not to sound
-        like a diplomat, but to make the room move.
-      </p>
+      <div class="lockscreen__bottom">
+        <p class="lockscreen__lede" data-lock-reveal>
+          This is not a brochure. It is the room before the delegates
+          arrive. Explore the conference, test a decision, find your
+          committee, and decide where you belong.
+        </p>
 
-      <button type="button" class="lockscreen__enter" id="enter-room" data-lock-reveal>
-        <span>ENTER</span>
-        <span class="lockscreen__arrow" aria-hidden="true">→</span>
-      </button>
-
-      <div class="lockscreen__footer" data-lock-reveal>
-        <span>Richmond, BC · April 2027</span>
-        <span>Est. 2005</span>
+        <button type="button"
+                class="lockscreen__enter"
+                id="enter-room"
+                data-lock-reveal>
+          <span>Open YVRMUN</span>
+          <span class="lockscreen__arrow" aria-hidden="true">↗</span>
+        </button>
       </div>
 
     </div>
   </div>
 
   <!-- ============================================================
-       SITE HEADER (sticky)
+       HEADER
        ============================================================ -->
   <header class="site-header" data-feature="header">
     <div class="site-header__inner">
+
       <a class="site-header__brand" href="/index.html" aria-label="YVRMUN home">
-        <span class="site-header__org">Vancouver Youth Model United Nations</span>
-        <span class="site-header__session">Session II / 2027</span>
+        <span class="site-header__mark" aria-hidden="true"><span>Y</span></span>
+        <span>YVRMUN / 27</span>
       </a>
 
       <nav class="site-header__nav" aria-label="Primary">
-        <a href="/about.html">About</a>
         <a href="/committees.html">Committees</a>
-        <a href="/scenario.html">Scenario</a>
+        <a href="/scenario.html">Experience</a>
         <a href="/schedule.html">Schedule</a>
         <a href="/staff.html">Staff</a>
         <a href="/faq.html">FAQ</a>
-        <a href="/contact.html">Contact</a>
       </nav>
 
-      <a class="site-header__cta" href="/staff.html">ENTER THE ROOM.</a>
+      <a class="site-header__cta" href="/staff.html">Apply for Staff</a>
 
       <button class="site-header__toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
 
-    <!-- Scroll progress bar -->
     <div class="scroll-progress" aria-hidden="true">
       <div class="scroll-progress__bar" data-scroll-progress></div>
     </div>
   </header>
 
-  <main id="top">
+  <main>
 
     <!-- ============================================================
          HERO
          ============================================================ -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__bg" aria-hidden="true">
-        <span class="orb orb--1"></span>
-        <span class="orb orb--2"></span>
-      </div>
-
       <div class="hero__inner">
 
-        <p class="hero__kicker" data-reveal>
-          Session II / Spring 2027
-        </p>
+        <div class="hero__content">
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__title-line" data-split>MAKE</span>
+            <span class="hero__title-line" data-split>THE</span>
+            <span class="hero__title-line">
+              <span class="hero__title-accent" data-split>room.</span>
+            </span>
+          </h1>
 
-        <h1 class="hero__title" id="hero-title" data-split>
-          MAKE THE <span class="hero__title-accent">room.</span>
-        </h1>
+          <p class="hero__lede" data-reveal>
+            YVRMUN is a youth Model United Nations conference in Metro
+            Vancouver built around the part of MUN that matters most:
+            what happens after someone says something nobody expected.
+          </p>
 
-        <p class="hero__lede" data-reveal>
-          This is not a brochure. It is the room before the delegates arrive.
-          Explore the conference, test a decision, find your committee,
-          and decide where you belong.
-        </p>
-
-        <div class="hero__cta" data-reveal>
-          <a class="btn btn--primary" href="/staff.html">Apply for staff →</a>
-          <a class="btn btn--ghost" href="/committees.html">View committees</a>
+          <div class="hero__cta" data-reveal>
+            <a class="btn btn--primary" href="/committees.html">
+              Enter the committees <span aria-hidden="true">›</span>
+            </a>
+            <a class="btn btn--ghost" href="/staff.html">
+              Join the staff <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
 
-      </div>
+        <div class="hero__art" data-sway aria-hidden="true">
+          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+            <circle class="art-circle" cx="300" cy="300" r="290" />
+            <circle class="art-circle" cx="300" cy="300" r="220" />
+            <circle class="art-circle art-circle--inner" cx="300" cy="300" r="150" />
 
-      <!-- Marquee -->
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee__track">
-          <span>YVR / 27</span><span>·</span>
-          <span>Six committees</span><span>·</span>
-          <span>Three hundred delegates</span><span>·</span>
-          <span>Crisis is encouraged</span><span>·</span>
-          <span>Draft. Debate. Decide.</span><span>·</span>
-          <span>Richmond / April 2027</span><span>·</span>
-          <span>YVR / 27</span><span>·</span>
-          <span>Six committees</span><span>·</span>
-          <span>Three hundred delegates</span><span>·</span>
-          <span>Crisis is encouraged</span><span>·</span>
-          <span>Draft. Debate. Decide.</span><span>·</span>
-          <span>Richmond / April 2027</span><span>·</span>
+            <rect class="art-diamond-dashed"
+                  x="300" y="140"
+                  width="226" height="226"
+                  transform="rotate(45 300 300)" />
+
+            <polygon class="art-diamond"
+                     points="300,150 450,300 300,450 150,300" />
+
+            <text class="art-label" x="300" y="305" text-anchor="middle">
+              YVR / 27
+            </text>
+
+            <circle class="art-dot" cx="300" cy="80" r="4" />
+            <circle class="art-dot" cx="300" cy="300" r="4" />
+          </svg>
         </div>
+
       </div>
     </section>
 
     <!-- ============================================================
-         STAT STRIP
+         MARQUEE
+         ============================================================ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>YVR / 27</span><span>·</span>
+        <span>Six committees</span><span>·</span>
+        <span>Three hundred delegates</span><span>·</span>
+        <span>Crisis is encouraged</span><span>·</span>
+        <span>Draft. Debate. Decide.</span><span>·</span>
+        <span>Richmond / April 2027</span><span>·</span>
+        <span>YVR / 27</span><span>·</span>
+        <span>Six committees</span><span>·</span>
+        <span>Three hundred delegates</span><span>·</span>
+        <span>Crisis is encouraged</span><span>·</span>
+        <span>Draft. Debate. Decide.</span><span>·</span>
+        <span>Richmond / April 2027</span><span>·</span>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         STATS
          ============================================================ -->
     <section class="stat-strip" aria-label="Conference numbers">
       <div class="stat-strip__inner">
-        <div class="stat" data-count="2" data-suffix="">
+        <div class="stat" data-count="2">
           <span class="stat__value">0</span>
           <span class="stat__label">Session</span>
         </div>
-        <div class="stat" data-count="6" data-suffix="">
+        <div class="stat" data-count="6">
           <span class="stat__value">0</span>
           <span class="stat__label">Committees</span>
         </div>
@@ -154,7 +175,7 @@
           <span class="stat__value">0</span>
           <span class="stat__label">Delegates</span>
         </div>
-        <div class="stat" data-count="40" data-suffix="">
+        <div class="stat" data-count="40">
           <span class="stat__value">0</span>
           <span class="stat__label">Staff positions</span>
         </div>
@@ -162,44 +183,44 @@
     </section>
 
     <!-- ============================================================
-         PRIMARY PREVIEW CARDS
+         PREVIEW CARDS
          ============================================================ -->
     <section class="section" aria-labelledby="preview-title">
       <div class="section__inner">
 
-        <p class="section__label" data-scramble>00 / START HERE</p>
+        <p class="section__label" data-reveal>00 / START HERE</p>
         <h2 class="section__title" id="preview-title" data-reveal>
           Three places to <span class="section__title-accent">begin.</span>
         </h2>
 
         <div class="preview-grid">
 
-          <a class="preview-card" href="/about.html" data-tilt>
+          <a class="preview-card" href="/about.html">
             <span class="preview-card__num">01</span>
             <h3 class="preview-card__title">Why This Exists</h3>
             <p class="preview-card__desc">
-              MUN should feel alive. The mission, the setting, and what makes
-              YVRMUN different from any other conference.
+              MUN should feel alive. The mission, the setting, and what
+              makes YVRMUN different from any other conference.
             </p>
             <span class="preview-card__arrow" aria-hidden="true">→</span>
           </a>
 
-          <a class="preview-card" href="/committees.html" data-tilt>
+          <a class="preview-card" href="/committees.html">
             <span class="preview-card__num">02</span>
             <h3 class="preview-card__title">Choose Your Room</h3>
             <p class="preview-card__desc">
-              Six committees. Six different games. Read the premise, imagine
-              yourself in the room, and pick where you belong.
+              Six committees. Six different games. Read the premise,
+              imagine yourself in the room.
             </p>
             <span class="preview-card__arrow" aria-hidden="true">→</span>
           </a>
 
-          <a class="preview-card" href="/staff.html" data-tilt>
+          <a class="preview-card" href="/staff.html">
             <span class="preview-card__num">03</span>
             <h3 class="preview-card__title">Build The Conference</h3>
             <p class="preview-card__desc">
               Chair. Crisis. Logistics. Press. Staff shape what delegates
-              remember. Apply now — applications close in April.
+              remember. Apply now.
             </p>
             <span class="preview-card__arrow" aria-hidden="true">→</span>
           </a>
@@ -210,12 +231,12 @@
     </section>
 
     <!-- ============================================================
-         SECONDARY CTA GRID
+         MINI GRID
          ============================================================ -->
-    <section class="section section--dark" aria-labelledby="more-title">
+    <section class="section" aria-labelledby="more-title">
       <div class="section__inner">
 
-        <p class="section__label" data-scramble>EXPLORE</p>
+        <p class="section__label" data-reveal>EXPLORE</p>
         <h2 class="section__title" id="more-title" data-reveal>
           More to <span class="section__title-accent">see.</span>
         </h2>
@@ -304,19 +325,20 @@
         © 2027 Vancouver Youth Model United Nations. All rights reserved
         except where otherwise noted.
       </p>
-      <p class="site-footer__legal site-footer__legal--assets">
-        Certain visual assets, including but not limited to graphics,
-        illustrations, and design elements, are the copyrighted property
-        of Chase McDillan and are used with permission. Unauthorized
-        reproduction or distribution is prohibited.
+      <p class="site-footer__legal site-footer__legal--affiliate">
+        Certain visual assets © Chase McDillan, used with permission.
+        Unauthorized reproduction or distribution is prohibited.
       </p>
     </div>
   </footer>
 
-  <!-- Back to top -->
   <button class="back-to-top" aria-label="Back to top" data-back-to-top>
     <span aria-hidden="true">↑</span>
   </button>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
   <script src="/js/config.js"></script>
   <script src="/js/main.js"></script>

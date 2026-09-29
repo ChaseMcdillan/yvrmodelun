@@ -1,7 +1,7 @@
 /* ============================================================
    YVRMUN — Motion
-   Scroll reveals, word splitting, stat counters, tilt,
-   scroll progress, back-to-top, text scramble, custom cursor.
+   Scroll reveals, word splits, stat counters, custom cursor
+   (dot + delayed ring), hero sway, scenario game, timeline.
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,16 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-
       revealEls.forEach(el => io.observe(el));
     }
   }
 
-  /* ---------- WORD SPLIT (headline reveal) ---------- */
-  document.querySelectorAll('[data-split], [data-lock-split]').forEach(el => {
+  /* ---------- WORD SPLIT ---------- */
+  document.querySelectorAll('[data-split]').forEach(el => {
     if (prefersReduced) return;
     const text = el.textContent;
-    const words = text.split(/\s+/);
+    const words = text.split(/\s+/).filter(Boolean);
 
     el.textContent = '';
     words.forEach((word, i) => {
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const inner = document.createElement('span');
       inner.className = 'split-word__inner';
       inner.textContent = word + (i < words.length - 1 ? '\u00A0' : '');
-      inner.style.animationDelay = `${0.05 + i * 0.08}s`;
+      inner.style.animationDelay = `${0.08 + i * 0.1}s`;
       span.appendChild(inner);
       el.appendChild(span);
     });
@@ -74,11 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
         countIO.unobserve(el);
       });
     }, { threshold: 0.4 });
-
     counters.forEach(el => countIO.observe(el));
   }
 
-  /* ---------- SCROLL PROGRESS BAR ---------- */
+  /* ---------- SCROLL PROGRESS ---------- */
   const progressBar = document.querySelector('[data-scroll-progress]');
   if (progressBar) {
     const updateProgress = () => {
@@ -107,90 +105,93 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- 3D TILT ON HOVER (cards) ---------- */
-  if (!prefersReduced && window.matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('[data-tilt]').forEach(card => {
-      let raf = null;
-
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
-        const rotX = (0.5 - y) * 8;
-        const rotY = (x - 0.5) * 8;
-
-        if (raf) cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => {
-          card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(0)`;
-        });
-      });
-
-      card.addEventListener('mouseleave', () => {
-        if (raf) cancelAnimationFrame(raf);
-        card.style.transform = '';
-      });
-    });
-  }
-
-  /* ---------- TEXT SCRAMBLE ON HOVER ---------- */
-  const scrambleChars = '!<>-_\\/[]{}—=+*^?#';
-  document.querySelectorAll('[data-scramble]').forEach(el => {
-    if (prefersReduced) return;
-    const original = el.textContent;
-
-    el.addEventListener('mouseenter', () => {
-      let frame = 0;
-      const totalFrames = 12;
-      const interval = setInterval(() => {
-        el.textContent = original
-          .split('')
-          .map((char, i) => {
-            if (char === ' ') return char;
-            if (i < (frame / totalFrames) * original.length) return original[i];
-            return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-          })
-          .join('');
-        frame++;
-        if (frame > totalFrames) {
-          clearInterval(interval);
-          el.textContent = original;
-        }
-      }, 40);
-    });
-  });
-
-  /* ---------- CUSTOM CURSOR (desktop only) ---------- */
+  /* ---------- CUSTOM CURSOR (dot + delayed ring) ---------- */
   if (!prefersReduced
       && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
 
-    const ring = document.createElement('div');
-    ring.className = 'cursor-ring';
-    ring.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(ring);
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
 
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
+    if (dot && ring) {
+      let mx = window.innerWidth / 2;
+      let my = window.innerHeight / 2;
+      let rx = mx, ry = my;
+      let dotX = mx, dotY = my;
 
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
+      document.addEventListener('mousemove', (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+      });
 
-    const loop = () => {
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-      requestAnimationFrame(loop);
-    };
-    loop();
+      const loop = () => {
+        // Dot follows instantly (slight easing for smoothness)
+        dotX += (mx - dotX) * 0.35;
+        dotY += (my - dotY) * 0.35;
 
-    document.querySelectorAll('a, button, [data-tilt], .committee-card, .role-card').forEach(el => {
-      el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('is-hover'));
-    });
+        // Ring follows with softer, bouncier easing
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+
+        dot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
+        ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+
+        requestAnimationFrame(loop);
+      };
+      loop();
+
+      // Hover states
+      const hoverTargets = document.querySelectorAll(
+        'a, button, [data-tilt], .committee-card, .role-card, .preview-card, .contact-card, .mini-card, .scenario__choice'
+      );
+      hoverTargets.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          dot.classList.add('is-hover');
+          ring.classList.add('is-hover');
+        });
+        el.addEventListener('mouseleave', () => {
+          dot.classList.remove('is-hover');
+          ring.classList.remove('is-hover');
+        });
+      });
+    }
+  } else {
+    // Hide cursor elements on touch devices
+    document.querySelectorAll('.cursor-dot, .cursor-ring')
+      .forEach(el => el.style.display = 'none');
   }
 
-  /* ---------- TIMELINE PROGRESS LINE ---------- */
+  /* ---------- HERO SWAY (artwork follows cursor) ---------- */
+  const swayEl = document.querySelector('[data-sway]');
+  if (swayEl && !prefersReduced
+      && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+      targetX = (e.clientX - cx) / cx;   // -1 … 1
+      targetY = (e.clientY - cy) / cy;
+    });
+
+    const animate = () => {
+      // Eased follow — creates the "delayed, bouncy" feel
+      currentX += (targetX - currentX) * 0.06;
+      currentY += (targetY - currentY) * 0.06;
+
+      const rotY = currentX * 12;   // degrees
+      const rotX = -currentY * 12;
+
+      swayEl.style.transform =
+        `perspective(1200px) rotateY(${rotY}deg) rotateX(${rotX}deg) translateZ(0)`;
+
+      requestAnimationFrame(animate);
+    };
+    animate();
+  }
+
+  /* ---------- TIMELINE PROGRESS ---------- */
   const tlProgress = document.querySelector('[data-timeline-progress]');
   const tlWrap = document.querySelector('.timeline-wrap');
   if (tlProgress && tlWrap) {
@@ -236,19 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     scenario.querySelectorAll('.scenario__choice').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        // Ripple
-        const rect = btn.getBoundingClientRect();
-        btn.style.setProperty('--rx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
-        btn.style.setProperty('--ry', ((e.clientY - rect.top) / rect.height) * 100 + '%');
-        btn.classList.add('is-rippling', 'is-selected');
-        setTimeout(() => btn.classList.remove('is-rippling'), 300);
-
-        // Update energy
+      btn.addEventListener('click', () => {
+        btn.classList.add('is-selected');
         const delta = parseInt(btn.dataset.energy || '0', 10);
         setEnergy(energy + delta);
 
-        // Reveal outcome for this card
         const card = btn.closest('.scenario__card');
         const outcome = card.querySelector('.scenario__outcome');
         const choices = card.querySelector('.scenario__choices');
@@ -293,22 +286,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setEnergy(0);
     showCard(0);
   }
-
-  /* ---------- COMMITTEE CARDS (open to modal-style detail) ---------- */
-  document.querySelectorAll('.committee-card').forEach(card => {
-    const open = () => {
-      // Placeholder behavior: scroll to a future detail region
-      // For now, we just add a temporary highlight.
-      card.classList.add('is-open');
-      setTimeout(() => card.classList.remove('is-open'), 600);
-    };
-    card.addEventListener('click', open);
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        open();
-      }
-    });
-  });
 
 });
