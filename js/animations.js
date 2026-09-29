@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const secsEl = document.querySelector('[data-countdown-seconds]');
 
     // Conference date: April 1, 2027 (placeholder — update when confirmed)
-    const target = new Date('2027-04-01T08:30:00-08:00').getTime();
+    const target = new Date('2027-04-17T08:00:00-08:00').getTime();
 
     const tick = () => {
       const now = Date.now();
