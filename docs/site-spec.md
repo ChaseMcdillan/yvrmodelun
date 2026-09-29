@@ -1,238 +1,118 @@
-# YVRMUN Website Rebuild — Specification
+# YVRMUN Website — Build Specification
 
-## PROJECT
-Rebuild the YVRMUN website (existing: https://yvrmun.netlify.app).
-Goal: match or exceed the current site in design, content, structure,
-interactivity, and performance.
+## Project
+Rebuild of the YVRMUN conference website.
+Existing site: https://yvrmun.netlify.app
+Goal: multi-page, animation-rich, handoff-friendly rebuild.
 
-## TECH STACK (non-negotiable)
-- Plain HTML5, custom CSS3 (CSS variables), vanilla JavaScript
-- NO React, Vue, Next.js, Tailwind, Bootstrap, npm, or build tools
-- Static hosting (Netlify / GitHub Pages / Cloudflare Pages)
-- Single-page scrolling site (all sections on index.html)
-  OR multi-page — but current site is single-page scroll, so match it.
-
-## BRAND IDENTITY
-- Conference: Vancouver Youth Model United Nations (YVRMUN)
-- Session: Session II / Spring 2027
+## Conference Facts (verbatim — do not alter)
+- Organization: Vancouver Youth Model United Nations (YVRMUN)
+- Session: Session II / 2027
 - Location: Richmond, British Columbia (Metro Vancouver)
+- Timeframe: April 2027
 - Tagline: "MAKE THE room." / "ENTER THE ROOM."
-- Voice: Bold, editorial, minimal, slightly provocative.
-  Not corporate. Not brochure-like. Feels like a designed experience.
-- Typography: Large uppercase display headings, tight tracking,
-  monospace/small-caps labels for section numbers (01 / 02 / 03).
-- Palette: Minimal — near-black background sections, off-white,
-  one accent color (infer from live site: likely a warm/bright accent).
-  Support both dark and light sections with strong contrast.
+- Founded: 2005
+- Committees: 6
+- Delegates: 300+
+- Staff positions: 40
+- Notification email: yvrmun26@gmail.com
 
-## PAGE STRUCTURE (single page, scroll-based)
-The current site is ONE long scrolling page with numbered sections.
-Rebuild as `index.html` with these sections in order:
+## Names & Spellings (enforce in all copy)
+- YVRMUN  (all caps)
+- Chase McDillan  (capital M, capital D — NOT "McMillan")
+- YVRMUN Session II / 2027
 
-00. HERO
-    - Top-left: "Vancouver Youth Model United Nations" / "Session II / 2027"
-    - Top-right: "ENTER THE ROOM." (link/CTA)
-    - Body copy: "This is not a brochure. It is the room before the
-      delegates arrive. Explore the conference, test a decision,
-      find your committee, and decide where you belong."
-    - Sub-label: "Session II / Spring 2027"
-    - Huge headline: "MAKE THE room." (mixed case — lowercase 'room')
-    - Intro paragraph about YVRMUN being built around what happens
-      after someone says something unexpected
-    - Marquee/stat strip (repeating): "YVR / 27", "Six committees",
-      "Three hundred delegates", "Crisis is encouraged",
-      "Draft. Debate. Decide.", "Richmond / April 2027"
+## Tech Stack
+- HTML5, custom CSS3 (variables), vanilla JS
+- Static host: Vercel
+- Form backend: Google Apps Script → Gmail + Sheets
+- No frameworks, no build tools, no npm
 
-01. WHY THIS EXISTS
-    - Label: "01 / WHY THIS EXISTS"
-    - Headline: "MUN should feel alive."
-    - Body: 2 paragraphs (worksheet metaphor, improvised moments,
-      small details matter, "an argument, not just a score")
+## Page Structure
+| File | Purpose |
+|------|---------|
+| index.html | Lock screen → landing |
+| about.html | Why This Exists + The Setting |
+| committees.html | Six committees (interactive) |
+| scenario.html | Test Your Instincts (interactive game) |
+| schedule.html | Weekend timeline |
+| staff.html | Staff roles + application form |
+| faq.html | FAQ accordion |
+| contact.html | Contact info |
+| credits.html | Full copyright & asset credits |
 
-02. THE SETTING
-    - Label: "02 / THE SETTING"
-    - Headline: "The room is somewhere."
-    - Body: paragraph about Richmond
-    - Stat row: II / Session, 06 / Committees, 300+ / Delegates,
-      40 / Staff positions
-    - Map/location block: "North / Vancouver", "Pacific",
-      "Richmond / Conference zone"
-    - Note: "Richmond, BC — Host city for Session II.
-      Exact venue information can be published here when confirmed."
+## Lock Screen Behavior
+- Full viewport, plain near-black background
+- Small monospace label: YVRMUN / SESSION II / 2027
+- Huge headline: ENTER THE ROOM.
+- Description (inspiring copy)
+- Single button: ENTER →
+- Shows once per browser session (sessionStorage key: yvrmun-entered)
+- Skip via ?skip=1 query param (for testing)
+- Respects prefers-reduced-motion
 
-03. CHOOSE YOUR ROOM (Committees)
-    - Label: "03 / CHOOSE YOUR ROOM"
-    - Headline: "Six rooms. Six different games."
-    - Body: "Click a committee. Read the premise. Imagine yourself
-      in the room. This section is intentionally less like a menu
-      and more like a map."
-    - Interactive committee cards (click to expand/select)
-    - Committee 01 example given: Security Council
-      - Code: A/YVRMUN/2027/01
-      - Title: Security Council
-      - Description: "Fast-moving crisis committee with directives,
-        veto politics, closed sessions, and consequences that
-        arrive before you have finished arguing about the last one."
-    - NEED: 5 more committees (placeholders acceptable, but structure
-      must support 6 total with codes A/YVRMUN/2027/01–06)
+## Animations (all enabled — "showy" mode)
+- Lock screen word-stagger reveal
+- Lock screen exit: scale up + blur + fade
+- Page transitions between inner pages
+- Shrinking sticky header with blur backdrop
+- Scroll progress bar (top of every page)
+- Custom cursor ring (desktop only, additive — native cursor still visible)
+- Hero word-stagger on page load
+- Marquee (pauses on hover)
+- Stat counters (count up on view)
+- Section labels/titles fade + slide on scroll
+- Scroll-triggered reveal on all cards & timeline items
+- Committee cards: 3D tilt + glow + modal expand
+- Scenario game: animated room-energy meter, ripple buttons, spring easing
+- Role cards: smooth height expand
+- Form: floating labels, shake on error, confetti on success
+- FAQ: smooth height accordion
+- Back-to-top button (fades in after 400px, spins on click)
+- Button press-down + glow
+- Link underline draw-in on hover
+- Grain overlay (subtle, CSS-only)
+- Animated gradient orbs on dark sections
+- Text scramble on hover for section labels
 
-04. TEST YOUR INSTINCTS (Interactive)
-    - Label: "04 / TEST YOUR INSTINCTS"
-    - Headline: "What would you do?"
-    - Body: "No correct answer. Just consequences. Pick the response
-      you would actually make in committee and see what kind of
-      room you create."
-    - UI: Room energy meter (00 → 100), "Scenario 01 / 03",
-      "Live decision" badge
-    - Scenario 01 (given):
-      Prompt: "Your bloc has a majority, but your strongest ally
-      wants a clause you know will split the room."
-      Sub: "The chair has given you eight minutes before the draft
-      resolution closes. Everyone is watching."
-      Outcome shown (example): "You chose the room over the moment.
-      Your move creates more space for coalition-building. In a live
-      committee, that can be more valuable than winning a single clause."
-    - NEED: 2 more scenarios (03 total) with 2–4 choices each
-      and outcome text per choice. Build the state machine.
+Every animation behind prefers-reduced-motion: no-preference or has a fallback.
 
-05. THE WEEKEND (Schedule)
-    - Label: "05 / THE WEEKEND"
-    - Headline: "Two days. One room."
-    - Body: "Working outline only. Exact times and venue details
-      can be updated here once the conference schedule is finalized."
-    - Timeline entries (time / title / description / day label):
-      - 08:30 Doors / Registration — Day one
-      - 09:30 Opening Ceremony — Day one
-      - 11:00 Committee Session I — Day one
-      - 13:00 Lunch / Informal Diplomacy — Day one
-      - 14:00 Committee Session II — Day one
-      - 17:00 Day One Close — Day one
-      - 09:00 Committee Session III — Day two
-      - 13:30 Voting Bloc — Day two
-      - 15:00 Closing Ceremony — Day two
+## Staff Application Form
+- Endpoint configured in js/config.js (STAFF_APPLY_ENDPOINT)
+- 15 fields (see docs/apps-script-setup.md for full field map)
+- Client-side validation + word counters on textareas
+- PDF resume upload, 4 MB cap (client-side check)
+- Auto-reject: disable submit if accommodation=No or unpaid=No
+- Success: reference code + copy button + confetti
+- Submits JSON to Apps Script → Gmail + Sheets
 
-06. BUILD THE CONFERENCE (Staff Application)
-    - Label: "06 / BUILD THE CONFERENCE"
-    - Headline: "Don't just attend."
-    - Body: "Staff are the people who shape what delegates experience.
-      Choose a role below to see what it actually means."
-    - Role cards (clickable):
-      - ROLE / 01 Chair — "Procedure, debate, room energy."
-      - ROLE / 02 Crisis Staff — "Updates, directives, consequences."
-      - ROLE / 03 Logistics — "People, rooms, timing, movement."
-      - ROLE / 04 Press Lead — "Coverage, assignments, publication."
-      - ROLE / 05 Press Writer — "Stories, interviews, perspective."
-    - Application form (multi-field, validation required):
-      - Fields: name, email, role selection, experience, motivation
-        (infer from context; mark unknown fields as TODO)
-      - On submit: generate reference code "A/YVRMUN/2027/000"
-        and show success message: "You're in the queue."
-      - Note visible in spec only: "Connect this form to your
-        production backend before collecting real applicant information."
-      - Validation message: "Please complete every field."
+## Design System
+- Palette:
+  - --ink: #0a0a0a (near-black)
+  - --paper: #f5f3ee (off-white)
+  - --accent: #ff4d2e (bright coral — energetic)
+  - --accent-2: #f2c94c (warm gold)
+  - --muted: #8a8a8a
+- Typography: system stack (no external fonts)
+- Type scale: fluid via clamp()
+- Section labels: monospace, small caps, tracked
 
-    QUOTE BLOCK (between sections):
-      - Quote: "The point isn't to sound like a diplomat.
-        The point is to make the room move."
-      - Attribution: "YVRMUN / Session II / 2027"
+## Footer (every page)
+© 2027 Vancouver Youth Model United Nations.
+All rights reserved except where otherwise noted.
+Certain visual assets © Chase McDillan, used with permission.
 
-07. QUESTIONS (FAQ)
-    - Label: "07 / QUESTIONS"
-    - Headline: "You ask. We answer."
-    - Body: "A few practical things before you commit a weekend
-      to diplomacy."
-    - Accordion FAQ items (current copy uses placeholders):
-      Q1: "YVRMUN is designed as a youth Model United Nations
-          conference. Publish your actual eligibility range here
-          once registration policy is finalized."
-      Q2: "Not necessarily. Committee descriptions can indicate
-          experience levels, and staff can use conference materials
-          to help delegates prepare." (Q: Do I need experience?)
-      Q3: "YVRMUN Session II is planned for April 2027 in Richmond,
-          British Columbia. Publish exact dates and venue here once
-          confirmed." (Q: When and where?)
-      Q4: "Yes. Use the staff application above. The current template
-          supports Chair, Crisis Staff, Logistics, and Press positions."
-          (Q: Can I apply for staff?)
-      Q5: "The Press Corps is a non-voting newsroom inside the
-          conference. It can cover debate, interview delegates,
-          publish stories, and shape how the conference is
-          remembered." (Q: What is the Press Corps?)
-      Q6: "No. The schedule shown is a working outline and should be
-          replaced with the official timetable when the conference
-          logistics are finalized." (Q: Is the schedule final?)
-    - NEED: rewrite each answer as the actual answer (current copy
-      is meta-instruction text from the template, not real answers).
-      Also write the actual question text for each.
+## Accessibility
+- WCAG AA contrast minimum
+- Keyboard-navigable everywhere
+- Focus rings visible & brand-colored
+- prefers-reduced-motion respected
+- Semantic HTML5 landmarks
+- aria-labels on icon-only controls
 
-FOOTER
-    - "YVRMUN / Session II / 2027"
-    - Contact: (need to add — check live site)
-    - Social links (Instagram, etc. — need to add)
-
-## INTERACTIONS TO IMPLEMENT
-1. Smooth scroll navigation (anchor links to sections)
-2. Committee selector — click a card to expand/detail it
-3. Scenario decision machine — 3 scenarios, choices, room-energy
-   meter, outcome reveal
-4. Staff role selector — click a role to see details
-5. Staff application form — validation + reference code generation
-6. FAQ accordion — click to expand/collapse
-7. Sticky top bar with "ENTER THE ROOM." CTA
-
-## DESIGN REQUIREMENTS (why it must be BETTER)
-1. Fully responsive — 375px, 768px, 1024px, 1440px breakpoints
-2. Typography-driven — huge display headlines, monospace labels
-3. Section numbering visible (01 / 02 / 03 ...) as design element
-4. High contrast (WCAG AA minimum)
-5. No layout shift — reserve space for images/meters
-6. Fast — no external fonts unless system stack; no CDN scripts
-7. Semantic HTML5 — header, main, section, footer, article
-8. Accessible — keyboard nav, aria-labels on icon buttons,
-   aria-expanded on accordions, prefers-reduced-motion respected
-9. Print stylesheet optional
-
-## CONTENT RULES
-- Keep ALL existing copy verbatim unless marked "NEED"
-- Never use lorem ipsum
-- TODO comments in HTML for missing content:
-  `<!-- TODO: replace with real committee 02 -->`
-- Use sentence case in body, Title Case in section labels
-- Preserve the mixed-case headline style: "MAKE THE room."
-  (capitalized words + lowercase accent word)
-
-## FILE STRUCTURE
-```
-yvrmun/
-├── index.html
-├── css/
-│   └── styles.css
-├── js/
-│   └── main.js
-├── images/
-│   └── (logo, map, textures)
-└── docs/
-    └── site-spec.md  (this file)
-```
-
-## CODING CONVENTIONS
-- CSS variables in `:root` for all colors, spacing, type scale
-- Class naming: kebab-case, BEM-ish for components
-  (.section, .section__label, .committee-card, .committee-card__title)
-- JS in `main.js`, wrapped in DOMContentLoaded
+## Coding Conventions
+- CSS variables in :root, no hardcoded colors elsewhere
+- Class naming: kebab-case, BEM-ish (.section__label)
+- JS wrapped in DOMContentLoaded, split across 4 files
 - No inline styles except CSS custom property overrides
-- Each interactive feature is a self-contained IIFE or module object
-- Comment every interactive block with `// FEATURE: <name>`
-
-## WHAT I NEED (in order, one step at a time)
-1. File structure
-2. `index.html` skeleton with all 8 sections + header + footer,
-   real copy from this spec, TODO comments for missing content
-3. `css/styles.css` — full design system (type scale, colors,
-   spacing, components, responsive)
-4. `js/main.js` — all interactions (scroll, committees, scenario,
-   roles, form, FAQ)
-5. Accessibility pass
-6. Performance pass
-
-Start with step 1. Wait for confirmation before each next step.
+- Comments: // FEATURE: <name> above each interactive block

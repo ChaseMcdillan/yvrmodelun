@@ -1,934 +1,688 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="YVR Model United Nations brings students together to debate global issues, negotiate across perspectives, and shape practical solutions."
-    />
-    <meta name="theme-color" content="#f4f2ec" />
-    <title>YVR Model United Nations</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-    <style>
-      :root {
-        color-scheme: light;
-        --paper: #f4f2ec;
-        --ink: #17211d;
-        --muted: #67716b;
-        --green: #1c4538;
-        --green-deep: #15352d;
-        --lime: #d3e96a;
-        --orange: #d75c3c;
-        --line: #d9d8cf;
-        --serif: Georgia, "Times New Roman", serif;
-        --sans: "DM Sans", sans-serif;
-        --display: "Manrope", sans-serif;
-      }
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 86px;
-      }
-
-      body {
-        margin: 0;
-        background: var(--paper);
-        color: var(--ink);
-        font-family: var(--sans);
-        -webkit-font-smoothing: antialiased;
-      }
-
-      a {
-        color: inherit;
-      }
-
-      .hero {
-        position: relative;
-        display: flex;
-        min-height: 680px;
-        min-height: min(840px, 100svh);
-        flex-direction: column;
-        overflow: hidden;
-        background: #24332d;
-        color: #fff;
-      }
-
-      .hero::before,
-      .hero::after {
-        position: absolute;
-        inset: 0;
-        content: "";
-      }
-
-      .hero::before {
-        background-image: url("https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=2400&q=85");
-        background-position: center 44%;
-        background-size: cover;
-        animation: reveal-image 1s ease-out both;
-      }
-
-      .hero::after {
-        background: linear-gradient(90deg, rgb(11 26 22 / 82%) 0%, rgb(11 26 22 / 45%) 52%, rgb(11 26 22 / 10%) 100%),
-          linear-gradient(0deg, rgb(11 26 22 / 35%), transparent 45%);
-      }
-
-      .site-header,
-      .hero-content,
-      .hero-bottom {
-        position: relative;
-        z-index: 1;
-      }
-
-      .site-header {
-        display: flex;
-        width: min(100% - 64px, 1440px);
-        align-items: center;
-        justify-content: space-between;
-        margin-inline: auto;
-        padding-block: 27px;
-        border-bottom: 1px solid rgb(255 255 255 / 28%);
-      }
-
-      .wordmark {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: #fff;
-        text-decoration: none;
-      }
-
-      .wordmark-symbol {
-        display: grid;
-        width: 39px;
-        height: 39px;
-        place-items: center;
-        border: 1px solid rgb(255 255 255 / 70%);
-        border-radius: 50%;
-        color: var(--lime);
-        font-family: var(--display);
-        font-size: 12px;
-        font-weight: 800;
-      }
-
-      .wordmark-copy {
-        display: grid;
-        gap: 2px;
-      }
-
-      .wordmark-copy strong {
-        font-family: var(--display);
-        font-size: 14px;
-        font-weight: 800;
-      }
-
-      .wordmark-copy span {
-        font-size: 9px;
-        letter-spacing: 1.4px;
-      }
-
-      .main-nav {
-        display: flex;
-        align-items: center;
-        gap: clamp(20px, 3.2vw, 48px);
-      }
-
-      .main-nav a {
-        color: rgb(255 255 255 / 88%);
-        font-size: 13px;
-        font-weight: 500;
-        text-decoration: none;
-        transition: color 160ms ease;
-      }
-
-      .main-nav a:hover,
-      .main-nav a:focus-visible {
-        color: var(--lime);
-      }
-
-      .main-nav .nav-cta {
-        padding: 11px 16px;
-        border: 1px solid rgb(255 255 255 / 70%);
-        border-radius: 2px;
-        color: #fff;
-      }
-
-      .hero-content {
-        width: min(100% - 64px, 1440px);
-        margin: auto;
-        padding-block: 90px 120px;
-        animation: rise-in 700ms 120ms both;
-      }
-
-      .eyebrow {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin: 0 0 26px;
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
-
-      .eyebrow::before {
-        width: 30px;
-        height: 2px;
-        background: var(--lime);
-        content: "";
-      }
-
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
-
-      .hero h1 {
-        max-width: 850px;
-        margin-bottom: 24px;
-        font-family: var(--display);
-        font-size: clamp(48px, 7.4vw, 102px);
-        font-weight: 600;
-        line-height: 0.99;
-      }
-
-      .hero h1 span {
-        color: var(--lime);
-        font-family: var(--serif);
-        font-weight: 400;
-        font-style: italic;
-      }
-
-      .hero-intro {
-        max-width: 480px;
-        margin-bottom: 34px;
-        color: rgb(255 255 255 / 83%);
-        font-size: 16px;
-        line-height: 1.7;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 14px;
-      }
-
-      .button {
-        display: inline-flex;
-        min-height: 48px;
-        align-items: center;
-        justify-content: center;
-        padding: 0 19px;
-        border: 1px solid transparent;
-        border-radius: 2px;
-        font-size: 13px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: background 160ms ease, color 160ms ease, transform 160ms ease;
-      }
-
-      .button:hover {
-        transform: translateY(-2px);
-      }
-
-      .button-primary {
-        background: var(--lime);
-        color: var(--ink);
-      }
-
-      .button-primary:hover {
-        background: #e0f486;
-      }
-
-      .button-secondary {
-        border-color: rgb(255 255 255 / 58%);
-        color: #fff;
-      }
-
-      .button-secondary:hover {
-        background: rgb(255 255 255 / 12%);
-      }
-
-      .hero-bottom {
-        display: flex;
-        width: min(100% - 64px, 1440px);
-        align-items: center;
-        justify-content: space-between;
-        margin: 0 auto;
-        padding: 0 0 28px;
-        color: rgb(255 255 255 / 74%);
-        font-size: 11px;
-      }
-
-      .hero-bottom span:last-child {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .hero-bottom span:last-child::before {
-        width: 34px;
-        height: 1px;
-        background: var(--lime);
-        content: "";
-      }
-
-      .intro-section {
-        display: grid;
-        grid-template-columns: 0.78fr 1.22fr;
-        gap: clamp(44px, 11vw, 180px);
-        width: min(100% - 64px, 1200px);
-        margin: 0 auto;
-        padding-block: 128px 118px;
-      }
-
-      .section-label {
-        margin: 8px 0 0;
-        color: var(--green);
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
-
-      .intro-copy h2,
-      .details-copy h2 {
-        margin-bottom: 25px;
-        font-family: var(--display);
-        font-size: clamp(34px, 4.7vw, 58px);
-        font-weight: 600;
-        letter-spacing: 0;
-        line-height: 1.08;
-      }
-
-      .intro-copy h2 em,
-      .details-copy h2 em {
-        color: var(--green);
-        font-family: var(--serif);
-        font-weight: 400;
-      }
-
-      .intro-copy > p:last-child {
-        max-width: 530px;
-        margin-bottom: 0;
-        color: var(--muted);
-        font-size: 15px;
-        line-height: 1.85;
-      }
-
-      .process-section {
-        padding-block: 83px 92px;
-        background-color: #eae9e1;
-        background-image: radial-gradient(#c9cbc0 0.65px, transparent 0.65px);
-        background-size: 14px 14px;
-      }
-
-      .section-inner {
-        width: min(100% - 64px, 1200px);
-        margin-inline: auto;
-      }
-
-      .section-heading {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 40px;
-        margin-bottom: 48px;
-      }
-
-      .section-heading .section-label {
-        margin-bottom: 13px;
-      }
-
-      .section-heading h2 {
-        max-width: 600px;
-        margin: 0;
-        font-family: var(--display);
-        font-size: clamp(32px, 4vw, 50px);
-        font-weight: 600;
-        line-height: 1.1;
-      }
-
-      .section-heading > p {
-        max-width: 330px;
-        margin: 0 0 3px;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.7;
-      }
-
-      .steps {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        border-top: 1px solid #bfc2b6;
-      }
-
-      .step {
-        padding: 24px 28px 8px 0;
-      }
-
-      .step + .step {
-        padding-left: 28px;
-        border-left: 1px solid #bfc2b6;
-      }
-
-      .step-number {
-        color: var(--orange);
-        font-family: var(--display);
-        font-size: 12px;
-        font-weight: 800;
-      }
-
-      .step h3 {
-        margin: 35px 0 12px;
-        font-family: var(--display);
-        font-size: 23px;
-        font-weight: 700;
-      }
-
-      .step p {
-        max-width: 310px;
-        margin: 0;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.7;
-      }
-
-      .details-section {
-        position: relative;
-        overflow: hidden;
-        padding-block: 102px 108px;
-        background: var(--green-deep);
-        color: #fff;
-      }
-
-      .details-section::after {
-        position: absolute;
-        right: -140px;
-        bottom: -210px;
-        width: 530px;
-        height: 530px;
-        border: 1px solid rgb(255 255 255 / 11%);
-        border-radius: 50%;
-        box-shadow: 0 0 0 42px rgb(255 255 255 / 3%), 0 0 0 86px rgb(255 255 255 / 3%);
-        content: "";
-        pointer-events: none;
-      }
-
-      .details-inner {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        grid-template-columns: 1fr 0.8fr;
-        align-items: center;
-        gap: 80px;
-        width: min(100% - 64px, 1200px);
-        margin-inline: auto;
-      }
-
-      .details-copy .section-label {
-        margin-bottom: 22px;
-        color: var(--lime);
-      }
-
-      .details-copy h2 {
-        max-width: 570px;
-        margin-bottom: 20px;
-      }
-
-      .details-copy h2 em {
-        color: var(--lime);
-      }
-
-      .details-copy > p:last-child {
-        max-width: 470px;
-        margin: 0;
-        color: rgb(255 255 255 / 74%);
-        font-size: 15px;
-        line-height: 1.8;
-      }
-
-      .announcement {
-        padding: 29px 0 0 27px;
-        border-top: 1px solid rgb(255 255 255 / 33%);
-        border-left: 1px solid rgb(255 255 255 / 33%);
-      }
-
-      .announcement-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 9px;
-        margin-bottom: 22px;
-        color: var(--lime);
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
-
-      .announcement-label::before {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: var(--lime);
-        content: "";
-      }
-
-      .announcement h3 {
-        margin: 0 0 12px;
-        font-family: var(--display);
-        font-size: 23px;
-        font-weight: 600;
-      }
-
-      .announcement p {
-        max-width: 340px;
-        margin: 0;
-        color: rgb(255 255 255 / 73%);
-        font-size: 14px;
-        line-height: 1.75;
-      }
-
-      .faq-section {
-        width: min(100% - 64px, 900px);
-        margin-inline: auto;
-        padding-block: 108px 122px;
-      }
-
-      .faq-section .section-heading {
-        display: block;
-        margin-bottom: 35px;
-      }
-
-      .faq-section .section-heading h2 {
-        font-size: clamp(35px, 4.6vw, 54px);
-      }
-
-      .faq-list {
-        border-top: 1px solid var(--line);
-      }
-
-      .faq-list details {
-        border-bottom: 1px solid var(--line);
-      }
-
-      .faq-list summary {
-        position: relative;
-        padding: 22px 42px 22px 0;
-        font-family: var(--display);
-        font-size: 16px;
-        font-weight: 700;
-        list-style: none;
-        cursor: pointer;
-      }
-
-      .faq-list summary::-webkit-details-marker {
-        display: none;
-      }
-
-      .faq-list summary::after {
-        position: absolute;
-        top: 19px;
-        right: 5px;
-        color: var(--orange);
-        content: "+";
-        font-family: var(--sans);
-        font-size: 22px;
-        font-weight: 400;
-      }
-
-      .faq-list details[open] summary::after {
-        content: "−";
-      }
-
-      .faq-list details p {
-        max-width: 700px;
-        margin: -5px 0 22px;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.75;
-      }
-
-      .site-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        padding: 26px max(32px, calc((100% - 1200px) / 2));
-        background: #eae9e1;
-        color: var(--muted);
-        font-size: 11px;
-      }
-
-      .footer-brand {
-        color: var(--ink);
-        font-family: var(--display);
-        font-size: 12px;
-        font-weight: 800;
-      }
-
-      .site-footer p {
-        margin: 0;
-      }
-
-      .site-footer a {
-        color: var(--green);
-        font-weight: 700;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 3px;
-      }
-
-      :focus-visible {
-        outline: 3px solid var(--orange);
-        outline-offset: 4px;
-      }
-
-      @keyframes rise-in {
-        from {
-          opacity: 0;
-          transform: translateY(16px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes reveal-image {
-        from {
-          transform: scale(1.035);
-        }
-
-        to {
-          transform: scale(1);
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          scroll-behavior: auto !important;
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-      }
-
-      @media (max-width: 760px) {
-        .hero {
-          min-height: 720px;
-          min-height: min(800px, 100svh);
-        }
-
-        .hero::before {
-          background-position: 58% center;
-        }
-
-        .hero::after {
-          background: linear-gradient(90deg, rgb(11 26 22 / 78%), rgb(11 26 22 / 35%)),
-            linear-gradient(0deg, rgb(11 26 22 / 38%), transparent 50%);
-        }
-
-        .site-header,
-        .hero-content,
-        .hero-bottom,
-        .section-inner,
-        .details-inner,
-        .faq-section {
-          width: min(100% - 40px, 1200px);
-        }
-
-        .site-header {
-          align-items: flex-start;
-          gap: 20px;
-          padding-block: 20px;
-        }
-
-        .main-nav {
-          flex-wrap: wrap;
-          justify-content: flex-end;
-          gap: 10px 18px;
-          padding-top: 3px;
-        }
-
-        .main-nav a {
-          font-size: 12px;
-        }
-
-        .main-nav .nav-cta {
-          padding: 8px 10px;
-        }
-
-        .hero-content {
-          padding-block: 90px 100px;
-        }
-
-        .hero h1 {
-          max-width: 620px;
-          font-size: clamp(47px, 11vw, 76px);
-        }
-
-        .intro-section {
-          grid-template-columns: 1fr;
-          gap: 28px;
-          width: min(100% - 40px, 700px);
-          padding-block: 78px;
-        }
-
-        .intro-section .section-label {
-          margin: 0;
-        }
-
-        .section-heading {
-          display: block;
-          margin-bottom: 34px;
-        }
-
-        .section-heading > p {
-          margin-top: 18px;
-        }
-
-        .steps {
-          grid-template-columns: 1fr;
-        }
-
-        .step,
-        .step + .step {
-          padding: 22px 0 25px;
-          border-bottom: 1px solid #bfc2b6;
-          border-left: 0;
-        }
-
-        .step h3 {
-          margin-top: 19px;
-        }
-
-        .details-inner {
-          grid-template-columns: 1fr;
-          gap: 42px;
-        }
-
-        .details-section {
-          padding-block: 76px 82px;
-        }
-
-        .announcement {
-          max-width: 520px;
-        }
-
-        .faq-section {
-          padding-block: 78px 88px;
-        }
-
-        .site-footer {
-          flex-wrap: wrap;
-          padding-inline: 20px;
-        }
-      }
-
-      @media (max-width: 460px) {
-        .wordmark {
-          gap: 8px;
-        }
-
-        .wordmark-symbol {
-          width: 34px;
-          height: 34px;
-        }
-
-        .wordmark-copy strong {
-          font-size: 12px;
-        }
-
-        .wordmark-copy span {
-          font-size: 8px;
-        }
-
-        .main-nav {
-          max-width: 180px;
-          gap: 8px 13px;
-        }
-
-        .main-nav a {
-          font-size: 11px;
-        }
-
-        .main-nav .nav-cta {
-          border: 0;
-          padding: 0;
-          text-decoration: underline;
-          text-underline-offset: 3px;
-        }
-
-        .hero-content {
-          padding-block: 72px 90px;
-        }
-
-        .hero-bottom {
-          align-items: flex-end;
-          font-size: 10px;
-        }
-
-        .hero-bottom span:last-child::before {
-          width: 18px;
-        }
-
-        .hero-actions {
-          align-items: stretch;
-          flex-direction: column;
-        }
-
-        .hero-actions .button {
-          width: fit-content;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <header class="site-header">
-          <a class="wordmark" href="#top" aria-label="YVR Model United Nations home">
-            <span class="wordmark-symbol" aria-hidden="true">YVR</span>
-            <span class="wordmark-copy">
-              <strong>YVRMUN</strong>
-              <span>MODEL UNITED NATIONS</span>
-            </span>
-          </a>
-          <nav class="main-nav" aria-label="Main navigation">
-            <a href="#about">About</a>
-            <a href="#experience">The experience</a>
-            <a href="#faq">FAQ</a>
-            <a class="nav-cta" href="#conference">Conference info</a>
-          </nav>
-        </header>
-
-        <div class="hero-content">
-          <p class="eyebrow">Vancouver · Model United Nations</p>
-          <h1 id="hero-title">YVR Model<br />United <span>Nations</span></h1>
-          <p class="hero-intro">
-            Big questions deserve more than one point of view. Step into the conversation, find common ground, and make your case.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#about">Discover YVRMUN</a>
-            <a class="button button-secondary" href="#conference">Conference details</a>
-          </div>
-        </div>
-
-        <div class="hero-bottom" aria-hidden="true">
-          <span>Listen closely. Think globally.</span>
-          <span>Scroll to explore</span>
-        </div>
-      </section>
-
-      <section class="intro-section" id="about" aria-labelledby="about-title">
-        <p class="section-label">01 / A different kind of classroom</p>
-        <div class="intro-copy">
-          <h2 id="about-title">Take a seat at the table. <em>Bring your whole perspective.</em></h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YVRMUN — Session II / Spring 2027</title>
+  <meta name="description" content="YVRMUN is a youth Model United Nations conference in Metro Vancouver. Session II takes over Richmond, BC in April 2027. Six committees. Three hundred delegates. Crisis is encouraged." />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="YVRMUN — MAKE THE room." />
+  <meta property="og:description" content="Session II / Spring 2027. Richmond, BC. Six committees. Three hundred delegates. Crisis is encouraged." />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       SITE HEADER (sticky)
+       ============================================================ -->
+  <header class="site-header" data-feature="header">
+    <div class="site-header__inner">
+      <a class="site-header__brand" href="#top" aria-label="YVRMUN home">
+        <span class="site-header__org">Vancouver Youth Model United Nations</span>
+        <span class="site-header__session">Session II / 2027</span>
+      </a>
+
+      <nav class="site-header__nav" aria-label="Primary">
+        <a href="#committees">Committees</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#staff">Staff</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="site-header__cta" href="#top">ENTER THE ROOM.</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================
+         00 / HERO
+         ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero__inner">
+
+        <p class="hero__kicker">
+          Session II / Spring 2027
+        </p>
+
+        <h1 class="hero__title" id="hero-title">
+          MAKE THE <span class="hero__title-accent">room.</span>
+        </h1>
+
+        <p class="hero__lede">
+          This is not a brochure. It is the room before the delegates arrive.
+          Explore the conference, test a decision, find your committee,
+          and decide where you belong.
+        </p>
+
+        <p class="hero__body">
+          YVRMUN is a youth Model United Nations conference in Metro Vancouver
+          built around the part of MUN that matters most: what happens after
+          someone says something nobody expected.
+        </p>
+
+        <!-- Marquee / stat strip (duplicated in the current site) -->
+        <ul class="marquee" aria-label="Conference facts">
+          <li>YVR / 27</li>
+          <li>Six committees</li>
+          <li>Three hundred delegates</li>
+          <li>Crisis is encouraged</li>
+          <li>Draft. Debate. Decide.</li>
+          <li>Richmond / April 2027</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         01 / WHY THIS EXISTS
+         ============================================================ -->
+    <section class="section" id="why" aria-labelledby="why-title">
+      <div class="section__inner">
+
+        <p class="section__label">01 / WHY THIS EXISTS</p>
+
+        <h2 class="section__title" id="why-title">
+          MUN should feel <span class="section__title-accent">alive.</span>
+        </h2>
+
+        <div class="section__body">
           <p>
-            Model United Nations turns global issues into a shared challenge. Research a position, speak for it, listen to people who see things differently, and work toward a resolution together.
+            A good committee is not a worksheet with microphones. It is a room
+            full of people trying to move one another. The best moments are
+            improvised, inconvenient, funny, serious, and impossible to predict
+            from the background guide.
+          </p>
+          <p>
+            YVRMUN is designed around that feeling. Small details matter. The
+            topic matters. The dais matters. The person sitting across from you
+            matters. We want delegates to leave remembering an argument, not
+            just a score.
           </p>
         </div>
-      </section>
 
-      <section class="process-section" id="experience" aria-labelledby="experience-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <div>
-              <p class="section-label">02 / How it comes together</p>
-              <h2 id="experience-title">Ideas move when people do.</h2>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         02 / THE SETTING
+         ============================================================ -->
+    <section class="section section--dark" id="setting" aria-labelledby="setting-title">
+      <div class="section__inner">
+
+        <p class="section__label">02 / THE SETTING</p>
+
+        <h2 class="section__title" id="setting-title">
+          The room is <span class="section__title-accent">somewhere.</span>
+        </h2>
+
+        <p class="section__body">
+          Richmond is close enough to feel local and large enough to make a
+          weekend conference feel like an event. YVRMUN takes over the city for
+          two days of diplomacy, strategy, press, and controlled chaos.
+        </p>
+
+        <ul class="stat-row" aria-label="Conference numbers">
+          <li class="stat-row__item">
+            <span class="stat-row__value">II</span>
+            <span class="stat-row__label">Session</span>
+          </li>
+          <li class="stat-row__item">
+            <span class="stat-row__value">06</span>
+            <span class="stat-row__label">Committees</span>
+          </li>
+          <li class="stat-row__item">
+            <span class="stat-row__value">300+</span>
+            <span class="stat-row__label">Delegates</span>
+          </li>
+          <li class="stat-row__item">
+            <span class="stat-row__value">40</span>
+            <span class="stat-row__label">Staff positions</span>
+          </li>
+        </ul>
+
+        <div class="location-map" aria-label="Location overview">
+          <span class="location-map__north">North / Vancouver</span>
+          <span class="location-map__pacific">Pacific</span>
+          <span class="location-map__zone">Richmond / Conference zone</span>
+        </div>
+
+        <p class="section__note">
+          Richmond, BC — Host city for Session II.
+          <!-- TODO: confirm and publish exact venue once booked -->
+          Exact venue information can be published here when confirmed.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         03 / CHOOSE YOUR ROOM (Committees)
+         ============================================================ -->
+    <section class="section" id="committees" aria-labelledby="committees-title">
+      <div class="section__inner">
+
+        <p class="section__label">03 / CHOOSE YOUR ROOM</p>
+
+        <h2 class="section__title" id="committees-title">
+          Six rooms. <span class="section__title-accent">Six different games.</span>
+        </h2>
+
+        <p class="section__body">
+          Click a committee. Read the premise. Imagine yourself in the room.
+          This section is intentionally less like a menu and more like a map.
+        </p>
+
+        <!-- FEATURE: committees — click a card to expand/select -->
+        <div class="committees" data-feature="committees">
+
+          <!-- COMMITTEE 01 (real copy from current site) -->
+          <article class="committee-card" data-committee="01" tabindex="0">
+            <p class="committee-card__code">A/YVRMUN/2027/01</p>
+            <h3 class="committee-card__title">Security Council</h3>
+            <p class="committee-card__premise">
+              Fast-moving crisis committee with directives, veto politics,
+              closed sessions, and consequences that arrive before you have
+              finished arguing about the last one.
+            </p>
+          </article>
+
+          <!-- TODO: replace with real committee 02 -->
+          <article class="committee-card" data-committee="02" tabindex="0">
+            <p class="committee-card__code">A/YVRMUN/2027/02</p>
+            <h3 class="committee-card__title">[Committee 02]</h3>
+            <p class="committee-card__premise">
+              Placeholder premise — replace with the real committee description
+              before launch.
+            </p>
+          </article>
+
+          <!-- TODO: replace with real committee 03 -->
+          <article class="committee-card" data-committee="03" tabindex="0">
+            <p class="committee-card__code">A/YVRMUN/2027/03</p>
+            <h3 class="committee-card__title">[Committee 03]</h3>
+            <p class="committee-card__premise">
+              Placeholder premise — replace with the real committee description
+              before launch.
+            </p>
+          </article>
+
+          <!-- TODO: replace with real committee 04 -->
+          <article class="committee-card" data-committee="04" tabindex="0">
+            <p class="committee-card__code">A/YVRMUN/2027/04</p>
+            <h3 class="committee-card__title">[Committee 04]</h3>
+            <p class="committee-card__premise">
+              Placeholder premise — replace with the real committee description
+              before launch.
+            </p>
+          </article>
+
+          <!-- TODO: replace with real committee 05 -->
+          <article class="committee-card" data-committee="05" tabindex="0">
+            <p class="committee-card__code">A/YVRMUN/2027/05</p>
+            <h3 class="committee-card__title">[Committee 05]</h3>
+            <p class="committee-card__premise">
+              Placeholder premise — replace with the real committee description
+              before launch.
+            </p>
+          </article>
+
+          <!-- TODO: replace with real committee 06 -->
+          <article class="committee-card" data-committee="06" tabindex="0">
+            <p class="committee-card__code">A/YVRMUN/2027/06</p>
+            <h3 class="committee-card__title">[Committee 06]</h3>
+            <p class="committee-card__premise">
+              Placeholder premise — replace with the real committee description
+              before launch.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         04 / TEST YOUR INSTINCTS (Interactive scenario)
+         ============================================================ -->
+    <section class="section section--dark" id="instincts" aria-labelledby="instincts-title">
+      <div class="section__inner">
+
+        <p class="section__label">04 / TEST YOUR INSTINCTS</p>
+
+        <h2 class="section__title" id="instincts-title">
+          What would <span class="section__title-accent">you do?</span>
+        </h2>
+
+        <p class="section__body">
+          No correct answer. Just consequences. Pick the response you would
+          actually make in committee and see what kind of room you create.
+        </p>
+
+        <!-- FEATURE: scenario — decision machine with room-energy meter -->
+        <div class="scenario" data-feature="scenario">
+
+          <div class="scenario__meta">
+            <span class="scenario__badge">Live decision</span>
+            <span class="scenario__counter">
+              Scenario <span data-scenario-index>01</span> / 03
+            </span>
+            <span class="scenario__energy">
+              Room energy
+              <span class="scenario__energy-value" data-scenario-energy>00</span>
+            </span>
+          </div>
+
+          <!-- SCENARIO 01 (real copy) -->
+          <div class="scenario__card" data-scenario="1">
+            <p class="scenario__eyebrow">Scenario 01</p>
+            <h3 class="scenario__prompt">
+              Your bloc has a majority, but your strongest ally wants a clause
+              you know will split the room.
+            </h3>
+            <p class="scenario__context">
+              The chair has given you eight minutes before the draft resolution
+              closes. Everyone is watching.
+            </p>
+
+            <!-- TODO: confirm the actual choice labels used on the live site -->
+            <div class="scenario__choices">
+              <button type="button" class="scenario__choice" data-choice="a">
+                Take the clause — keep the alliance intact.
+              </button>
+              <button type="button" class="scenario__choice" data-choice="b">
+                Cut the clause — protect the majority.
+              </button>
+              <button type="button" class="scenario__choice" data-choice="c">
+                Split the difference — offer a sunset amendment.
+              </button>
             </div>
-            <p>From the first speech to the final draft, diplomacy is a practice in curiosity, clarity, and collaboration.</p>
-          </div>
-          <div class="steps">
-            <article class="step">
-              <span class="step-number">01</span>
-              <h3>Research</h3>
-              <p>Understand the issue and the perspective you have been asked to represent.</p>
-            </article>
-            <article class="step">
-              <span class="step-number">02</span>
-              <h3>Debate</h3>
-              <p>Make your case, ask sharper questions, and hear what others bring to the room.</p>
-            </article>
-            <article class="step">
-              <span class="step-number">03</span>
-              <h3>Collaborate</h3>
-              <p>Turn points of agreement into proposals the room can move forward together.</p>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <section class="details-section" id="conference" aria-labelledby="conference-title">
-        <div class="details-inner">
-          <div class="details-copy">
-            <p class="section-label">03 / The next gathering</p>
-            <h2 id="conference-title">The next chapter starts <em>here.</em></h2>
-            <p>
-              YVRMUN conference dates, location, committees, and registration information will be shared here as soon as they are confirmed.
-            </p>
+            <div class="scenario__outcome" hidden>
+              <p class="scenario__outcome-title">
+                You chose the room over the moment.
+              </p>
+              <p class="scenario__outcome-body">
+                Your move creates more space for coalition-building. In a live
+                committee, that can be more valuable than winning a single
+                clause.
+              </p>
+              <button type="button" class="scenario__next" data-scenario-next>
+                Next scenario →
+              </button>
+            </div>
           </div>
-          <div class="announcement">
-            <span class="announcement-label">Updates forthcoming</span>
-            <h3>Stay in the conversation.</h3>
-            <p>Check back for conference announcements and the details you need to take part.</p>
+
+          <!-- TODO: add scenario 02 with choices + outcome -->
+          <!-- TODO: add scenario 03 with choices + outcome -->
+
+          <p class="scenario__reset-wrap">
+            <button type="button" class="scenario__reset" data-scenario-reset>
+              Reset
+            </button>
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         05 / THE WEEKEND (Schedule)
+         ============================================================ -->
+    <section class="section" id="schedule" aria-labelledby="schedule-title">
+      <div class="section__inner">
+
+        <p class="section__label">05 / THE WEEKEND</p>
+
+        <h2 class="section__title" id="schedule-title">
+          Two days. <span class="section__title-accent">One room.</span>
+        </h2>
+
+        <p class="section__body">
+          Working outline only. Exact times and venue details can be updated
+          here once the conference schedule is finalized.
+        </p>
+
+        <ol class="timeline">
+          <li class="timeline__item" data-day="one">
+            <span class="timeline__time">08:30</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Doors / Registration</h3>
+              <p class="timeline__desc">
+                Badges, room assignments, last-minute nerves, and the first coffee.
+              </p>
+            </div>
+            <span class="timeline__day">Day one</span>
+          </li>
+
+          <li class="timeline__item" data-day="one">
+            <span class="timeline__time">09:30</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Opening Ceremony</h3>
+              <p class="timeline__desc">
+                Welcome, keynote, committee introductions, and the official call to order.
+              </p>
+            </div>
+            <span class="timeline__day">Day one</span>
+          </li>
+
+          <li class="timeline__item" data-day="one">
+            <span class="timeline__time">11:00</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Committee Session I</h3>
+              <p class="timeline__desc">
+                Speakers' lists, caucuses, first alliances, and the beginning of the paper trail.
+              </p>
+            </div>
+            <span class="timeline__day">Day one</span>
+          </li>
+
+          <li class="timeline__item" data-day="one">
+            <span class="timeline__time">13:00</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Lunch / Informal Diplomacy</h3>
+              <p class="timeline__desc">
+                The formal debate stops. The actual diplomacy probably does not.
+              </p>
+            </div>
+            <span class="timeline__day">Day one</span>
+          </li>
+
+          <li class="timeline__item" data-day="one">
+            <span class="timeline__time">14:00</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Committee Session II</h3>
+              <p class="timeline__desc">
+                Working papers become draft resolutions. Crisis rooms start moving faster.
+              </p>
+            </div>
+            <span class="timeline__day">Day one</span>
+          </li>
+
+          <li class="timeline__item" data-day="one">
+            <span class="timeline__time">17:00</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Day One Close</h3>
+              <p class="timeline__desc">
+                Delegates leave with unfinished work and staff members leave with even more.
+              </p>
+            </div>
+            <span class="timeline__day">Day one</span>
+          </li>
+
+          <li class="timeline__item" data-day="two">
+            <span class="timeline__time">09:00</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Committee Session III</h3>
+              <p class="timeline__desc">
+                New amendments, new coalitions, and the consequences of yesterday's choices.
+              </p>
+            </div>
+            <span class="timeline__day">Day two</span>
+          </li>
+
+          <li class="timeline__item" data-day="two">
+            <span class="timeline__time">13:30</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Voting Bloc</h3>
+              <p class="timeline__desc">
+                Final negotiations. Last edits. Then the room decides.
+              </p>
+            </div>
+            <span class="timeline__day">Day two</span>
+          </li>
+
+          <li class="timeline__item" data-day="two">
+            <span class="timeline__time">15:00</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Closing Ceremony</h3>
+              <p class="timeline__desc">
+                Awards, acknowledgements, final remarks, and the handoff to Session III.
+              </p>
+            </div>
+            <span class="timeline__day">Day two</span>
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         06 / BUILD THE CONFERENCE (Staff roles + application)
+         ============================================================ -->
+    <section class="section section--dark" id="staff" aria-labelledby="staff-title">
+      <div class="section__inner">
+
+        <p class="section__label">06 / BUILD THE CONFERENCE</p>
+
+        <h2 class="section__title" id="staff-title">
+          Don't just <span class="section__title-accent">attend.</span>
+        </h2>
+
+        <p class="section__body">
+          Staff are the people who shape what delegates experience. Choose a
+          role below to see what it actually means.
+        </p>
+
+        <!-- FEATURE: staff-roles — click a role to expand details -->
+        <div class="roles" data-feature="staff-roles">
+          <button type="button" class="role-card" data-role="chair">
+            <span class="role-card__num">ROLE / 01</span>
+            <h3 class="role-card__title">Chair</h3>
+            <p class="role-card__desc">Procedure, debate, room energy.</p>
+          </button>
+
+          <button type="button" class="role-card" data-role="crisis">
+            <span class="role-card__num">ROLE / 02</span>
+            <h3 class="role-card__title">Crisis Staff</h3>
+            <p class="role-card__desc">Updates, directives, consequences.</p>
+          </button>
+
+          <button type="button" class="role-card" data-role="logistics">
+            <span class="role-card__num">ROLE / 03</span>
+            <h3 class="role-card__title">Logistics</h3>
+            <p class="role-card__desc">People, rooms, timing, movement.</p>
+          </button>
+
+          <button type="button" class="role-card" data-role="press-lead">
+            <span class="role-card__num">ROLE / 04</span>
+            <h3 class="role-card__title">Press Lead</h3>
+            <p class="role-card__desc">Coverage, assignments, publication.</p>
+          </button>
+
+          <button type="button" class="role-card" data-role="press-writer">
+            <span class="role-card__num">ROLE / 05</span>
+            <h3 class="role-card__title">Press Writer</h3>
+            <p class="role-card__desc">Stories, interviews, perspective.</p>
+          </button>
+        </div>
+
+        <!-- FEATURE: staff-form — validation + reference code -->
+        <form class="staff-form" data-feature="staff-form" novalidate>
+          <h3 class="staff-form__title">Apply for staff</h3>
+
+          <div class="staff-form__field">
+            <label for="staff-name">Full name</label>
+            <input type="text" id="staff-name" name="name" required autocomplete="name" />
           </div>
-        </div>
-      </section>
 
-      <section class="faq-section" id="faq" aria-labelledby="faq-title">
-        <div class="section-heading">
-          <p class="section-label">04 / Good to know</p>
-          <h2 id="faq-title">A few first questions.</h2>
-        </div>
-        <div class="faq-list">
-          <details>
-            <summary>What is Model United Nations?</summary>
-            <p>
-              Model UN is an educational simulation of international diplomacy. Participants represent countries or other stakeholders, discuss real-world issues, and work together on proposed solutions.
-            </p>
-          </details>
-          <details>
-            <summary>Do I need Model UN experience?</summary>
-            <p>
-              No prior experience is needed to learn the basics of Model UN. YVRMUN participation requirements and any preparation resources will be included with the conference announcement.
-            </p>
-          </details>
-          <details>
-            <summary>When and where is the next conference?</summary>
-            <p>
-              Dates and venue have not been announced yet. Confirmed conference details will be published on this page.
-            </p>
-          </details>
-          <details>
-            <summary>How can I register?</summary>
-            <p>
-              Registration information is forthcoming. Check this page for the official registration link once it is available.
-            </p>
-          </details>
-        </div>
-      </section>
-    </main>
+          <div class="staff-form__field">
+            <label for="staff-email">Email</label>
+            <input type="email" id="staff-email" name="email" required autocomplete="email" />
+          </div>
 
-    <footer class="site-footer">
-      <a class="footer-brand" href="#top">YVRMUN</a>
-      <p>YVR Model United Nations</p>
-      <a href="#conference">Conference updates</a>
-    </footer>
-  </body>
+          <div class="staff-form__field">
+            <label for="staff-role">Preferred role</label>
+            <select id="staff-role" name="role" required>
+              <option value="">Choose a role…</option>
+              <option value="chair">Chair</option>
+              <option value="crisis">Crisis Staff</option>
+              <option value="logistics">Logistics</option>
+              <option value="press-lead">Press Lead</option>
+              <option value="press-writer">Press Writer</option>
+            </select>
+          </div>
+
+          <div class="staff-form__field">
+            <label for="staff-motivation">Why this role?</label>
+            <textarea id="staff-motivation" name="motivation" rows="4" required></textarea>
+          </div>
+
+          <!-- TODO: wire this form to Netlify Forms / Formspree / your API -->
+          <p class="staff-form__note">
+            Applications are stored for secretariat review. Connect this form
+            to your production backend before collecting real applicant information.
+          </p>
+
+          <p class="staff-form__error" data-form-error hidden>
+            Please complete every field.
+          </p>
+
+          <button type="submit" class="btn btn--primary">Submit application</button>
+        </form>
+
+        <!-- Success state -->
+        <div class="staff-success" data-form-success hidden>
+          <h3 class="staff-success__title">You're in the queue.</h3>
+          <p class="staff-success__code" data-form-ref>A/YVRMUN/2027/000</p>
+          <p class="staff-success__body">
+            Keep your reference code. The secretariat can use it to identify
+            your application when contacting you.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Quote block -->
+      <blockquote class="pull-quote">
+        <p>
+          The point isn't to sound like a diplomat. The point is to make the
+          room move.
+        </p>
+        <cite>YVRMUN / Session II / 2027</cite>
+      </blockquote>
+    </section>
+
+    <!-- ============================================================
+         07 / QUESTIONS (FAQ)
+         ============================================================ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="section__inner">
+
+        <p class="section__label">07 / QUESTIONS</p>
+
+        <h2 class="section__title" id="faq-title">
+          You ask. <span class="section__title-accent">We answer.</span>
+        </h2>
+
+        <p class="section__body">
+          A few practical things before you commit a weekend to diplomacy.
+        </p>
+
+        <!-- FEATURE: faq — accordion -->
+        <div class="faq" data-feature="faq">
+
+          <!-- TODO: confirm the real question text with secretariat -->
+          <details class="faq__item">
+            <summary class="faq__question">Who can attend?</summary>
+            <div class="faq__answer">
+              <p>
+                YVRMUN is designed as a youth Model United Nations conference.
+                <!-- TODO: publish the actual eligibility range -->
+                Publish your actual eligibility range here once registration
+                policy is finalized.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Do I need experience?</summary>
+            <div class="faq__answer">
+              <p>
+                Not necessarily. Committee descriptions can indicate experience
+                levels, and staff can use conference materials to help delegates
+                prepare.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">When and where is Session II?</summary>
+            <div class="faq__answer">
+              <p>
+                YVRMUN Session II is planned for April 2027 in Richmond,
+                British Columbia.
+                <!-- TODO: publish exact dates and venue -->
+                Publish exact dates and venue here once confirmed.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Can I apply for staff?</summary>
+            <div class="faq__answer">
+              <p>
+                Yes. Use the staff application above. The current template
+                supports Chair, Crisis Staff, Logistics, and Press positions.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">What is the Press Corps?</summary>
+            <div class="faq__answer">
+              <p>
+                The Press Corps is a non-voting newsroom inside the conference.
+                It can cover debate, interview delegates, publish stories, and
+                shape how the conference is remembered.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">Is the schedule final?</summary>
+            <div class="faq__answer">
+              <p>
+                No. The schedule shown is a working outline and should be
+                replaced with the official timetable when the conference
+                logistics are finalized.
+              </p>
+            </div>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__brand">YVRMUN / Session II / 2027</p>
+
+      <!-- TODO: add contact email + social links -->
+      <ul class="site-footer__links">
+        <li><a href="#top">Back to top</a></li>
+        <li><a href="#committees">Committees</a></li>
+        <li><a href="#staff">Staff</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <p class="site-footer__legal">
+        Vancouver Youth Model United Nations · Richmond, BC
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
 </html>
