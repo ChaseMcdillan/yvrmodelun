@@ -15,19 +15,19 @@
   <header class="site-header" data-feature="header">
     <div class="site-header__inner">
       <a class="site-header__brand" href="/index.html" aria-label="YVRMUN home">
-        <span class="site-header__org">Youth Visionary Reformers Model United Nations</span>
-        <span class="site-header__session">Session II / 2027</span>
+        <span class="site-header__mark" aria-hidden="true"><span>Y</span></span>
+        <span>YVRMUN / 27</span>
       </a>
       <nav class="site-header__nav" aria-label="Primary">
-        <a href="/about.html">About</a>
+        <span class="site-header__nav-pill" aria-hidden="true"></span>
+        <a href="/index.html">Home</a>
         <a href="/committees.html">Committees</a>
-        <a href="/scenario.html">Scenario</a>
+        <a href="/scenario.html">Experience</a>
         <a href="/schedule.html">Schedule</a>
         <a href="/staff.html" class="is-active">Staff</a>
         <a href="/faq.html">FAQ</a>
-        <a href="/contact.html">Contact</a>
       </nav>
-      <a class="site-header__cta" href="/staff.html">ENTER THE ROOM.</a>
+      <a class="site-header__cta" href="/staff.html">Apply for Staff</a>
       <button class="site-header__toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -46,43 +46,9 @@
           Don't just <span class="page-hero__accent">attend.</span>
         </h1>
         <p class="page-hero__lede" data-reveal>
-          Staff are the people who shape what delegates experience. Choose
-          a role below, then scroll down to apply.
+          Staff are the people who shape what delegates experience. Fill
+          out the application below.
         </p>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="roles-title">
-      <div class="section__inner">
-        <h2 class="sr-only" id="roles-title">Available roles</h2>
-
-        <div class="roles" data-feature="staff-roles">
-          <button type="button" class="role-card" data-role="chair">
-            <span class="role-card__num">ROLE / 01</span>
-            <h3 class="role-card__title">Chair</h3>
-            <p class="role-card__desc">Procedure, debate, room energy.</p>
-          </button>
-          <button type="button" class="role-card" data-role="crisis">
-            <span class="role-card__num">ROLE / 02</span>
-            <h3 class="role-card__title">Crisis Staff</h3>
-            <p class="role-card__desc">Updates, directives, consequences.</p>
-          </button>
-          <button type="button" class="role-card" data-role="logistics">
-            <span class="role-card__num">ROLE / 03</span>
-            <h3 class="role-card__title">Logistics</h3>
-            <p class="role-card__desc">People, rooms, timing, movement.</p>
-          </button>
-          <button type="button" class="role-card" data-role="press-lead">
-            <span class="role-card__num">ROLE / 04</span>
-            <h3 class="role-card__title">Press Lead</h3>
-            <p class="role-card__desc">Coverage, assignments, publication.</p>
-          </button>
-          <button type="button" class="role-card" data-role="press-writer">
-            <span class="role-card__num">ROLE / 05</span>
-            <h3 class="role-card__title">Press Writer</h3>
-            <p class="role-card__desc">Stories, interviews, perspective.</p>
-          </button>
-        </div>
       </div>
     </section>
 
@@ -261,7 +227,6 @@
 
         </form>
 
-        <!-- SUCCESS STATE -->
         <div class="staff-success" data-form-success hidden>
           <p class="staff-success__eyebrow">Application received</p>
           <h3 class="staff-success__title">You're in the queue.</h3>
@@ -282,6 +247,8 @@
   </main>
 
   <footer class="site-footer">
+    <div class="site-footer__watermark" aria-hidden="true">YVRMUN</div>
+
     <div class="site-footer__inner">
       <div class="site-footer__brand-block">
         <p class="site-footer__brand">YVRMUN / Session II / 2027</p>
@@ -290,6 +257,7 @@
       <div class="site-footer__links-block">
         <p class="site-footer__heading">Explore</p>
         <ul class="site-footer__links">
+          <li><a href="/index.html">Home</a></li>
           <li><a href="/about.html">About</a></li>
           <li><a href="/committees.html">Committees</a></li>
           <li><a href="/scenario.html">Scenario</a></li>
@@ -304,18 +272,17 @@
         <p class="site-footer__heading">Contact</p>
         <p><a href="mailto:yvrmun26@gmail.com">yvrmun26@gmail.com</a></p>
         <p class="site-footer__location">Richmond, British Columbia</p>
+        <p class="site-footer__clock" data-clock>--:-- PT</p>
       </div>
     </div>
+
     <div class="site-footer__legal-block">
       <p class="site-footer__legal">
         © 2027 Youth Visionary Reformers Model United Nations. All rights reserved
         except where otherwise noted.
       </p>
       <p class="site-footer__legal site-footer__legal--assets">
-        Certain visual assets, including but not limited to graphics,
-        illustrations, and design elements, are the copyrighted property
-        of Chase McDillan and are used with permission. Unauthorized
-        reproduction or distribution is prohibited.
+        Visual assets © <strong>Chase McDillan</strong>. Used with permission.
       </p>
     </div>
   </footer>
@@ -324,15 +291,15 @@
     <span aria-hidden="true">↑</span>
   </button>
 
-  <script src="/js/config.js"></script>
-  <script src="/js/main.js"></script>
-  <script src="/js/animations.js"></script>
-  <script src="/js/staff-form.js"></script>
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
   <div class="cursor-corners" aria-hidden="true">
     <span></span><span></span><span></span><span></span>
   </div>
 
+  <script src="/js/config.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/animations.js"></script>
+  <script src="/js/staff-form.js"></script>
 </body>
 </html>
