@@ -12,7 +12,7 @@ window.YVRMUN_CONFIG = {
      The URL looks like:
      https://script.google.com/macros/s/AKfy.../exec
      -------------------------------------------------------- */
-  STAFF_APPLY_ENDPOINT: 'https://script.google.com/macros/s/AKfycbxRGjYULsJVdsPcuPOQ0FlBQBx-wllzphwft12XIcq95L75zRWAYxta6N11kzompis99Q/exec',
+  STAFF_APPLY_ENDPOINT: 'https://script.google.com/macros/s/AKfycbwpo9T5IdZCgBD04KjBWl2kg7GHjslgSmtbnnTJi731NM15mP4bMpqSUqOTsJJYR3Bzzg/exec',
 
   /* --------------------------------------------------------
      LOCK SCREEN
