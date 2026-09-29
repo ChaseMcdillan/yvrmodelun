@@ -3,243 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YVRMUN — Session II / Spring 2027</title>
+  <title>YVRMUN — Session II / 2027</title>
   <meta name="description" content="YVRMUN is a youth Model United Nations conference in Metro Vancouver. Session II takes over Richmond, BC in April 2027. Six committees. Three hundred delegates. Crisis is encouraged." />
   <meta name="theme-color" content="#0a0a0a" />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="YVRMUN — MAKE THE room." />
   <meta property="og:description" content="Session II / Spring 2027. Richmond, BC. Six committees. Three hundred delegates. Crisis is encouraged." />
   <meta property="og:type" content="website" />
 
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
 </head>
-<body>
+<body class="has-lockscreen">
+
+  <!-- ============================================================
+       LOCK SCREEN — shown once per session
+       ============================================================ -->
+  <div class="lockscreen" id="lockscreen" data-feature="lockscreen">
+    <div class="lockscreen__grain" aria-hidden="true"></div>
+
+    <div class="lockscreen__inner">
+
+      <p class="lockscreen__kicker" data-lock-reveal>
+        YVRMUN / SESSION II / 2027
+      </p>
+
+      <h1 class="lockscreen__title" data-lock-split>
+        ENTER THE ROOM.
+      </h1>
+
+      <p class="lockscreen__lede" data-lock-reveal>
+        Three hundred delegates. Six committees. Two days of arguments
+        you didn't see coming. This is where you step in — not to sound
+        like a diplomat, but to make the room move.
+      </p>
+
+      <button type="button" class="lockscreen__enter" id="enter-room" data-lock-reveal>
+        <span>ENTER</span>
+        <span class="lockscreen__arrow" aria-hidden="true">→</span>
+      </button>
+
+      <div class="lockscreen__footer" data-lock-reveal>
+        <span>Richmond, BC · April 2027</span>
+        <span>Est. 2005</span>
+      </div>
+
+    </div>
+  </div>
 
   <!-- ============================================================
        SITE HEADER (sticky)
        ============================================================ -->
   <header class="site-header" data-feature="header">
     <div class="site-header__inner">
-      <a class="site-header__brand" href="#top" aria-label="YVRMUN home">
+      <a class="site-header__brand" href="/index.html" aria-label="YVRMUN home">
         <span class="site-header__org">Vancouver Youth Model United Nations</span>
         <span class="site-header__session">Session II / 2027</span>
       </a>
 
       <nav class="site-header__nav" aria-label="Primary">
-        <a href="#committees">Committees</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#staff">Staff</a>
-        <a href="#faq">FAQ</a>
+        <a href="/about.html">About</a>
+        <a href="/committees.html">Committees</a>
+        <a href="/scenario.html">Scenario</a>
+        <a href="/schedule.html">Schedule</a>
+        <a href="/staff.html">Staff</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/contact.html">Contact</a>
       </nav>
 
-      <a class="site-header__cta" href="#top">ENTER THE ROOM.</a>
+      <a class="site-header__cta" href="/staff.html">ENTER THE ROOM.</a>
+
+      <button class="site-header__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" aria-hidden="true">
+      <div class="scroll-progress__bar" data-scroll-progress></div>
     </div>
   </header>
 
   <main id="top">
 
     <!-- ============================================================
-         00 / HERO
+         HERO
          ============================================================ -->
-    <section class="hero" id="hero" aria-labelledby="hero-title">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="orb orb--1"></span>
+        <span class="orb orb--2"></span>
+      </div>
+
       <div class="hero__inner">
 
-        <p class="hero__kicker">
+        <p class="hero__kicker" data-reveal>
           Session II / Spring 2027
         </p>
 
-        <h1 class="hero__title" id="hero-title">
+        <h1 class="hero__title" id="hero-title" data-split>
           MAKE THE <span class="hero__title-accent">room.</span>
         </h1>
 
-        <p class="hero__lede">
+        <p class="hero__lede" data-reveal>
           This is not a brochure. It is the room before the delegates arrive.
           Explore the conference, test a decision, find your committee,
           and decide where you belong.
         </p>
 
-        <p class="hero__body">
-          YVRMUN is a youth Model United Nations conference in Metro Vancouver
-          built around the part of MUN that matters most: what happens after
-          someone says something nobody expected.
-        </p>
-
-        <!-- Marquee / stat strip (duplicated in the current site) -->
-        <ul class="marquee" aria-label="Conference facts">
-          <li>YVR / 27</li>
-          <li>Six committees</li>
-          <li>Three hundred delegates</li>
-          <li>Crisis is encouraged</li>
-          <li>Draft. Debate. Decide.</li>
-          <li>Richmond / April 2027</li>
-        </ul>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         01 / WHY THIS EXISTS
-         ============================================================ -->
-    <section class="section" id="why" aria-labelledby="why-title">
-      <div class="section__inner">
-
-        <p class="section__label">01 / WHY THIS EXISTS</p>
-
-        <h2 class="section__title" id="why-title">
-          MUN should feel <span class="section__title-accent">alive.</span>
-        </h2>
-
-        <div class="section__body">
-          <p>
-            A good committee is not a worksheet with microphones. It is a room
-            full of people trying to move one another. The best moments are
-            improvised, inconvenient, funny, serious, and impossible to predict
-            from the background guide.
-          </p>
-          <p>
-            YVRMUN is designed around that feeling. Small details matter. The
-            topic matters. The dais matters. The person sitting across from you
-            matters. We want delegates to leave remembering an argument, not
-            just a score.
-          </p>
+        <div class="hero__cta" data-reveal>
+          <a class="btn btn--primary" href="/staff.html">Apply for staff →</a>
+          <a class="btn btn--ghost" href="/committees.html">View committees</a>
         </div>
 
       </div>
-    </section>
 
-    <!-- ============================================================
-         02 / THE SETTING
-         ============================================================ -->
-    <section class="section section--dark" id="setting" aria-labelledby="setting-title">
-      <div class="section__inner">
-
-        <p class="section__label">02 / THE SETTING</p>
-
-        <h2 class="section__title" id="setting-title">
-          The room is <span class="section__title-accent">somewhere.</span>
-        </h2>
-
-        <p class="section__body">
-          Richmond is close enough to feel local and large enough to make a
-          weekend conference feel like an event. YVRMUN takes over the city for
-          two days of diplomacy, strategy, press, and controlled chaos.
-        </p>
-
-        <ul class="stat-row" aria-label="Conference numbers">
-          <li class="stat-row__item">
-            <span class="stat-row__value">II</span>
-            <span class="stat-row__label">Session</span>
-          </li>
-          <li class="stat-row__item">
-            <span class="stat-row__value">06</span>
-            <span class="stat-row__label">Committees</span>
-          </li>
-          <li class="stat-row__item">
-            <span class="stat-row__value">300+</span>
-            <span class="stat-row__label">Delegates</span>
-          </li>
-          <li class="stat-row__item">
-            <span class="stat-row__value">40</span>
-            <span class="stat-row__label">Staff positions</span>
-          </li>
-        </ul>
-
-        <div class="location-map" aria-label="Location overview">
-          <span class="location-map__north">North / Vancouver</span>
-          <span class="location-map__pacific">Pacific</span>
-          <span class="location-map__zone">Richmond / Conference zone</span>
+      <!-- Marquee -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>YVR / 27</span><span>·</span>
+          <span>Six committees</span><span>·</span>
+          <span>Three hundred delegates</span><span>·</span>
+          <span>Crisis is encouraged</span><span>·</span>
+          <span>Draft. Debate. Decide.</span><span>·</span>
+          <span>Richmond / April 2027</span><span>·</span>
+          <span>YVR / 27</span><span>·</span>
+          <span>Six committees</span><span>·</span>
+          <span>Three hundred delegates</span><span>·</span>
+          <span>Crisis is encouraged</span><span>·</span>
+          <span>Draft. Debate. Decide.</span><span>·</span>
+          <span>Richmond / April 2027</span><span>·</span>
         </div>
-
-        <p class="section__note">
-          Richmond, BC — Host city for Session II.
-          <!-- TODO: confirm and publish exact venue once booked -->
-          Exact venue information can be published here when confirmed.
-        </p>
-
       </div>
     </section>
 
     <!-- ============================================================
-         03 / CHOOSE YOUR ROOM (Committees)
+         STAT STRIP
          ============================================================ -->
-    <section class="section" id="committees" aria-labelledby="committees-title">
+    <section class="stat-strip" aria-label="Conference numbers">
+      <div class="stat-strip__inner">
+        <div class="stat" data-count="2" data-suffix="">
+          <span class="stat__value">0</span>
+          <span class="stat__label">Session</span>
+        </div>
+        <div class="stat" data-count="6" data-suffix="">
+          <span class="stat__value">0</span>
+          <span class="stat__label">Committees</span>
+        </div>
+        <div class="stat" data-count="300" data-suffix="+">
+          <span class="stat__value">0</span>
+          <span class="stat__label">Delegates</span>
+        </div>
+        <div class="stat" data-count="40" data-suffix="">
+          <span class="stat__value">0</span>
+          <span class="stat__label">Staff positions</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRIMARY PREVIEW CARDS
+         ============================================================ -->
+    <section class="section" aria-labelledby="preview-title">
       <div class="section__inner">
 
-        <p class="section__label">03 / CHOOSE YOUR ROOM</p>
-
-        <h2 class="section__title" id="committees-title">
-          Six rooms. <span class="section__title-accent">Six different games.</span>
+        <p class="section__label" data-scramble>00 / START HERE</p>
+        <h2 class="section__title" id="preview-title" data-reveal>
+          Three places to <span class="section__title-accent">begin.</span>
         </h2>
 
-        <p class="section__body">
-          Click a committee. Read the premise. Imagine yourself in the room.
-          This section is intentionally less like a menu and more like a map.
-        </p>
+        <div class="preview-grid">
 
-        <!-- FEATURE: committees — click a card to expand/select -->
-        <div class="committees" data-feature="committees">
-
-          <!-- COMMITTEE 01 (real copy from current site) -->
-          <article class="committee-card" data-committee="01" tabindex="0">
-            <p class="committee-card__code">A/YVRMUN/2027/01</p>
-            <h3 class="committee-card__title">Security Council</h3>
-            <p class="committee-card__premise">
-              Fast-moving crisis committee with directives, veto politics,
-              closed sessions, and consequences that arrive before you have
-              finished arguing about the last one.
+          <a class="preview-card" href="/about.html" data-tilt>
+            <span class="preview-card__num">01</span>
+            <h3 class="preview-card__title">Why This Exists</h3>
+            <p class="preview-card__desc">
+              MUN should feel alive. The mission, the setting, and what makes
+              YVRMUN different from any other conference.
             </p>
-          </article>
+            <span class="preview-card__arrow" aria-hidden="true">→</span>
+          </a>
 
-          <!-- TODO: replace with real committee 02 -->
-          <article class="committee-card" data-committee="02" tabindex="0">
-            <p class="committee-card__code">A/YVRMUN/2027/02</p>
-            <h3 class="committee-card__title">[Committee 02]</h3>
-            <p class="committee-card__premise">
-              Placeholder premise — replace with the real committee description
-              before launch.
+          <a class="preview-card" href="/committees.html" data-tilt>
+            <span class="preview-card__num">02</span>
+            <h3 class="preview-card__title">Choose Your Room</h3>
+            <p class="preview-card__desc">
+              Six committees. Six different games. Read the premise, imagine
+              yourself in the room, and pick where you belong.
             </p>
-          </article>
+            <span class="preview-card__arrow" aria-hidden="true">→</span>
+          </a>
 
-          <!-- TODO: replace with real committee 03 -->
-          <article class="committee-card" data-committee="03" tabindex="0">
-            <p class="committee-card__code">A/YVRMUN/2027/03</p>
-            <h3 class="committee-card__title">[Committee 03]</h3>
-            <p class="committee-card__premise">
-              Placeholder premise — replace with the real committee description
-              before launch.
+          <a class="preview-card" href="/staff.html" data-tilt>
+            <span class="preview-card__num">03</span>
+            <h3 class="preview-card__title">Build The Conference</h3>
+            <p class="preview-card__desc">
+              Chair. Crisis. Logistics. Press. Staff shape what delegates
+              remember. Apply now — applications close in April.
             </p>
-          </article>
-
-          <!-- TODO: replace with real committee 04 -->
-          <article class="committee-card" data-committee="04" tabindex="0">
-            <p class="committee-card__code">A/YVRMUN/2027/04</p>
-            <h3 class="committee-card__title">[Committee 04]</h3>
-            <p class="committee-card__premise">
-              Placeholder premise — replace with the real committee description
-              before launch.
-            </p>
-          </article>
-
-          <!-- TODO: replace with real committee 05 -->
-          <article class="committee-card" data-committee="05" tabindex="0">
-            <p class="committee-card__code">A/YVRMUN/2027/05</p>
-            <h3 class="committee-card__title">[Committee 05]</h3>
-            <p class="committee-card__premise">
-              Placeholder premise — replace with the real committee description
-              before launch.
-            </p>
-          </article>
-
-          <!-- TODO: replace with real committee 06 -->
-          <article class="committee-card" data-committee="06" tabindex="0">
-            <p class="committee-card__code">A/YVRMUN/2027/06</p>
-            <h3 class="committee-card__title">[Committee 06]</h3>
-            <p class="committee-card__premise">
-              Placeholder premise — replace with the real committee description
-              before launch.
-            </p>
-          </article>
+            <span class="preview-card__arrow" aria-hidden="true">→</span>
+          </a>
 
         </div>
 
@@ -247,417 +210,58 @@
     </section>
 
     <!-- ============================================================
-         04 / TEST YOUR INSTINCTS (Interactive scenario)
+         SECONDARY CTA GRID
          ============================================================ -->
-    <section class="section section--dark" id="instincts" aria-labelledby="instincts-title">
+    <section class="section section--dark" aria-labelledby="more-title">
       <div class="section__inner">
 
-        <p class="section__label">04 / TEST YOUR INSTINCTS</p>
-
-        <h2 class="section__title" id="instincts-title">
-          What would <span class="section__title-accent">you do?</span>
+        <p class="section__label" data-scramble>EXPLORE</p>
+        <h2 class="section__title" id="more-title" data-reveal>
+          More to <span class="section__title-accent">see.</span>
         </h2>
 
-        <p class="section__body">
-          No correct answer. Just consequences. Pick the response you would
-          actually make in committee and see what kind of room you create.
-        </p>
-
-        <!-- FEATURE: scenario — decision machine with room-energy meter -->
-        <div class="scenario" data-feature="scenario">
-
-          <div class="scenario__meta">
-            <span class="scenario__badge">Live decision</span>
-            <span class="scenario__counter">
-              Scenario <span data-scenario-index>01</span> / 03
-            </span>
-            <span class="scenario__energy">
-              Room energy
-              <span class="scenario__energy-value" data-scenario-energy>00</span>
-            </span>
-          </div>
-
-          <!-- SCENARIO 01 (real copy) -->
-          <div class="scenario__card" data-scenario="1">
-            <p class="scenario__eyebrow">Scenario 01</p>
-            <h3 class="scenario__prompt">
-              Your bloc has a majority, but your strongest ally wants a clause
-              you know will split the room.
-            </h3>
-            <p class="scenario__context">
-              The chair has given you eight minutes before the draft resolution
-              closes. Everyone is watching.
-            </p>
-
-            <!-- TODO: confirm the actual choice labels used on the live site -->
-            <div class="scenario__choices">
-              <button type="button" class="scenario__choice" data-choice="a">
-                Take the clause — keep the alliance intact.
-              </button>
-              <button type="button" class="scenario__choice" data-choice="b">
-                Cut the clause — protect the majority.
-              </button>
-              <button type="button" class="scenario__choice" data-choice="c">
-                Split the difference — offer a sunset amendment.
-              </button>
-            </div>
-
-            <div class="scenario__outcome" hidden>
-              <p class="scenario__outcome-title">
-                You chose the room over the moment.
-              </p>
-              <p class="scenario__outcome-body">
-                Your move creates more space for coalition-building. In a live
-                committee, that can be more valuable than winning a single
-                clause.
-              </p>
-              <button type="button" class="scenario__next" data-scenario-next>
-                Next scenario →
-              </button>
-            </div>
-          </div>
-
-          <!-- TODO: add scenario 02 with choices + outcome -->
-          <!-- TODO: add scenario 03 with choices + outcome -->
-
-          <p class="scenario__reset-wrap">
-            <button type="button" class="scenario__reset" data-scenario-reset>
-              Reset
-            </button>
-          </p>
-
+        <div class="mini-grid">
+          <a class="mini-card" href="/scenario.html">
+            <span class="mini-card__num">04</span>
+            <span class="mini-card__title">Test Your Instincts</span>
+            <span class="mini-card__arrow">→</span>
+          </a>
+          <a class="mini-card" href="/schedule.html">
+            <span class="mini-card__num">05</span>
+            <span class="mini-card__title">The Weekend</span>
+            <span class="mini-card__arrow">→</span>
+          </a>
+          <a class="mini-card" href="/faq.html">
+            <span class="mini-card__num">06</span>
+            <span class="mini-card__title">Questions</span>
+            <span class="mini-card__arrow">→</span>
+          </a>
+          <a class="mini-card" href="/contact.html">
+            <span class="mini-card__num">07</span>
+            <span class="mini-card__title">Get in Touch</span>
+            <span class="mini-card__arrow">→</span>
+          </a>
+          <a class="mini-card" href="/credits.html">
+            <span class="mini-card__num">08</span>
+            <span class="mini-card__title">Credits</span>
+            <span class="mini-card__arrow">→</span>
+          </a>
         </div>
 
       </div>
     </section>
 
     <!-- ============================================================
-         05 / THE WEEKEND (Schedule)
+         PULL QUOTE
          ============================================================ -->
-    <section class="section" id="schedule" aria-labelledby="schedule-title">
-      <div class="section__inner">
-
-        <p class="section__label">05 / THE WEEKEND</p>
-
-        <h2 class="section__title" id="schedule-title">
-          Two days. <span class="section__title-accent">One room.</span>
-        </h2>
-
-        <p class="section__body">
-          Working outline only. Exact times and venue details can be updated
-          here once the conference schedule is finalized.
-        </p>
-
-        <ol class="timeline">
-          <li class="timeline__item" data-day="one">
-            <span class="timeline__time">08:30</span>
-            <div class="timeline__content">
-              <h3 class="timeline__title">Doors / Registration</h3>
-              <p class="timeline__desc">
-                Badges, room assignments, last-minute nerves, and the first coffee.
-              </p>
-            </div>
-            <span class="timeline__day">Day one</span>
-          </li>
-
-          <li class="timeline__item" data-day="one">
-            <span class="timeline__time">09:30</span>
-            <div class="timeline__content">
-              <h3 class="timeline__title">Opening Ceremony</h3>
-              <p class="timeline__desc">
-                Welcome, keynote, committee introductions, and the official call to order.
-              </p>
-            </div>
-            <span class="timeline__day">Day one</span>
-          </li>
-
-          <li class="timeline__item" data-day="one">
-            <span class="timeline__time">11:00</span>
-            <div class="timeline__content">
-              <h3 class="timeline__title">Committee Session I</h3>
-              <p class="timeline__desc">
-                Speakers' lists, caucuses, first alliances, and the beginning of the paper trail.
-              </p>
-            </div>
-            <span class="timeline__day">Day one</span>
-          </li>
-
-          <li class="timeline__item" data-day="one">
-            <span class="timeline__time">13:00</span>
-            <div class="timeline__content">
-              <h3 class="timeline__title">Lunch / Informal Diplomacy</h3>
-              <p class="timeline__desc">
-                The formal debate stops. The actual diplomacy probably does not.
-              </p>
-            </div>
-            <span class="timeline__day">Day one</span>
-          </li>
-
-          <li class="timeline__item" data-day="one">
-            <span class="timeline__time">14:00</span>
-            <div class="timeline__content">
-              <h3 class="timeline__title">Committee Session II</h3>
-              <p class="timeline__desc">
-                Working papers become draft resolutions. Crisis rooms start moving faster.
-              </p>
-            </div>
-            <span class="timeline__day">Day one</span>
-          </li>
-
-          <li class="timeline__item" data-day="one">
-            <span class="timeline__time">17:00</span>
-            <div class="timeline__content">
-              <h3 class="timeline__title">Day One Close</h3>
-              <p class="timeline__desc">
-                Delegates leave with unfinished work and staff members leave with even more.
-              </p>
-            </div>
-            <span class="timeline__day">Day one</span>
-          </li>
-
-          <li class="timeline__item" data-day="two">
-            <span class="timeline__time">09:00</span>
-            <div class="timeline__content">
-              <h3 class="timeline__title">Committee Session III</h3>
-              <p class="timeline__desc">
-                New amendments, new coalitions, and the consequences of yesterday's choices.
-              </p>
-            </div>
-            <span class="timeline__day">Day two</span>
-          </li>
-
-          <li class="timeline__item" data-day="two">
-            <span class="timeline__time">13:30</span>
-            <div class="timeline__content">
-              <h3 class="timeline__title">Voting Bloc</h3>
-              <p class="timeline__desc">
-                Final negotiations. Last edits. Then the room decides.
-              </p>
-            </div>
-            <span class="timeline__day">Day two</span>
-          </li>
-
-          <li class="timeline__item" data-day="two">
-            <span class="timeline__time">15:00</span>
-            <div class="timeline__content">
-              <h3 class="timeline__title">Closing Ceremony</h3>
-              <p class="timeline__desc">
-                Awards, acknowledgements, final remarks, and the handoff to Session III.
-              </p>
-            </div>
-            <span class="timeline__day">Day two</span>
-          </li>
-        </ol>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         06 / BUILD THE CONFERENCE (Staff roles + application)
-         ============================================================ -->
-    <section class="section section--dark" id="staff" aria-labelledby="staff-title">
-      <div class="section__inner">
-
-        <p class="section__label">06 / BUILD THE CONFERENCE</p>
-
-        <h2 class="section__title" id="staff-title">
-          Don't just <span class="section__title-accent">attend.</span>
-        </h2>
-
-        <p class="section__body">
-          Staff are the people who shape what delegates experience. Choose a
-          role below to see what it actually means.
-        </p>
-
-        <!-- FEATURE: staff-roles — click a role to expand details -->
-        <div class="roles" data-feature="staff-roles">
-          <button type="button" class="role-card" data-role="chair">
-            <span class="role-card__num">ROLE / 01</span>
-            <h3 class="role-card__title">Chair</h3>
-            <p class="role-card__desc">Procedure, debate, room energy.</p>
-          </button>
-
-          <button type="button" class="role-card" data-role="crisis">
-            <span class="role-card__num">ROLE / 02</span>
-            <h3 class="role-card__title">Crisis Staff</h3>
-            <p class="role-card__desc">Updates, directives, consequences.</p>
-          </button>
-
-          <button type="button" class="role-card" data-role="logistics">
-            <span class="role-card__num">ROLE / 03</span>
-            <h3 class="role-card__title">Logistics</h3>
-            <p class="role-card__desc">People, rooms, timing, movement.</p>
-          </button>
-
-          <button type="button" class="role-card" data-role="press-lead">
-            <span class="role-card__num">ROLE / 04</span>
-            <h3 class="role-card__title">Press Lead</h3>
-            <p class="role-card__desc">Coverage, assignments, publication.</p>
-          </button>
-
-          <button type="button" class="role-card" data-role="press-writer">
-            <span class="role-card__num">ROLE / 05</span>
-            <h3 class="role-card__title">Press Writer</h3>
-            <p class="role-card__desc">Stories, interviews, perspective.</p>
-          </button>
-        </div>
-
-        <!-- FEATURE: staff-form — validation + reference code -->
-        <form class="staff-form" data-feature="staff-form" novalidate>
-          <h3 class="staff-form__title">Apply for staff</h3>
-
-          <div class="staff-form__field">
-            <label for="staff-name">Full name</label>
-            <input type="text" id="staff-name" name="name" required autocomplete="name" />
-          </div>
-
-          <div class="staff-form__field">
-            <label for="staff-email">Email</label>
-            <input type="email" id="staff-email" name="email" required autocomplete="email" />
-          </div>
-
-          <div class="staff-form__field">
-            <label for="staff-role">Preferred role</label>
-            <select id="staff-role" name="role" required>
-              <option value="">Choose a role…</option>
-              <option value="chair">Chair</option>
-              <option value="crisis">Crisis Staff</option>
-              <option value="logistics">Logistics</option>
-              <option value="press-lead">Press Lead</option>
-              <option value="press-writer">Press Writer</option>
-            </select>
-          </div>
-
-          <div class="staff-form__field">
-            <label for="staff-motivation">Why this role?</label>
-            <textarea id="staff-motivation" name="motivation" rows="4" required></textarea>
-          </div>
-
-          <!-- TODO: wire this form to Netlify Forms / Formspree / your API -->
-          <p class="staff-form__note">
-            Applications are stored for secretariat review. Connect this form
-            to your production backend before collecting real applicant information.
-          </p>
-
-          <p class="staff-form__error" data-form-error hidden>
-            Please complete every field.
-          </p>
-
-          <button type="submit" class="btn btn--primary">Submit application</button>
-        </form>
-
-        <!-- Success state -->
-        <div class="staff-success" data-form-success hidden>
-          <h3 class="staff-success__title">You're in the queue.</h3>
-          <p class="staff-success__code" data-form-ref>A/YVRMUN/2027/000</p>
-          <p class="staff-success__body">
-            Keep your reference code. The secretariat can use it to identify
-            your application when contacting you.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- Quote block -->
-      <blockquote class="pull-quote">
+    <section class="pull-quote-section">
+      <blockquote class="pull-quote" data-reveal>
         <p>
-          The point isn't to sound like a diplomat. The point is to make the
-          room move.
+          The point isn't to sound like a diplomat. The point is to make
+          the room move.
         </p>
         <cite>YVRMUN / Session II / 2027</cite>
       </blockquote>
-    </section>
-
-    <!-- ============================================================
-         07 / QUESTIONS (FAQ)
-         ============================================================ -->
-    <section class="section" id="faq" aria-labelledby="faq-title">
-      <div class="section__inner">
-
-        <p class="section__label">07 / QUESTIONS</p>
-
-        <h2 class="section__title" id="faq-title">
-          You ask. <span class="section__title-accent">We answer.</span>
-        </h2>
-
-        <p class="section__body">
-          A few practical things before you commit a weekend to diplomacy.
-        </p>
-
-        <!-- FEATURE: faq — accordion -->
-        <div class="faq" data-feature="faq">
-
-          <!-- TODO: confirm the real question text with secretariat -->
-          <details class="faq__item">
-            <summary class="faq__question">Who can attend?</summary>
-            <div class="faq__answer">
-              <p>
-                YVRMUN is designed as a youth Model United Nations conference.
-                <!-- TODO: publish the actual eligibility range -->
-                Publish your actual eligibility range here once registration
-                policy is finalized.
-              </p>
-            </div>
-          </details>
-
-          <details class="faq__item">
-            <summary class="faq__question">Do I need experience?</summary>
-            <div class="faq__answer">
-              <p>
-                Not necessarily. Committee descriptions can indicate experience
-                levels, and staff can use conference materials to help delegates
-                prepare.
-              </p>
-            </div>
-          </details>
-
-          <details class="faq__item">
-            <summary class="faq__question">When and where is Session II?</summary>
-            <div class="faq__answer">
-              <p>
-                YVRMUN Session II is planned for April 2027 in Richmond,
-                British Columbia.
-                <!-- TODO: publish exact dates and venue -->
-                Publish exact dates and venue here once confirmed.
-              </p>
-            </div>
-          </details>
-
-          <details class="faq__item">
-            <summary class="faq__question">Can I apply for staff?</summary>
-            <div class="faq__answer">
-              <p>
-                Yes. Use the staff application above. The current template
-                supports Chair, Crisis Staff, Logistics, and Press positions.
-              </p>
-            </div>
-          </details>
-
-          <details class="faq__item">
-            <summary class="faq__question">What is the Press Corps?</summary>
-            <div class="faq__answer">
-              <p>
-                The Press Corps is a non-voting newsroom inside the conference.
-                It can cover debate, interview delegates, publish stories, and
-                shape how the conference is remembered.
-              </p>
-            </div>
-          </details>
-
-          <details class="faq__item">
-            <summary class="faq__question">Is the schedule final?</summary>
-            <div class="faq__answer">
-              <p>
-                No. The schedule shown is a working outline and should be
-                replaced with the official timetable when the conference
-                logistics are finalized.
-              </p>
-            </div>
-          </details>
-
-        </div>
-
-      </div>
     </section>
 
   </main>
@@ -667,22 +271,56 @@
        ============================================================ -->
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <p class="site-footer__brand">YVRMUN / Session II / 2027</p>
 
-      <!-- TODO: add contact email + social links -->
-      <ul class="site-footer__links">
-        <li><a href="#top">Back to top</a></li>
-        <li><a href="#committees">Committees</a></li>
-        <li><a href="#staff">Staff</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
+      <div class="site-footer__brand-block">
+        <p class="site-footer__brand">YVRMUN / Session II / 2027</p>
+        <p class="site-footer__tagline">MAKE THE room.</p>
+      </div>
 
+      <div class="site-footer__links-block">
+        <p class="site-footer__heading">Explore</p>
+        <ul class="site-footer__links">
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/committees.html">Committees</a></li>
+          <li><a href="/scenario.html">Scenario</a></li>
+          <li><a href="/schedule.html">Schedule</a></li>
+          <li><a href="/staff.html">Staff</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/credits.html">Credits</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__contact-block">
+        <p class="site-footer__heading">Contact</p>
+        <p><a href="mailto:yvrmun26@gmail.com">yvrmun26@gmail.com</a></p>
+        <p class="site-footer__location">Richmond, British Columbia</p>
+      </div>
+
+    </div>
+
+    <div class="site-footer__legal-block">
       <p class="site-footer__legal">
-        Vancouver Youth Model United Nations · Richmond, BC
+        © 2027 Vancouver Youth Model United Nations. All rights reserved
+        except where otherwise noted.
+      </p>
+      <p class="site-footer__legal site-footer__legal--assets">
+        Certain visual assets, including but not limited to graphics,
+        illustrations, and design elements, are the copyrighted property
+        of Chase McDillan and are used with permission. Unauthorized
+        reproduction or distribution is prohibited.
       </p>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- Back to top -->
+  <button class="back-to-top" aria-label="Back to top" data-back-to-top>
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/lockscreen.js"></script>
+  <script src="/js/animations.js"></script>
 </body>
 </html>
