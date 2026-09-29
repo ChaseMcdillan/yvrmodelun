@@ -1581,6 +1581,11 @@ body.has-lockscreen { overflow: hidden; }
   margin: var(--space-10) auto 0;
   padding: var(--space-6) var(--space-6) 0;
   border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
 }
 
 .site-footer__legal {
@@ -1589,10 +1594,20 @@ body.has-lockscreen { overflow: hidden; }
   letter-spacing: 0.05em;
   color: var(--muted);
   line-height: 1.7;
-  margin-bottom: var(--space-2);
+  margin: 0;
 }
 
-.site-footer__legal--assets { color: rgba(107, 107, 107, 0.7); }
+.site-footer__legal--assets {
+  color: var(--paper);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.site-footer__legal--assets strong {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {
