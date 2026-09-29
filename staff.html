@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staff Application — YVRMUN Session II / 2027</title>
+  <meta name="description" content="Apply for the YVRMUN Session II secretariat team. Chair, Crisis, Logistics, Press Lead, Press Writer. Applications close April 2027." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/forms.css" />
+</head>
+<body>
+
+  <header class="site-header" data-feature="header">
+    <div class="site-header__inner">
+      <a class="site-header__brand" href="/index.html" aria-label="YVRMUN home">
+        <span class="site-header__org">Vancouver Youth Model United Nations</span>
+        <span class="site-header__session">Session II / 2027</span>
+      </a>
+      <nav class="site-header__nav" aria-label="Primary">
+        <a href="/about.html">About</a>
+        <a href="/committees.html">Committees</a>
+        <a href="/scenario.html">Scenario</a>
+        <a href="/schedule.html">Schedule</a>
+        <a href="/staff.html" class="is-active">Staff</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <a class="site-header__cta" href="/staff.html">ENTER THE ROOM.</a>
+      <button class="site-header__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="scroll-progress" aria-hidden="true">
+      <div class="scroll-progress__bar" data-scroll-progress></div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero__inner">
+        <p class="page-hero__kicker" data-reveal>06 / BUILD THE CONFERENCE</p>
+        <h1 class="page-hero__title" id="page-title" data-split>
+          Don't just <span class="page-hero__accent">attend.</span>
+        </h1>
+        <p class="page-hero__lede" data-reveal>
+          Staff are the people who shape what delegates experience. Choose
+          a role below, then scroll down to apply.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="roles-title">
+      <div class="section__inner">
+        <h2 class="sr-only" id="roles-title">Available roles</h2>
+
+        <div class="roles" data-feature="staff-roles">
+          <button type="button" class="role-card" data-role="chair">
+            <span class="role-card__num">ROLE / 01</span>
+            <h3 class="role-card__title">Chair</h3>
+            <p class="role-card__desc">Procedure, debate, room energy.</p>
+          </button>
+          <button type="button" class="role-card" data-role="crisis">
+            <span class="role-card__num">ROLE / 02</span>
+            <h3 class="role-card__title">Crisis Staff</h3>
+            <p class="role-card__desc">Updates, directives, consequences.</p>
+          </button>
+          <button type="button" class="role-card" data-role="logistics">
+            <span class="role-card__num">ROLE / 03</span>
+            <h3 class="role-card__title">Logistics</h3>
+            <p class="role-card__desc">People, rooms, timing, movement.</p>
+          </button>
+          <button type="button" class="role-card" data-role="press-lead">
+            <span class="role-card__num">ROLE / 04</span>
+            <h3 class="role-card__title">Press Lead</h3>
+            <p class="role-card__desc">Coverage, assignments, publication.</p>
+          </button>
+          <button type="button" class="role-card" data-role="press-writer">
+            <span class="role-card__num">ROLE / 05</span>
+            <h3 class="role-card__title">Press Writer</h3>
+            <p class="role-card__desc">Stories, interviews, perspective.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" aria-labelledby="form-title">
+      <div class="section__inner">
+        <h2 class="section__title" id="form-title" data-reveal>
+          Staff <span class="section__title-accent">application.</span>
+        </h2>
+        <p class="section__body" data-reveal>
+          Takes about 15 minutes. Read every question carefully — incomplete
+          applications cannot be reviewed.
+        </p>
+
+        <form class="staff-form" data-feature="staff-form" novalidate>
+
+          <div class="staff-form__grid">
+
+            <div class="staff-form__field">
+              <label for="staff-email">Email</label>
+              <input type="email" id="staff-email" name="email" required autocomplete="email" />
+            </div>
+
+            <div class="staff-form__field">
+              <label for="staff-phone">Personal phone number</label>
+              <input type="tel" id="staff-phone" name="phone" required autocomplete="tel" />
+            </div>
+
+            <div class="staff-form__field">
+              <label for="staff-legal">Full legal name (as on government ID)</label>
+              <input type="text" id="staff-legal" name="legalName" required autocomplete="name" />
+            </div>
+
+            <div class="staff-form__field">
+              <label for="staff-preferred">Preferred name (if different)</label>
+              <input type="text" id="staff-preferred" name="preferredName" />
+            </div>
+
+            <div class="staff-form__field">
+              <label for="staff-school">School in September 2026</label>
+              <input type="text" id="staff-school" name="school" required autocomplete="organization" />
+            </div>
+
+            <div class="staff-form__field staff-form__field--radios">
+              <fieldset>
+                <legend>Grade in September 2026</legend>
+                <div class="radio-row">
+                  <label><input type="radio" name="grade" value="8" required /><span>8</span></label>
+                  <label><input type="radio" name="grade" value="9" /><span>9</span></label>
+                  <label><input type="radio" name="grade" value="10" /><span>10</span></label>
+                  <label><input type="radio" name="grade" value="11" /><span>11</span></label>
+                  <label><input type="radio" name="grade" value="12" /><span>12</span></label>
+                </div>
+              </fieldset>
+            </div>
+
+          </div>
+
+          <div class="staff-form__field staff-form__field--radios">
+            <fieldset>
+              <legend>Preferred positions</legend>
+              <div class="checkbox-grid">
+                <label><input type="checkbox" name="positions" value="Flex Staff" /><span>Flex Staff</span></label>
+                <label><input type="checkbox" name="positions" value="Assistant Director" /><span>Assistant Director</span></label>
+                <label><input type="checkbox" name="positions" value="Chair" /><span>Chair</span></label>
+                <label><input type="checkbox" name="positions" value="Director" /><span>Director</span></label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="staff-form__field">
+            <label for="staff-delegate-exp">
+              Past Model UN experiences as a DELEGATE
+            </label>
+            <textarea id="staff-delegate-exp" name="delegateExperience" rows="3" required
+              placeholder="e.g. YVRMUN 2026 — DISEC — Canada — Best Delegate"></textarea>
+          </div>
+
+          <div class="staff-form__field">
+            <label for="staff-staff-exp">
+              Past Model UN experiences as STAFF or SECRETARY (optional)
+            </label>
+            <textarea id="staff-staff-exp" name="staffExperience" rows="3"
+              placeholder="e.g. YVRMUN 2026 — Chief of Staff"></textarea>
+          </div>
+
+          <div class="staff-form__field">
+            <label for="staff-resume">
+              Resume (PDF, max 4 MB)
+            </label>
+            <input type="file" id="staff-resume" name="resume" accept=".pdf,application/pdf" required />
+            <p class="staff-form__hint" data-file-hint>No file selected. Max 4 MB.</p>
+          </div>
+
+          <div class="staff-form__field">
+            <label for="staff-why-join">
+              Why would you like to join the YVRMUN secretary team?
+              <span class="staff-form__limit">(max 500 words)</span>
+            </label>
+            <textarea id="staff-why-join" name="whyJoin" rows="5" required
+              data-word-limit="500"></textarea>
+            <p class="staff-form__counter" data-word-counter>0 / 500</p>
+          </div>
+
+          <div class="staff-form__field">
+            <label for="staff-why-you">
+              If another applicant has the same experiences as you, why
+              should you be chosen?
+              <span class="staff-form__limit">(max 300 words)</span>
+            </label>
+            <textarea id="staff-why-you" name="whyYou" rows="4"
+              data-word-limit="300"></textarea>
+            <p class="staff-form__counter" data-word-counter>0 / 300</p>
+          </div>
+
+          <div class="staff-form__field">
+            <label for="staff-improve">
+              What is one aspect of any Model UN conference that you think
+              needs to be improved on?
+              <span class="staff-form__limit">(max 500 words)</span>
+            </label>
+            <textarea id="staff-improve" name="improve" rows="5" required
+              data-word-limit="500"></textarea>
+            <p class="staff-form__counter" data-word-counter>0 / 500</p>
+          </div>
+
+          <div class="staff-form__field staff-form__field--radios">
+            <fieldset>
+              <legend>
+                Do you recognize that out-of-town accommodation will NOT
+                be provided?
+              </legend>
+              <p class="staff-form__warning">
+                If "No" is selected, the application will be discarded.
+              </p>
+              <div class="radio-row">
+                <label><input type="radio" name="accommodationOk" value="Yes" required data-reject-if-no /><span>Yes</span></label>
+                <label><input type="radio" name="accommodationOk" value="No" data-reject-if-no /><span>No</span></label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="staff-form__field staff-form__field--radios">
+            <fieldset>
+              <legend>
+                Do you recognize that these positions take a large amount
+                of time and effort and you will NOT get paid?
+              </legend>
+              <p class="staff-form__warning">
+                If "No" is selected, the application will be discarded.
+              </p>
+              <div class="radio-row">
+                <label><input type="radio" name="unpaidOk" value="Yes" required data-reject-if-no /><span>Yes</span></label>
+                <label><input type="radio" name="unpaidOk" value="No" data-reject-if-no /><span>No</span></label>
+              </div>
+            </fieldset>
+          </div>
+
+          <p class="staff-form__error" data-form-error hidden>
+            Please complete every required field.
+          </p>
+
+          <p class="staff-form__error staff-form__error--reject" data-form-reject hidden>
+            Your application cannot be submitted. These requirements are
+            non-negotiable.
+          </p>
+
+          <div class="staff-form__actions">
+            <button type="submit" class="btn btn--primary" data-form-submit>
+              Submit application
+            </button>
+            <p class="staff-form__note">
+              Applications are reviewed by the YVRMUN secretariat. You'll
+              receive a reference code on the next screen — save it.
+            </p>
+          </div>
+
+        </form>
+
+        <!-- SUCCESS STATE -->
+        <div class="staff-success" data-form-success hidden>
+          <p class="staff-success__eyebrow">Application received</p>
+          <h3 class="staff-success__title">You're in the queue.</h3>
+          <p class="staff-success__code" data-form-ref>A/YVRMUN/2027/000</p>
+          <button type="button" class="staff-success__copy" data-copy-ref>
+            Copy reference code
+          </button>
+          <p class="staff-success__body">
+            The secretariat will use this code to identify your application.
+            Questions? Email
+            <a href="mailto:yvrmun26@gmail.com">yvrmun26@gmail.com</a>.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand-block">
+        <p class="site-footer__brand">YVRMUN / Session II / 2027</p>
+        <p class="site-footer__tagline">MAKE THE room.</p>
+      </div>
+      <div class="site-footer__links-block">
+        <p class="site-footer__heading">Explore</p>
+        <ul class="site-footer__links">
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/committees.html">Committees</a></li>
+          <li><a href="/scenario.html">Scenario</a></li>
+          <li><a href="/schedule.html">Schedule</a></li>
+          <li><a href="/staff.html">Staff</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/credits.html">Credits</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__contact-block">
+        <p class="site-footer__heading">Contact</p>
+        <p><a href="mailto:yvrmun26@gmail.com">yvrmun26@gmail.com</a></p>
+        <p class="site-footer__location">Richmond, British Columbia</p>
+      </div>
+    </div>
+    <div class="site-footer__legal-block">
+      <p class="site-footer__legal">
+        © 2027 Vancouver Youth Model United Nations. All rights reserved
+        except where otherwise noted.
+      </p>
+      <p class="site-footer__legal site-footer__legal--assets">
+        Certain visual assets, including but not limited to graphics,
+        illustrations, and design elements, are the copyrighted property
+        of Chase McDillan and are used with permission. Unauthorized
+        reproduction or distribution is prohibited.
+      </p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top" data-back-to-top>
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/animations.js"></script>
+  <script src="/js/staff-form.js"></script>
+</body>
+</html>
