@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Your Instincts — YVRMUN Session II / 2027</title>
+  <meta name="description" content="Three scenarios. No correct answers. Just consequences. See what kind of room you create at YVRMUN Session II." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+</head>
+<body>
+
+  <header class="site-header" data-feature="header">
+    <div class="site-header__inner">
+      <a class="site-header__brand" href="/index.html" aria-label="YVRMUN home">
+        <span class="site-header__org">Vancouver Youth Model United Nations</span>
+        <span class="site-header__session">Session II / 2027</span>
+      </a>
+      <nav class="site-header__nav" aria-label="Primary">
+        <a href="/about.html">About</a>
+        <a href="/committees.html">Committees</a>
+        <a href="/scenario.html" class="is-active">Scenario</a>
+        <a href="/schedule.html">Schedule</a>
+        <a href="/staff.html">Staff</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <a class="site-header__cta" href="/staff.html">ENTER THE ROOM.</a>
+      <button class="site-header__toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="scroll-progress" aria-hidden="true">
+      <div class="scroll-progress__bar" data-scroll-progress></div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero__inner">
+        <p class="page-hero__kicker" data-reveal>04 / TEST YOUR INSTINCTS</p>
+        <h1 class="page-hero__title" id="page-title" data-split>
+          What would <span class="page-hero__accent">you do?</span>
+        </h1>
+        <p class="page-hero__lede" data-reveal>
+          No correct answer. Just consequences. Pick the response you'd
+          actually make in committee and see what kind of room you create.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="scenario-title">
+      <div class="section__inner">
+        <h2 class="sr-only" id="scenario-title">Scenario game</h2>
+
+        <div class="scenario" data-feature="scenario">
+
+          <div class="scenario__meta">
+            <span class="scenario__badge">Live decision</span>
+            <span class="scenario__counter">
+              Scenario <span data-scenario-index>01</span> / 03
+            </span>
+            <span class="scenario__energy">
+              Room energy
+              <span class="scenario__energy-value" data-scenario-energy>00</span>
+            </span>
+            <span class="scenario__energy-bar" aria-hidden="true">
+              <span class="scenario__energy-fill" data-scenario-fill></span>
+            </span>
+          </div>
+
+          <!-- SCENARIO 01 -->
+          <div class="scenario__card is-active" data-scenario="1">
+            <p class="scenario__eyebrow">Scenario 01</p>
+            <h3 class="scenario__prompt">
+              Your bloc has a majority, but your strongest ally wants a
+              clause you know will split the room.
+            </h3>
+            <p class="scenario__context">
+              The chair has given you eight minutes before the draft
+              resolution closes. Everyone is watching.
+            </p>
+
+            <div class="scenario__choices">
+              <button type="button" class="scenario__choice" data-choice="a" data-energy="15">
+                Take the clause — keep the alliance intact.
+              </button>
+              <button type="button" class="scenario__choice" data-choice="b" data-energy="25">
+                Cut the clause — protect the majority.
+              </button>
+              <button type="button" class="scenario__choice" data-choice="c" data-energy="40">
+                Split the difference — offer a sunset amendment.
+              </button>
+            </div>
+
+            <div class="scenario__outcome" hidden>
+              <p class="scenario__outcome-title">You chose the room over the moment.</p>
+              <p class="scenario__outcome-body">
+                Your move creates more space for coalition-building. In a
+                live committee, that can be more valuable than winning a
+                single clause.
+              </p>
+              <button type="button" class="scenario__next" data-scenario-next>
+                Next scenario →
+              </button>
+            </div>
+          </div>
+
+          <!-- TODO: replace scenario 02 with real content -->
+          <div class="scenario__card" data-scenario="2" hidden>
+            <p class="scenario__eyebrow">Scenario 02</p>
+            <h3 class="scenario__prompt">[Scenario 02 prompt goes here.]</h3>
+            <p class="scenario__context">[Scenario 02 context goes here.]</p>
+            <div class="scenario__choices">
+              <button type="button" class="scenario__choice" data-choice="a" data-energy="20">
+                [Choice A]
+              </button>
+              <button type="button" class="scenario__choice" data-choice="b" data-energy="30">
+                [Choice B]
+              </button>
+            </div>
+            <div class="scenario__outcome" hidden>
+              <p class="scenario__outcome-title">[Outcome title]</p>
+              <p class="scenario__outcome-body">[Outcome body]</p>
+              <button type="button" class="scenario__next" data-scenario-next>Next scenario →</button>
+            </div>
+          </div>
+
+          <!-- TODO: replace scenario 03 with real content -->
+          <div class="scenario__card" data-scenario="3" hidden>
+            <p class="scenario__eyebrow">Scenario 03</p>
+            <h3 class="scenario__prompt">[Scenario 03 prompt goes here.]</h3>
+            <p class="scenario__context">[Scenario 03 context goes here.]</p>
+            <div class="scenario__choices">
+              <button type="button" class="scenario__choice" data-choice="a" data-energy="25">
+                [Choice A]
+              </button>
+              <button type="button" class="scenario__choice" data-choice="b" data-energy="35">
+                [Choice B]
+              </button>
+            </div>
+            <div class="scenario__outcome" hidden>
+              <p class="scenario__outcome-title">[Outcome title]</p>
+              <p class="scenario__outcome-body">[Outcome body]</p>
+              <button type="button" class="scenario__next" data-scenario-next>See result →</button>
+            </div>
+          </div>
+
+          <!-- FINAL RESULT -->
+          <div class="scenario__result" data-scenario-result hidden>
+            <p class="scenario__eyebrow">Final</p>
+            <h3 class="scenario__prompt">
+              You'd build a room that <span data-scenario-verdict>moves.</span>
+            </h3>
+            <p class="scenario__context">
+              Every committee is a different room, but the ones that matter
+              are the ones where people leave remembering an argument.
+            </p>
+            <div class="scenario__result-actions">
+              <button type="button" class="scenario__reset" data-scenario-reset>
+                Play again
+              </button>
+              <a class="btn btn--primary" href="/staff.html">Apply for staff →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <blockquote class="pull-quote" data-reveal>
+      <p>
+        The point isn't to sound like a diplomat. The point is to make
+        the room move.
+      </p>
+      <cite>YVRMUN / Session II / 2027</cite>
+    </blockquote>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand-block">
+        <p class="site-footer__brand">YVRMUN / Session II / 2027</p>
+        <p class="site-footer__tagline">MAKE THE room.</p>
+      </div>
+      <div class="site-footer__links-block">
+        <p class="site-footer__heading">Explore</p>
+        <ul class="site-footer__links">
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/committees.html">Committees</a></li>
+          <li><a href="/scenario.html">Scenario</a></li>
+          <li><a href="/schedule.html">Schedule</a></li>
+          <li><a href="/staff.html">Staff</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/credits.html">Credits</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__contact-block">
+        <p class="site-footer__heading">Contact</p>
+        <p><a href="mailto:yvrmun26@gmail.com">yvrmun26@gmail.com</a></p>
+        <p class="site-footer__location">Richmond, British Columbia</p>
+      </div>
+    </div>
+    <div class="site-footer__legal-block">
+      <p class="site-footer__legal">
+        © 2027 Vancouver Youth Model United Nations. All rights reserved
+        except where otherwise noted.
+      </p>
+      <p class="site-footer__legal site-footer__legal--assets">
+        Certain visual assets, including but not limited to graphics,
+        illustrations, and design elements, are the copyrighted property
+        of Chase McDillan and are used with permission. Unauthorized
+        reproduction or distribution is prohibited.
+      </p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top" data-back-to-top>
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/animations.js"></script>
+</body>
+</html>
