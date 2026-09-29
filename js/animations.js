@@ -127,10 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (nav && pill && navLinks.length && !prefersReduced) {
     navLinks.forEach(link => {
       link.addEventListener('mouseenter', () => {
-        const navRect = nav.getBoundingClientRect();
-        const linkRect = link.getBoundingClientRect();
-        pill.style.width = linkRect.width + 'px';
-        pill.style.transform = `translateX(${linkRect.left - navRect.left - 4}px)`;
+        const left = link.offsetLeft;
+        const width = link.offsetWidth;
+        pill.style.width = width + 'px';
+        pill.style.transform = `translateX(${left}px)`;
         nav.classList.add('is-hover');
       });
     });
