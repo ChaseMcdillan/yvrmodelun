@@ -2973,3 +2973,39 @@ body.has-lockscreen .cursor-corners span {
 .site-header__cta:hover::before {
   background: var(--ink);
 }
+
+/* ---------- LETTER FROM THE SG ---------- */
+.section--letter {
+  padding: var(--space-16) 0;
+  background: var(--ink);
+  border-top: 1px solid var(--line);
+}
+
+.letter {
+  margin-top: var(--space-6);
+  padding: var(--space-8) var(--space-8);
+  border-left: 2px solid var(--accent);
+  background: var(--ink-soft);
+}
+
+.letter p {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--paper);
+  margin-bottom: var(--space-5);
+  max-width: none;
+}
+
+.letter__sign {
+  font-family: var(--font-mono) !important;
+  font-style: normal !important;
+  font-size: var(--fs-sm) !important;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent) !important;
+  margin-top: var(--space-6) !important;
+  margin-bottom: 0 !important;
+}
+
