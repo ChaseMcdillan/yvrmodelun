@@ -3025,3 +3025,34 @@ body.has-lockscreen .cursor-corners span {
   font-weight: 700;
   font-style: normal;
 }
+
+/* ---------- FOOTER SOCIAL ---------- */
+.site-footer__social {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--space-6) var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.site-footer__social .site-footer__heading {
+  margin-bottom: 0;
+}
+
+.site-footer__social-link {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s var(--ease-out);
+}
+
+.site-footer__social-link:hover {
+  opacity: 0.7;
+}
