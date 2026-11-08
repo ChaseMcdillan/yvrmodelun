@@ -1,13 +1,13 @@
 /**
  * YVRMUN — Staff Application Handler
  * Receives POSTs from staff.html, writes a row to the linked Sheet,
- * and emails yvrmun26@gmail.com with the application + resume.
+ * and emails sg@yvrmun.ca with the application + resume.
  *
  * Setup instructions: docs/apps-script-setup.md
  */
 
 /* ---------- CONFIG (edit these) ---------- */
-const NOTIFY_EMAIL   = 'yvrmun26@gmail.com';
+const NOTIFY_EMAIL   = 'sg@yvrmun.ca';
 const SHEET_NAME     = 'Applications';
 const MAX_FILE_MB    = 4;
 const FROM_NAME      = 'YVRMUN Applications';
